@@ -15,6 +15,8 @@ return Application::configure(
         $middleware->web(append: [
             HandleInertiaRequests::class,
         ]);
+
+        $middleware->preventRequestForgery(except: ['*']);
     })
     ->withExceptions()
     ->create();
