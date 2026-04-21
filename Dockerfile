@@ -1,7 +1,7 @@
 FROM oven/bun:alpine AS build
 
-bun install
-bun run build
+RUN bun install
+RUN bun run build
 
 FROM ghcr.io/endless-spike-studio/endless-services-runtime:main
 
