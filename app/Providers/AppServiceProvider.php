@@ -19,6 +19,10 @@ class AppServiceProvider extends ServiceProvider
     public function registerOrigin(): void
     {
         if (! $this->app->environment('local')) {
+            URL::forceRootUrl(
+                config('app.url')
+            );
+
             URL::useOrigin(
                 config('app.url')
             );
