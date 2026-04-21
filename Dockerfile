@@ -1,17 +1,15 @@
-FROM oven/bun:alpine AS frontend
-
-RUN bun install
-RUN bun run build
-
 FROM ghcr.io/endless-spike-studio/endless-services-runtime:main
 
-COPY . /app
-
-COPY --from=frontend public/build /app/public/build
+COPY --from=oven/bun:alpine /usr/local/bin/bun /usr/local/bin/bun
 
 WORKDIR /app
 
+COPY . .
+
 RUN composer install --no-dev
+
+RUN bun install
+RUN bun run build
 
 RUN php /app/artisan storage:link
 
