@@ -1,10 +1,14 @@
 FROM ghcr.io/endless-spike-studio/endless-services-runtime:main
 
+ARG APP_URL
+
 COPY --from=oven/bun:alpine /usr/local/bin/bun /usr/local/bin/bun
 
 WORKDIR /app
 
 COPY . .
+
+ENV APP_URL=$APP_URL
 
 RUN composer install --no-dev
 
