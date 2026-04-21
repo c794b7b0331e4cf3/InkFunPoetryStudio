@@ -1,4 +1,8 @@
-FROM oven/bun:alpine AS build
+FROM oven/bun:alpine AS frontend
+
+COPY . /app
+
+WORKDIR /app
 
 RUN bun install
 RUN bun run build
@@ -8,6 +12,8 @@ FROM ghcr.io/endless-spike-studio/endless-services-runtime:main
 COPY . /app
 
 WORKDIR /app
+
+COPY --from=frontend /app/public/build /app/public/build
 
 RUN composer install --no-dev
 
