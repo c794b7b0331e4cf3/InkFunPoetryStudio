@@ -3,7 +3,8 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vue-tsc -b && vite build",
+        "check": "vue-tsc -b",
+        "build": "vite build",
         "format": "oxfmt",
         "format:check": "oxfmt --check",
         "preview": "vite preview"
