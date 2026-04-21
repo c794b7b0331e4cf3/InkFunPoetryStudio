@@ -4,14 +4,29 @@ namespace App\Providers;
 
 use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $this->registerOrigin();
         $this->registerTimeZone();
         $this->registerAi();
+    }
+
+    public function registerOrigin(): void
+    {
+        if (! $this->app->environment('local')) {
+            URL::useOrigin(
+                config('app.url')
+            );
+
+            URL::useAssetOrigin(
+                config('app.url')
+            );
+        }
     }
 
     public function registerTimeZone(): void
