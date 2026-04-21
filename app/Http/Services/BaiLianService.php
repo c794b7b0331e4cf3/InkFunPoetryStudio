@@ -18,6 +18,7 @@ class BaiLianService
     protected function textGenerate(string $model, array $extra, string $instruction, string $prompt)
     {
         return json_decode(Http::asJson()
+            ->timeout(300)
             ->withHeaders([
                 'Authorization' => 'Bearer '.config('services.bailian.api_key'),
             ])
@@ -47,6 +48,7 @@ class BaiLianService
     protected function textTalk(string $model, array $extra, string $instruction, string $prompt, array $histories = [])
     {
         return json_decode(Http::asJson()
+            ->timeout(300)
             ->withHeaders([
                 'Authorization' => 'Bearer '.config('services.bailian.api_key'),
             ])
@@ -78,6 +80,7 @@ class BaiLianService
     {
 
         return Http::asJson()
+            ->timeout(600)
             ->withHeaders([
                 'Authorization' => 'Bearer '.config('services.bailian.api_key'),
             ])
@@ -106,6 +109,7 @@ class BaiLianService
     protected function visualGenerate(string $model, string $instruction, string $imageRaw, string $prompt)
     {
         return json_decode(Http::asJson()
+            ->timeout(300)
             ->withHeaders([
                 'Authorization' => 'Bearer '.config('services.bailian.api_key'),
             ])

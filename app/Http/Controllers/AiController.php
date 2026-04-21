@@ -85,7 +85,7 @@ class AiController
                 return back();
             }
 
-            $response = Http::get($url);
+            $response = Http::timeout(300)->get($url);
 
             $file = FileService::process(
                 raw: $response->body(),
