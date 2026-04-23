@@ -41,4 +41,4 @@ jobs:
                   tags: ${{ steps.meta.outputs.tags }}
                   labels: ${{ steps.meta.outputs.labels }}
                   build-args: |
-                      APP_URL=${{ vars.APP_URL }}
+                    FRONTEND_ENV=${{ vars.FRONTEND_ENV }}
