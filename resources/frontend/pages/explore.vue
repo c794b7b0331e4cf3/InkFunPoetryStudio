@@ -83,97 +83,99 @@
 <template>
     <Head :title="$options.name" />
 
-    <n-element class="relative size-full">
+    <n-element class="size-full">
         <n-element class="absolute top-0 left-0 size-full">
             <n-image
                 :img-props="{ class: 'size-full' }"
-                class="size-full opacity-80"
+                class="size-full"
                 object-fit="fill"
                 preview-disabled
                 src="/explore_background.webp"
             />
         </n-element>
 
-        <n-element class="container mx-auto p-2 relative z-120">
-            <n-grid :cols="4" :x-gap="10" :y-gap="10">
-                <n-grid-item :span="3">
-                    <n-flex :size="0" vertical>
-                        <template v-if="isNonNullish(page.props.poems)">
-                            <n-flex size="small" vertical>
-                                <n-text class="text-(10 !black) my-4 fw-bold">最新诗词</n-text>
+        <n-element class="container mx-auto p-2 relative z-1">
+            <n-flex :size="0" vertical>
+                <template v-if="isNonNullish(page.props.poems)">
+                    <n-flex class="mt-4" size="small" vertical>
+                        <n-text class="text-(10 !black) mb-4 fw-bold">最新诗词</n-text>
 
-                                <n-flex size="small" vertical>
-                                    <template v-for="poem in page.props.poems.data">
-                                        <n-card size="small">
-                                            <n-carousel autoplay show-arrow>
-                                                <template v-for="image in poem.images">
-                                                    <PoemImage
-                                                        :item="image"
-                                                        class="min-h-120"
-                                                        same-compare-text="查看详情"
-                                                    />
-                                                </template>
-                                            </n-carousel>
-                                        </n-card>
-                                    </template>
-                                </n-flex>
-
+                        <n-flex size="small" vertical>
+                            <template v-for="poem in page.props.poems.data">
                                 <n-card size="small">
-                                    <n-pagination
-                                        v-model:value="poemsPage"
-                                        :page-count="page.props.poems.meta.last_page"
-                                    />
-                                </n-card>
-                            </n-flex>
-                        </template>
-
-                        <template v-if="isNonNullish(page.props.poemImages)">
-                            <n-flex class="mt-8" size="small" vertical>
-                                <n-text class="text-(10 !black) mb-4 fw-bold">最新图片</n-text>
-
-                                <n-flex size="small" vertical>
-                                    <template v-for="image in page.props.poemImages.data">
-                                        <n-card size="small">
+                                    <n-carousel autoplay draggable show-arrow>
+                                        <template v-for="image in poem.images">
                                             <PoemImage
                                                 :item="image"
                                                 class="min-h-120"
                                                 same-compare-text="查看详情"
+                                                title-only
                                             />
-                                        </n-card>
-                                    </template>
-                                </n-flex>
-
-                                <n-card size="small">
-                                    <n-pagination
-                                        v-model:value="poemsPage"
-                                        :page-count="page.props.poemImages.meta.last_page"
-                                    />
+                                        </template>
+                                    </n-carousel>
                                 </n-card>
-                            </n-flex>
+                            </template>
+                        </n-flex>
+
+                        <template v-if="page.props.poems.meta.last_page > 1">
+                            <n-card size="small">
+                                <n-pagination
+                                    v-model:value="poemsPage"
+                                    :page-count="page.props.poems.meta.last_page"
+                                />
+                            </n-card>
                         </template>
                     </n-flex>
-                </n-grid-item>
+                </template>
 
-                <n-grid-item :span="1">
-                    <template v-if="isNonNullish(page.props.leaderboard)">
+                <template v-if="isNonNullish(page.props.poemImages)">
+                    <n-flex class="mt-4" size="small" vertical>
+                        <n-text class="text-(10 !black) mb-4 fw-bold">最新图片</n-text>
+
                         <n-flex size="small" vertical>
-                            <n-text class="text-(10 !black) my-4 fw-bold">排行榜</n-text>
+                            <template v-for="image in page.props.poemImages.data">
+                                <n-card size="small">
+                                    <PoemImage
+                                        :item="image"
+                                        class="min-h-120"
+                                        same-compare-text="查看详情"
+                                        title-only
+                                    />
+                                </n-card>
+                            </template>
+                        </n-flex>
 
-                            <n-data-table
-                                :columns="leaderboardColumns"
-                                :data="page.props.leaderboard.data"
-                            />
+                        <template v-if="page.props.poemImages.meta.last_page > 1">
+                            <n-card size="small">
+                                <n-pagination
+                                    v-model:value="poemsPage"
+                                    :page-count="page.props.poemImages.meta.last_page"
+                                />
+                            </n-card>
+                        </template>
+                    </n-flex>
+                </template>
 
+                <template v-if="isNonNullish(page.props.leaderboard)">
+                    <n-flex class="mt-4" size="small" vertical>
+                        <n-text class="text-(10 !black) mb-4 fw-bold">排行榜</n-text>
+
+                        <n-data-table
+                            :columns="leaderboardColumns"
+                            :data="page.props.leaderboard.data"
+                        />
+
+                        <template v-if="page.props.leaderboard.meta.last_page > 1">
                             <n-card size="small">
                                 <n-pagination
                                     v-model:value="leaderboardPage"
                                     :page-count="page.props.leaderboard.meta.last_page"
                                 />
                             </n-card>
-                        </n-flex>
-                    </template>
-                </n-grid-item>
-            </n-grid>
+                        </template>
+                    </n-flex>
+                </template>
+            </n-flex>
         </n-element>
     </n-element>
 </template>

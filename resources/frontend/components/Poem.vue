@@ -1,11 +1,18 @@
 <script lang="ts" setup>
-    import { isEmptyish } from "remeda";
+    import { isEmptyish, isNullish } from "remeda";
     import type { PoemResource } from "@/types/backend";
 
-    defineProps<{
-        readonly poem: PoemResource;
-        readonly vertical?: boolean;
-    }>();
+    withDefaults(
+        defineProps<{
+            readonly poem: PoemResource;
+            readonly vertical?: boolean;
+
+            readonly titleOnly?: boolean;
+        }>(),
+        {
+            titleOnly: false,
+        },
+    );
 </script>
 
 <template>
@@ -24,14 +31,16 @@
             </n-text>
         </template>
 
-        <n-text
-            :style="{
-                writingMode:
-                    vertical && poem.content.includes('\n') ? 'vertical-rl' : 'horizontal-tb',
-            }"
-            class="whitespace-pre"
-        >
-            {{ poem.content }}
-        </n-text>
+        <template v-if="!titleOnly || isNullish(poem.title)">
+            <n-text
+                :style="{
+                    writingMode:
+                        vertical && poem.content.includes('\n') ? 'vertical-rl' : 'horizontal-tb',
+                }"
+                class="whitespace-pre"
+            >
+                {{ poem.content }}
+            </n-text>
+        </template>
     </n-flex>
 </template>

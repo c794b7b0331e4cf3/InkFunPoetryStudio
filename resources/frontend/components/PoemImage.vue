@@ -15,10 +15,13 @@
 
             readonly sameCompareText?: string;
             readonly poemClass?: string;
+
             readonly showSameCompare?: boolean;
+            readonly titleOnly?: boolean;
         }>(),
         {
             showSameCompare: true,
+            titleOnly: false,
         },
     );
 
@@ -160,7 +163,7 @@
                     class="w-fit opacity-50 transition-(opacity ease-in-out duration-500) hover:opacity-100"
                     size="small"
                 >
-                    <Poem :poem="item.poem" vertical />
+                    <Poem :title-only="titleOnly" :poem="item.poem" vertical />
                 </n-card>
             </n-element>
         </template>

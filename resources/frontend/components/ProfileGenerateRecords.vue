@@ -151,10 +151,12 @@
             <n-flex size="small" vertical>
                 <n-data-table :columns="columns" :data="page.props.generated.data" />
 
-                <n-pagination
-                    v-model:value="currentPage"
-                    :page-count="page.props.generated.meta.last_page"
-                />
+                <template v-if="page.props.generated.meta.last_page > 1">
+                    <n-pagination
+                        v-model:value="currentPage"
+                        :page-count="page.props.generated.meta.last_page"
+                    />
+                </template>
             </n-flex>
         </template>
 

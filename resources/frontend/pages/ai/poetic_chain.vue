@@ -2,7 +2,8 @@
     import { Head, useForm, usePage } from "@inertiajs/vue3";
     import type { UserModel } from "@/types/backend";
     import { poeticChain } from "@/_generated/routes/ai";
-    import { isEmptyish, isString } from "remeda";
+    import { isEmptyish } from "remeda";
+    import { ref } from "vue";
 
     defineOptions({
         name: "AI 古人对话",
@@ -16,6 +17,8 @@
         readonly history: string[];
     }>();
 
+    const keywords = ref("");
+
     const generator = useForm<{
         keywords: string[];
         history: string[];
@@ -27,11 +30,8 @@
     });
 
     const handleKeywordSave = () => {
-        if (isString(generator.keywords)) {
-            generator.input = "";
-            generator.keywords = generator.keywords.split(" ");
-        }
-
+        generator.input = "";
+        generator.keywords = keywords.value.split(" ");
         generator.submit();
     };
 
@@ -66,10 +66,10 @@
                 </template>
 
                 <template v-if="isEmptyish(page.props.keywords)">
-                    <n-input v-model:value="generator.keywords" placeholder="关键词 (用空格分割)" />
+                    <n-input v-model:value="keywords" placeholder="关键词 (用空格分割)" />
 
                     <n-button
-                        :disabled="generator.processing"
+                        :disabled="isEmptyish(keywords) || generator.processing"
                         :loading="generator.processing"
                         block
                         secondary

@@ -29,7 +29,7 @@ class ExploreController
                             'images.poem.tags',
                             'images.file',
                         ])
-                        ->paginate(pageName: 'poems_page')
+                        ->paginate(3, pageName: 'poems_page')
                 );
             }),
             'poemImages' => Inertia::optional(function () {
@@ -47,7 +47,7 @@ class ExploreController
                         ->has('poemImages')
                         ->withCount(['poemImages'])
                         ->orderByDesc('poem_images_count')
-                        ->paginate(pageName: 'leaderboard_page')
+                        ->paginate(3, pageName: 'leaderboard_page')
                 );
             }),
         ]);

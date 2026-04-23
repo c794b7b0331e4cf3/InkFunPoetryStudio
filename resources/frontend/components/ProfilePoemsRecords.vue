@@ -5,9 +5,8 @@
     import { isNonNullish, isNullish } from "remeda";
     import { type DataTableColumn, NButton, NFlex, NIcon, NPopconfirm } from "naive-ui";
     import Poem from "@/components/Poem.vue";
-    import poems, { render } from "@/_generated/routes/poems";
+    import poems, { edit, render } from "@/_generated/routes/poems";
     import { DeleteOutlined, EditOutlined } from "@vicons/antd";
-    import { edit } from "@/_generated/routes/poems";
 
     const page = usePage<{
         readonly poems?: Paginated<PoemResource[]>;
@@ -154,10 +153,12 @@
             <n-flex size="small" vertical>
                 <n-data-table :columns="columns" :data="page.props.poems.data" />
 
-                <n-pagination
-                    v-model:value="currentPage"
-                    :page-count="page.props.poems.meta.last_page"
-                />
+                <template v-if="page.props.poems.meta.last_page > 1">
+                    <n-pagination
+                        v-model:value="currentPage"
+                        :page-count="page.props.poems.meta.last_page"
+                    />
+                </template>
             </n-flex>
         </template>
 

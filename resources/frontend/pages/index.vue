@@ -27,7 +27,7 @@
     <Head :title="$options.name" />
 
     <div ref="container">
-        <n-carousel autoplay class="h-screen" show-arrow>
+        <n-carousel autoplay class="h-screen" draggable show-arrow>
             <template v-for="item in page.props.poem_images.data" :key="item.id">
                 <PoemImage :item="item" poem-class="text-6" />
             </template>

@@ -25,10 +25,6 @@
 
     const columns: DataTableColumn<Item["data"]>[] = [
         {
-            title: "ID",
-            key: "id",
-        },
-        {
             title: "诗词",
             key: "poem",
             render: (item) => {
@@ -159,10 +155,12 @@
 
                 <n-data-table :columns="columns" :data="page.props.histories.data" />
 
-                <n-pagination
-                    v-model:value="currentPage"
-                    :page-count="page.props.histories.last_page"
-                />
+                <template v-if="page.props.histories.last_page > 1">
+                    <n-pagination
+                        v-model:value="currentPage"
+                        :page-count="page.props.histories.last_page"
+                    />
+                </template>
             </n-flex>
         </template>
 

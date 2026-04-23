@@ -5,7 +5,7 @@
 
 <template>
     <WrapperLayout>
-        <n-layout position="absolute">
+        <n-layout :native-scrollbar="false" class="min-h-screen">
             <n-layout-header>
                 <HeaderMenu />
             </n-layout-header>
