@@ -37,7 +37,7 @@ return [
                 'prompt' => '扮演李白, 模拟真实对话, 以李白的口吻和风格进行交流, 不要直接说你是李白, 也不要说你是一个AI模型, 你需要根据李白的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
 
                 'badges' => [
-                    'soulmate' => '/characters/badges/soulmate/c423f9ef9408d1ce01430b5a59b1c8d64bf6bb17d8a178f7b77680143bb91413.png',
+                    'soulmate' => '/characters/badges/soulmate/dc8c1209ae4131ad249f020b538f4b182fee808c6ea3e1078f9376638548d69c.webp',
                 ],
             ],
             [
@@ -45,7 +45,7 @@ return [
                 'prompt' => '扮演杜甫, 模拟真实对话, 以杜甫的口吻和风格进行交流, 不要直接说你是杜甫, 也不要说你是一个AI模型, 你需要根据杜甫的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
 
                 'badges' => [
-                    'soulmate' => '/characters/badges/soulmate/c1538991595a06826f5ee0281d83b2cc8f03599de8cbc1b08493cd3a21a84758.png',
+                    'soulmate' => '/characters/badges/soulmate/d986e9c0ef1917520da97f7383a1a78f3c1b863e9dfdc92b5b7cec987ba10a1e.webp',
                 ],
             ],
             [
@@ -53,7 +53,7 @@ return [
                 'prompt' => '扮演苏轼, 模拟真实对话, 以苏轼的口吻和风格进行交流, 不要直接说你是苏轼, 也不要说你是一个AI模型, 你需要根据苏轼的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
 
                 'badges' => [
-                    'soulmate' => '/characters/badges/soulmate/9c914426799ab04a39f5cf2d849cd8f71994edd4d417a00f1d7dcf65c2ad68a2.png',
+                    'soulmate' => '/characters/badges/soulmate/a3cd6faee4e1b819bd023b1421c8b7ca8495544648c5ed126ce558f4b8a9c147.webp',
                 ],
             ],
             [
@@ -61,7 +61,7 @@ return [
                 'prompt' => '扮演辛弃疾, 模拟真实对话, 以辛弃疾的口吻和风格进行交流, 不要直接说你是辛弃疾, 也不要说你是一个AI模型, 你需要根据辛弃疾的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
 
                 'badges' => [
-                    'soulmate' => '/characters/badges/soulmate/c334de88207a421ef5d6b78f2c70ab06a7e723673f9a6d17879c7b6c0cbaed5e.png',
+                    'soulmate' => '/characters/badges/soulmate/ce94f3676ea22c4c2357c89c9c81623c35c15ed0e7b47dfee01d440783c583ef.webp',
                 ],
             ],
             [
@@ -69,7 +69,7 @@ return [
                 'prompt' => '扮演李清照, 模拟真实对话, 以李清照的口吻和风格进行交流, 不要直接说你是李清照, 也不要说你是一个AI模型, 你需要根据李清照的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
 
                 'badges' => [
-                    'soulmate' => '/characters/badges/soulmate/efa4008ab1a3f5a696491c5639bd2c57d043153983c06e737ec003dfa03cb80e.png',
+                    'soulmate' => '/characters/badges/soulmate/9702b086171ba607690decfcc3e1cfe87ea866150e6bf389196b9981b42c6026.webp',
                 ],
             ],
             [
@@ -77,7 +77,7 @@ return [
                 'prompt' => '扮演王维, 模拟真实对话, 以王维的口吻和风格进行交流, 不要直接说你是王维, 也不要说你是一个AI模型, 你需要根据王维的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
 
                 'badges' => [
-                    'soulmate' => '/characters/badges/soulmate/ec59028165feab0f4ae4cad4dfe575cec2444ea54db433cba96f685c9e98345b.png',
+                    'soulmate' => '/characters/badges/soulmate/bf8a7426edb3badb4fbcb04bebfc3ca71cc0ad3ad622dd05cc554b31f9a7ddaa.webp',
                 ],
             ],
             [
@@ -85,7 +85,7 @@ return [
                 'prompt' => '扮演白居易, 模拟真实对话, 以白居易的口吻和风格进行交流, 不要直接说你是白居易, 也不要说你是一个AI模型, 你需要根据白居易的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
 
                 'badges' => [
-                    'soulmate' => '/characters/badges/soulmate/7a137098ef1890546377728821dc2e033f3bd2a4d819c3d98ecade4907b7873e.png',
+                    'soulmate' => '/characters/badges/soulmate/77b699c4bf977b2ed30c499822a6f350b3db470a103fe96b2b0c7ce513479fe3.webp',
                 ],
             ],
             [
@@ -93,7 +93,7 @@ return [
                 'prompt' => '扮演杜牧, 模拟真实对话, 以杜牧的口吻和风格进行交流, 不要直接说你是杜牧, 也不要说你是一个AI模型, 你需要根据杜牧的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
 
                 'badges' => [
-                    'soulmate' => '/characters/badges/soulmate/b072f5888f4fbe113eee7a30f5d75bdac195092bd2f9d11d39bcc3c83436325a.png',
+                    'soulmate' => '/characters/badges/soulmate/2a1ba4a3258992ac5d0dfa47234caae8d723517f276cfb3b2774d0790f79f793.webp',
                 ],
             ],
             [
@@ -101,7 +101,7 @@ return [
                 'prompt' => '扮演李商隐, 模拟真实对话, 以李商隐的口吻和风格进行交流, 不要直接说你是李商隐, 也不要说你是一个AI模型, 你需要根据李商隐的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
 
                 'badges' => [
-                    'soulmate' => '/characters/badges/soulmate/807630361250da93c5e63692661fd88526ad43971dec187499adc4e45c9efe88.png',
+                    'soulmate' => '/characters/badges/soulmate/2ba8e748761e7e329423014de7dbbe02c5195695d56313986610973fba3e61a4.webp',
                 ],
             ],
             [
@@ -109,7 +109,7 @@ return [
                 'prompt' => '扮演王昌龄, 模拟真实对话, 以王昌龄的口吻和风格进行交流, 不要直接说你是王昌龄, 也不要说你是一个AI模型, 你需要根据王昌龄的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
 
                 'badges' => [
-                    'soulmate' => '/characters/badges/soulmate/95142b2c4240d5951fdc6e98500e81e4d213fd6ae74cf26620841609ead62e37.png',
+                    'soulmate' => '/characters/badges/soulmate/a93c7c9c7ed45e6c644067956fbadf6179fc672db0f1e6165ab6d7007793e821.webp',
                 ],
             ],
             [
@@ -117,7 +117,7 @@ return [
                 'prompt' => '扮演孟浩然, 模拟真实对话, 以孟浩然的口吻和风格进行交流, 不要直接说你是孟浩然, 也不要说你是一个AI模型, 你需要根据孟浩然的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
 
                 'badges' => [
-                    'soulmate' => '/characters/badges/soulmate/ba76e6b93e4f2169dff08c0acb157b32f38d173899f986fb3815696b56fb4bde.png',
+                    'soulmate' => '/characters/badges/soulmate/32d444f120993752cb9a106b182c91c8cb18e91262813d0b40f6ededed387747.webp',
                 ],
             ],
             [
@@ -125,7 +125,7 @@ return [
                 'prompt' => '扮演贾岛, 模拟真实对话, 以贾岛的口吻和风格进行交流, 不要直接说你是贾岛, 也不要说你是一个AI模型, 你需要根据贾岛的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
 
                 'badges' => [
-                    'soulmate' => '/characters/badges/soulmate/8c30a046d6304d4f59bc696cc45a0e624935e7cbced35823e5482facc73d10cc.png',
+                    'soulmate' => '/characters/badges/soulmate/0c9dce89da496fb7c1b4eb38a083ad39c56548d63a9e817bae7a89429e0ad035.webp',
                 ],
             ],
             [
@@ -133,7 +133,7 @@ return [
                 'prompt' => '扮演刘禹锡, 模拟真实对话, 以刘禹锡的口吻和风格进行交流, 不要直接说你是刘禹锡, 也不要说你是一个AI模型, 你需要根据刘禹锡的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
 
                 'badges' => [
-                    'soulmate' => '/characters/badges/soulmate/bfa0ec2021c25f1abf95036d8d214e48730a17794d55bd36af86b4e27f6a674d.png',
+                    'soulmate' => '/characters/badges/soulmate/8c82c2019965e9fdb3fec7495864436990f219fea9549a183f595a163c5da593.webp',
                 ],
             ],
             [
@@ -141,7 +141,7 @@ return [
                 'prompt' => '扮演韩愈, 模拟真实对话, 以韩愈的口吻和风格进行交流, 不要直接说你是韩愈, 也不要说你是一个AI模型, 你需要根据韩愈的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
 
                 'badges' => [
-                    'soulmate' => '/characters/badges/soulmate/8e872fe657840c987f95ba5b5e5d6f1e189c8710cd05e25e4d550c54c69a8f20.png',
+                    'soulmate' => '/characters/badges/soulmate/7dc7f5e44d3daff73a8ff0fb640f6a19bbff5bf64400611f0b4956096fd998ee.webp',
                 ],
             ],
             [
@@ -149,7 +149,7 @@ return [
                 'prompt' => '扮演柳宗元, 模拟真实对话, 以柳宗元的口吻和风格进行交流, 不要直接说你是柳宗元, 也不要说你是一个AI模型, 你需要根据柳宗元的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
 
                 'badges' => [
-                    'soulmate' => '/characters/badges/soulmate/58e4d5fc1b1612e6b7427f0bff797be6336867d3d61b10e59686bbd41299aa1b.png',
+                    'soulmate' => '/characters/badges/soulmate/a62a32fc046954b2f784f63546c65781122b01d62d8d0fcf220641ad6e428b10.webp',
                 ],
             ],
             [
@@ -157,7 +157,7 @@ return [
                 'prompt' => '扮演王之涣, 模拟真实对话, 以王之涣的口吻和风格进行交流, 不要直接说你是王之涣, 也不要说你是一个AI模型, 你需要根据王之涣的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
 
                 'badges' => [
-                    'soulmate' => '/characters/badges/soulmate/ba71ad7eca2f9d992a6ae1648fad7a6efc6e0ce90103d0fe07a138dd6361ea8d.png',
+                    'soulmate' => '/characters/badges/soulmate/d988549eb40da089da17ac159fbec6161c4fb58452f6de23cec061e185e3ef57.webp',
                 ],
             ],
             [
@@ -165,7 +165,7 @@ return [
                 'prompt' => '扮演岑参, 模拟真实对话, 以岑参的口吻和风格进行交流, 不要直接说你是岑参, 也不要说你是一个AI模型, 你需要根据岑参的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
 
                 'badges' => [
-                    'soulmate' => '/characters/badges/soulmate/463718a68479a4ac7d4ab5d77e3a4359bb77f6f0ad7b99fb31167ffa128137ac.png',
+                    'soulmate' => '/characters/badges/soulmate/a2cbcab25d0bc460f55cc16d8752156aab45bcc94b1b975eab6440abc7fb3c5f.webp',
                 ],
             ],
             [
@@ -173,7 +173,7 @@ return [
                 'prompt' => '扮演高适, 模拟真实对话, 以高适的口吻和风格进行交流, 不要直接说你是高适, 也不要说你是一个AI模型, 你需要根据高适的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
 
                 'badges' => [
-                    'soulmate' => '/characters/badges/soulmate/9b5e26bca3363d1b39ff3ac199bceb52ad3d05648f30e505deb4d2f20969a3a7.png',
+                    'soulmate' => '/characters/badges/soulmate/9c4969aa92fa8d2c08bfd8031627474d0994fca329ecc201d32468b1b285e13a.webp',
                 ],
             ],
         ],

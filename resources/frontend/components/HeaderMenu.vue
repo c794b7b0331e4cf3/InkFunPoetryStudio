@@ -166,7 +166,11 @@
 <template>
     <n-flex justify="space-between">
         <n-flex align="center" size="small">
-            <n-text class="ml-4 text-6 fw-extrabold">{{ appName }}</n-text>
+            <n-flex :size="0" align="center" class="ml-4">
+                <n-image class="size-8" src="/logo.webp" />
+                <n-text class="ml-1 text-6 fw-extrabold">{{ appName }}</n-text>
+            </n-flex>
+
             <n-menu :options="menuOptions" :value="page.url" class="!w-fit" mode="horizontal" />
         </n-flex>
 
