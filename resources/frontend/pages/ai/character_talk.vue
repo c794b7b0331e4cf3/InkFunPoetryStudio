@@ -80,9 +80,9 @@
 
     <n-modal
         v-model:show="showNewBadgesArchivedModal"
+        class="md:w-1/2 mx-auto"
         preset="card"
         title="解锁了新的勋章"
-        class="md:w-1/2 mx-auto"
     >
         <n-flex size="large">
             <template v-for="(badge, name) in newBadges">
@@ -106,31 +106,21 @@
                 </n-element>
 
                 <template v-if="isEmptyish(page.props.character)">
-                    <n-scrollbar x-scrollable>
-                        <n-flex
-                            :wrap="false"
-                            align="center"
-                            class="w-max"
-                            justify="space-evenly"
-                            size="small"
-                        >
-                            <n-text>和谁对话: </n-text>
+                    <n-flex :wrap="false" align="center" size="small">
+                        <n-text class="text-nowrap">和谁对话:</n-text>
 
-                            <template v-for="character in page.props.characters">
-                                <n-button
-                                    :disabled="generator.processing"
-                                    :type="
-                                        generator.character === character ? 'success' : 'default'
-                                    "
-                                    secondary
-                                    size="small"
-                                    @click="handleCharacterClick(character)"
-                                >
-                                    {{ character }}
-                                </n-button>
-                            </template>
-                        </n-flex>
-                    </n-scrollbar>
+                        <template v-for="character in page.props.characters">
+                            <n-button
+                                :disabled="generator.processing"
+                                :type="generator.character === character ? 'success' : 'default'"
+                                secondary
+                                size="small"
+                                @click="handleCharacterClick(character)"
+                            >
+                                {{ character }}
+                            </n-button>
+                        </template>
+                    </n-flex>
                 </template>
 
                 <template v-else>

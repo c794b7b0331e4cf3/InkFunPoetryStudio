@@ -9,11 +9,18 @@
     import users from "@/_generated/routes/users";
     import poems from "@/_generated/routes/poems";
 
-    const props = defineProps<{
-        readonly item: PoemImageResource;
+    const props = withDefaults(
+        defineProps<{
+            readonly item: PoemImageResource;
 
-        readonly poemClass?: string;
-    }>();
+            readonly sameCompareText?: string;
+            readonly poemClass?: string;
+            readonly showSameCompare?: boolean;
+        }>(),
+        {
+            showSameCompare: true,
+        },
+    );
 
     const http = useHttp();
 
@@ -75,25 +82,44 @@
 
         <n-element :class="poemClass" class="absolute top-4 left-4">
             <n-flex size="small" vertical>
-                <n-element class="w-fit bg-(black opacity-90) p-4">
+                <n-card
+                    class="w-fit opacity-50 transition-(opacity ease-in-out duration-500) hover:opacity-100"
+                    size="small"
+                >
                     <n-flex vertical>
                         <template v-if="isNonNullish(item.poem) && isNonNullish(item.poem.user)">
-                            <n-flex align="center" size="small">
-                                <n-text>由用户</n-text>
-                                <n-text
-                                    class="fw-bold hover:cursor-pointer"
-                                    type="info"
-                                    @click="handleUserClick"
-                                    >{{ item.poem.user.name }}</n-text
-                                >
-                                <n-text>生成</n-text>
+                            <n-flex :wrap="false" size="small">
+                                <template v-if="isNonNullish(item.poem)">
+                                    <n-tag class="w-fit" size="small">
+                                        {{ item.poem.source_type.label }}
+                                    </n-tag>
+                                </template>
+
+                                <n-flex align="center" size="small">
+                                    <n-text>由用户</n-text>
+
+                                    <n-text
+                                        class="fw-bold hover:cursor-pointer"
+                                        type="info"
+                                        @click="handleUserClick"
+                                        >{{ item.poem.user.name }}
+                                    </n-text>
+
+                                    <n-text>生成</n-text>
+                                </n-flex>
                             </n-flex>
                         </template>
 
                         <n-flex>
-                            <n-button secondary size="small" @click="handleSamePoemCompareClick"
-                                >同诗对比</n-button
-                            >
+                            <template v-if="showSameCompare">
+                                <n-button
+                                    secondary
+                                    size="small"
+                                    @click="handleSamePoemCompareClick"
+                                >
+                                    {{ sameCompareText ?? "同诗对比" }}
+                                </n-button>
+                            </template>
 
                             <template v-if="isNonNullish(item.likes_count)">
                                 <n-button
@@ -111,23 +137,31 @@
                             </template>
                         </n-flex>
                     </n-flex>
-                </n-element>
+                </n-card>
 
                 <template v-if="isNonNullish(item.poem) && !isEmptyish(item.poem.tags)">
-                    <n-element class="bg-(black opacity-90) p-4">
+                    <n-card
+                        class="w-fit opacity-50 transition-(opacity ease-in-out duration-500) hover:opacity-100"
+                        size="small"
+                    >
                         <n-flex align="center" size="small">
                             <template v-for="tag in item.poem.tags">
                                 <n-tag size="small">{{ tag.name }}</n-tag>
                             </template>
                         </n-flex>
-                    </n-element>
+                    </n-card>
                 </template>
             </n-flex>
         </n-element>
 
         <template v-if="isNonNullish(item.poem)">
-            <n-element :class="poemClass" class="absolute top-4 right-4 bg-(black opacity-90) p-4">
-                <Poem :poem="item.poem" vertical />
+            <n-element :class="poemClass" class="absolute top-4 right-4">
+                <n-card
+                    class="w-fit opacity-50 transition-(opacity ease-in-out duration-500) hover:opacity-100"
+                    size="small"
+                >
+                    <Poem :poem="item.poem" vertical />
+                </n-card>
             </n-element>
         </template>
     </n-element>

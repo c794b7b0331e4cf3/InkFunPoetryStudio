@@ -7,6 +7,7 @@ use App\Http\Resources\PoemResource;
 use App\Http\Services\InertiaMessageService;
 use App\Models\Poem;
 use App\Models\UserPoemHistoryRecord;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
@@ -16,7 +17,15 @@ class PoemController
     {
         $userId = Auth::id();
 
-        $item->load(['tags', 'images', 'images.file']);
+        $item->load([
+            'images' => function (HasMany $query) {
+                $query->withCount(['likes']);
+            },
+            'images.poem.user',
+            'images.poem',
+            'images.poem.tags',
+            'images.file',
+        ]);
 
         if ($userId !== null) {
             UserPoemHistoryRecord::query()

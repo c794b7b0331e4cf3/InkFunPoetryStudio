@@ -8,6 +8,7 @@ use App\Http\Resources\UserResource;
 use App\Models\Poem;
 use App\Models\PoemImage;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Inertia\Inertia;
 
 class ExploreController
@@ -19,7 +20,15 @@ class ExploreController
                 return PoemResource::collection(
                     Poem::query()
                         ->latest()
-                        ->with(['tags', 'images', 'images.file'])
+                        ->with([
+                            'images' => function (HasMany $query) {
+                                $query->withCount(['likes']);
+                            },
+                            'images.poem.user',
+                            'images.poem',
+                            'images.poem.tags',
+                            'images.file',
+                        ])
                         ->paginate(pageName: 'poems_page')
                 );
             }),
@@ -27,7 +36,7 @@ class ExploreController
                 return PoemImageResource::collection(
                     PoemImage::query()
                         ->latest()
-                        ->with(['poem', 'poem.tags', 'file'])
+                        ->with(['poem', 'poem.user', 'poem.tags', 'file'])
                         ->withCount(['likes'])
                         ->paginate(pageName: 'poem_images_page')
                 );
@@ -35,6 +44,7 @@ class ExploreController
             'leaderboard' => Inertia::optional(function () {
                 return UserResource::collection(
                     User::query()
+                        ->has('poemImages')
                         ->withCount(['poemImages'])
                         ->orderByDesc('poem_images_count')
                         ->paginate(pageName: 'leaderboard_page')

@@ -1,8 +1,8 @@
 <script lang="ts" setup>
     import { Head, usePage } from "@inertiajs/vue3";
-    import { isEmptyish, isNonNullish } from "remeda";
-    import Poem from "@/components/Poem.vue";
     import type { PoemResource } from "@/types/backend";
+    import PoemImage from "@/components/PoemImage.vue";
+    import { onMounted, useTemplateRef } from "vue";
 
     defineOptions({
         name: "诗词",
@@ -13,38 +13,24 @@
             readonly data: PoemResource;
         };
     }>();
+
+    const container = useTemplateRef("container");
+
+    onMounted(() => {
+        container.value?.scrollIntoView({
+            behavior: "smooth",
+        });
+    });
 </script>
 
 <template>
     <Head :title="$options.name" />
 
-    <n-element class="container mx-auto p-2">
-        <n-card size="small">
-            <template #header>
-                <n-tag class="w-fit" size="small">
-                    {{ page.props.poem.data.source_type.label }}
-                </n-tag>
+    <div ref="container">
+        <n-carousel autoplay class="h-screen" show-arrow>
+            <template v-for="item in page.props.poem.data.images" :key="item.id">
+                <PoemImage :item="item" :show-same-compare="false" poem-class="text-6" />
             </template>
-
-            <Poem :poem="page.props.poem.data" />
-
-            <template v-if="!isEmptyish(page.props.poem.data.tags)" #footer>
-                <n-flex align="center" size="small">
-                    <n-text :depth="3">标签</n-text>
-
-                    <template v-for="tag in page.props.poem.data.tags">
-                        <n-tag size="small">{{ tag.name }}</n-tag>
-                    </template>
-                </n-flex>
-            </template>
-        </n-card>
-
-        <n-flex align="center" size="small">
-            <template v-for="image in page.props.poem.data.images">
-                <template v-if="isNonNullish(image.file)">
-                    <n-image :src="image.file.download_url" class="max-w-90" />
-                </template>
-            </template>
-        </n-flex>
-    </n-element>
+        </n-carousel>
+    </div>
 </template>

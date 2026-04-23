@@ -1,12 +1,11 @@
 <script lang="ts" setup>
     import { Head, router, usePage } from "@inertiajs/vue3";
     import type { Paginated, PoemImageResource, PoemResource, UserResource } from "@/types/backend";
-    import Poem from "@/components/Poem.vue";
-    import { isEmptyish, isNonNullish, isNullish } from "remeda";
+    import { isNonNullish } from "remeda";
     import { h, onMounted, shallowRef, watch } from "vue";
-    import { render } from "@/_generated/routes/poems";
     import { type DataTableColumn, NText } from "naive-ui";
     import users from "@/_generated/routes/users";
+    import PoemImage from "@/components/PoemImage.vue";
 
     defineOptions({
         name: "探索",
@@ -76,26 +75,6 @@
         },
     ];
 
-    const handlePoemCardClick = (item: PoemResource) => {
-        router.visit(
-            render({
-                id: item.id,
-            }),
-        );
-    };
-
-    const handlePoemImageCardClick = (item: PoemImageResource) => {
-        if (isNullish(item.poem)) {
-            return;
-        }
-
-        router.visit(
-            render({
-                id: item.poem.id,
-            }),
-        );
-    };
-
     onMounted(() => {
         handleLoad(poemsPage.value, poemImagesPage.value, leaderboardPage.value);
     });
@@ -104,134 +83,97 @@
 <template>
     <Head :title="$options.name" />
 
-    <n-element class="container mx-auto p-2">
-        <n-flex :size="0" vertical>
-            <template v-if="isNonNullish(page.props.poems)">
-                <n-flex size="small" vertical>
-                    <n-text class="text-10 mb-4 fw-bold">最新诗词</n-text>
+    <n-element class="relative size-full">
+        <n-element class="absolute top-0 left-0 size-full">
+            <n-image
+                :img-props="{ class: 'size-full' }"
+                class="size-full opacity-80"
+                object-fit="fill"
+                preview-disabled
+                src="/explore_background.webp"
+            />
+        </n-element>
 
-                    <n-scrollbar x-scrollable>
-                        <n-flex :wrap="false" class="w-max">
-                            <template v-for="poem in page.props.poems.data">
-                                <n-card
-                                    class="w-fit"
-                                    size="small"
-                                    @click="handlePoemCardClick(poem)"
-                                >
-                                    <template #header>
-                                        <n-tag class="w-fit" size="tiny">
-                                            {{ poem.source_type.label }}
-                                        </n-tag>
-                                    </template>
+        <n-element class="container mx-auto p-2 relative z-120">
+            <n-grid :cols="4" :x-gap="10" :y-gap="10">
+                <n-grid-item :span="3">
+                    <n-flex :size="0" vertical>
+                        <template v-if="isNonNullish(page.props.poems)">
+                            <n-flex size="small" vertical>
+                                <n-text class="text-(10 !black) my-4 fw-bold">最新诗词</n-text>
 
-                                    <Poem :poem="poem" />
-
-                                    <template v-if="!isEmptyish(poem.tags)" #footer>
-                                        <n-flex align="center" size="small">
-                                            <n-text :depth="3">标签</n-text>
-
-                                            <template v-for="tag in poem.tags">
-                                                <n-tag size="small">{{ tag.name }}</n-tag>
-                                            </template>
-                                        </n-flex>
-                                    </template>
-
-                                    <template v-if="!isEmptyish(poem.images)" #action>
-                                        <n-flex align="center" size="small">
-                                            <template v-for="image in poem.images">
-                                                <template v-if="isNonNullish(image.file)">
-                                                    <n-image
-                                                        :src="image.file.download_url"
-                                                        class="max-w-60"
-                                                        @click.stop
+                                <n-flex size="small" vertical>
+                                    <template v-for="poem in page.props.poems.data">
+                                        <n-card size="small">
+                                            <n-carousel autoplay show-arrow>
+                                                <template v-for="image in poem.images">
+                                                    <PoemImage
+                                                        :item="image"
+                                                        class="min-h-120"
+                                                        same-compare-text="查看详情"
                                                     />
                                                 </template>
-                                            </template>
-                                        </n-flex>
+                                            </n-carousel>
+                                        </n-card>
                                     </template>
+                                </n-flex>
+
+                                <n-card size="small">
+                                    <n-pagination
+                                        v-model:value="poemsPage"
+                                        :page-count="page.props.poems.meta.last_page"
+                                    />
                                 </n-card>
-                            </template>
-                        </n-flex>
-                    </n-scrollbar>
+                            </n-flex>
+                        </template>
 
-                    <n-pagination
-                        v-model:value="poemsPage"
-                        :page-count="page.props.poems.meta.last_page"
-                    />
-                </n-flex>
-            </template>
+                        <template v-if="isNonNullish(page.props.poemImages)">
+                            <n-flex class="mt-8" size="small" vertical>
+                                <n-text class="text-(10 !black) mb-4 fw-bold">最新图片</n-text>
 
-            <template v-if="isNonNullish(page.props.poemImages)">
-                <n-flex class="mt-8" size="small" vertical>
-                    <n-text class="text-10 mb-4 fw-bold">最新图片</n-text>
-
-                    <n-scrollbar x-scrollable>
-                        <n-flex :wrap="false" class="w-max">
-                            <template v-for="image in page.props.poemImages.data">
-                                <n-card
-                                    class="w-fit max-w-150"
-                                    size="small"
-                                    @click="handlePoemImageCardClick(image)"
-                                >
-                                    <template v-if="isNonNullish(image.file)" #cover>
-                                        <n-image
-                                            :src="image.file.download_url"
-                                            class="w-full"
-                                            @click.stop
-                                        />
+                                <n-flex size="small" vertical>
+                                    <template v-for="image in page.props.poemImages.data">
+                                        <n-card size="small">
+                                            <PoemImage
+                                                :item="image"
+                                                class="min-h-120"
+                                                same-compare-text="查看详情"
+                                            />
+                                        </n-card>
                                     </template>
+                                </n-flex>
 
-                                    <template v-if="isNonNullish(image.poem)" #header>
-                                        <n-tag class="w-fit" size="tiny">
-                                            {{ image.poem.source_type.label }}
-                                        </n-tag>
-                                    </template>
-
-                                    <template v-if="isNonNullish(image.poem)">
-                                        <Poem :poem="image.poem" />
-                                    </template>
-
-                                    <template
-                                        v-if="
-                                            isNonNullish(image.poem) && !isEmptyish(image.poem.tags)
-                                        "
-                                        #footer
-                                    >
-                                        <n-flex align="center" size="small">
-                                            <n-text :depth="3">标签</n-text>
-
-                                            <template v-for="tag in image.poem.tags">
-                                                <n-tag size="small">{{ tag.name }}</n-tag>
-                                            </template>
-                                        </n-flex>
-                                    </template>
+                                <n-card size="small">
+                                    <n-pagination
+                                        v-model:value="poemsPage"
+                                        :page-count="page.props.poemImages.meta.last_page"
+                                    />
                                 </n-card>
-                            </template>
+                            </n-flex>
+                        </template>
+                    </n-flex>
+                </n-grid-item>
+
+                <n-grid-item :span="1">
+                    <template v-if="isNonNullish(page.props.leaderboard)">
+                        <n-flex size="small" vertical>
+                            <n-text class="text-(10 !black) my-4 fw-bold">排行榜</n-text>
+
+                            <n-data-table
+                                :columns="leaderboardColumns"
+                                :data="page.props.leaderboard.data"
+                            />
+
+                            <n-card size="small">
+                                <n-pagination
+                                    v-model:value="leaderboardPage"
+                                    :page-count="page.props.leaderboard.meta.last_page"
+                                />
+                            </n-card>
                         </n-flex>
-                    </n-scrollbar>
-
-                    <n-pagination
-                        v-model:value="poemsPage"
-                        :page-count="page.props.poemImages.meta.last_page"
-                    />
-                </n-flex>
-            </template>
-
-            <template v-if="isNonNullish(page.props.leaderboard)">
-                <n-flex class="mt-8" size="small" vertical>
-                    <n-text class="text-10 mb-4 fw-bold">排行榜</n-text>
-
-                    <n-data-table
-                        :columns="leaderboardColumns"
-                        :data="page.props.leaderboard.data"
-                    />
-
-                    <n-pagination
-                        v-model:value="leaderboardPage"
-                        :page-count="page.props.leaderboard.meta.last_page"
-                    />
-                </n-flex>
-            </template>
-        </n-flex>
+                    </template>
+                </n-grid-item>
+            </n-grid>
+        </n-element>
     </n-element>
 </template>
