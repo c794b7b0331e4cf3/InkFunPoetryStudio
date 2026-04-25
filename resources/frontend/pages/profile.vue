@@ -9,6 +9,9 @@
     import ProfileHistoryRecords from "@/components/ProfileHistoryRecords.vue";
     import ProfilePoemsRecords from "@/components/ProfilePoemsRecords.vue";
     import Animate3D from "@/components/Animate3D.vue";
+    import { isNullish } from "remeda";
+    import dom2image from "dom-to-image";
+    import { useTemplateRef } from "vue";
 
     defineOptions({
         name: "资料",
@@ -31,6 +34,25 @@
 
     const handleSummarizeClick = () => {
         router.visit(summarize.render().url);
+    };
+
+    const badgeContainer = useTemplateRef("badgeContainer");
+
+    const captureBadgeContainer = async () => {
+        if (isNullish(badgeContainer.value)) {
+            return;
+        }
+
+        badgeContainer.value.classList.add("p-2");
+        badgeContainer.value.classList.add("bg-black");
+
+        const blob = await dom2image.toBlob(badgeContainer.value);
+        const url = URL.createObjectURL(blob);
+
+        badgeContainer.value.classList.remove("p-2");
+        badgeContainer.value.classList.remove("bg-black");
+
+        open(url);
     };
 </script>
 
@@ -74,32 +96,38 @@
                 </n-tab-pane>
             </n-tabs>
 
-            <n-divider class="!my-4">勋章墙</n-divider>
+            <div ref="badgeContainer">
+                <n-flex size="small" vertical>
+                    <n-divider class="!my-4">勋章墙</n-divider>
 
-            <n-grid :cols="6" :x-gap="10" :y-gap="10">
-                <template v-for="(badge, name) in page.props.badges">
-                    <n-grid-item>
-                        <Animate3D>
-                            <n-flex
-                                align="center"
-                                class="h-full"
-                                justify="space-between"
-                                size="small"
-                                vertical
-                            >
-                                <n-image
-                                    :class="{ grayscale: !badge.archived }"
-                                    :src="badge.image"
-                                    class="size-fit"
-                                    preview-disabled
-                                />
+                    <n-grid :cols="6" :x-gap="10" :y-gap="10">
+                        <template v-for="(badge, name) in page.props.badges">
+                            <n-grid-item>
+                                <Animate3D>
+                                    <n-flex
+                                        align="center"
+                                        class="h-full"
+                                        justify="space-between"
+                                        size="small"
+                                        vertical
+                                    >
+                                        <n-image
+                                            :class="{ grayscale: !badge.archived }"
+                                            :src="badge.image"
+                                            class="size-fit"
+                                            preview-disabled
+                                        />
 
-                                <n-text class="text-6 fw-bold">{{ name }}</n-text>
-                            </n-flex>
-                        </Animate3D>
-                    </n-grid-item>
-                </template>
-            </n-grid>
+                                        <n-text class="text-6 fw-bold">{{ name }}</n-text>
+                                    </n-flex>
+                                </Animate3D>
+                            </n-grid-item>
+                        </template>
+                    </n-grid>
+                </n-flex>
+            </div>
+
+            <n-button block secondary @click="captureBadgeContainer">导出</n-button>
         </n-flex>
     </n-element>
 </template>

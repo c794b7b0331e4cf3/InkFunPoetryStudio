@@ -157,7 +157,7 @@
 
                 <template v-if="page.props.histories.last_page > 1">
                     <n-pagination
-                        v-model:value="currentPage"
+                        v-model:page="currentPage"
                         :page-count="page.props.histories.last_page"
                     />
                 </template>

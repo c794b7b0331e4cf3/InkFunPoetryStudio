@@ -38,7 +38,7 @@ class ExploreController
                         ->latest()
                         ->with(['poem', 'poem.user', 'poem.tags', 'file'])
                         ->withCount(['likes'])
-                        ->paginate(pageName: 'poem_images_page')
+                        ->paginate(3, pageName: 'poem_images_page')
                 );
             }),
             'leaderboard' => Inertia::optional(function () {

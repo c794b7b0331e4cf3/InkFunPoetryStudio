@@ -83,10 +83,10 @@
             />
         </template>
 
-        <n-element :class="poemClass" class="absolute top-4 left-4">
+        <n-element :class="poemClass" class="absolute top-2 left-2">
             <n-flex size="small" vertical>
                 <n-card
-                    class="w-fit opacity-50 transition-(opacity ease-in-out duration-500) hover:opacity-100"
+                    class="w-fit opacity-80 transition-(opacity ease-in-out duration-500) hover:opacity-100"
                     size="small"
                 >
                     <n-flex vertical>
@@ -144,7 +144,7 @@
 
                 <template v-if="isNonNullish(item.poem) && !isEmptyish(item.poem.tags)">
                     <n-card
-                        class="w-fit opacity-50 transition-(opacity ease-in-out duration-500) hover:opacity-100"
+                        class="w-fit opacity-80 transition-(opacity ease-in-out duration-500) hover:opacity-100"
                         size="small"
                     >
                         <n-flex align="center" size="small">
@@ -158,9 +158,9 @@
         </n-element>
 
         <template v-if="isNonNullish(item.poem)">
-            <n-element :class="poemClass" class="absolute top-4 right-4">
+            <n-element :class="poemClass" class="absolute top-2 right-2">
                 <n-card
-                    class="w-fit opacity-50 transition-(opacity ease-in-out duration-500) hover:opacity-100"
+                    class="w-fit opacity-80 transition-(opacity ease-in-out duration-500) hover:opacity-100"
                     size="small"
                 >
                     <Poem :title-only="titleOnly" :poem="item.poem" vertical />

@@ -136,7 +136,7 @@
 
                 <template v-if="page.props.likes.meta.last_page > 1">
                     <n-pagination
-                        v-model:value="currentPage"
+                        v-model:page="currentPage"
                         :page-count="page.props.likes.meta.last_page"
                     />
                 </template>

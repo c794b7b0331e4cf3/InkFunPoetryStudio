@@ -155,7 +155,7 @@
 
                 <template v-if="page.props.poems.meta.last_page > 1">
                     <n-pagination
-                        v-model:value="currentPage"
+                        v-model:page="currentPage"
                         :page-count="page.props.poems.meta.last_page"
                     />
                 </template>

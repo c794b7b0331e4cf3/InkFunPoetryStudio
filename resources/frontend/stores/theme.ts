@@ -23,7 +23,11 @@ export const useThemeStore = defineStore(
             return null;
         });
 
-        const overrides = {} satisfies GlobalThemeOverrides;
+        const overrides = {
+            Card: {
+                paddingSmall: ".6em .9em",
+            },
+        } satisfies GlobalThemeOverrides;
 
         return {
             mode,

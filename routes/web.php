@@ -9,6 +9,7 @@ use App\Http\Controllers\PoemController;
 use App\Http\Controllers\PoemHistoryRecordController;
 use App\Http\Controllers\PoemImageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SuggestionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -120,4 +121,11 @@ Route::group([
     'as' => 'poems.',
 ], function () {
     Route::get('/{item}', [PoemController::class, 'render'])->name('render');
+});
+
+Route::group([
+    'prefix' => 'suggestion',
+    'as' => 'suggestion.',
+], function () {
+    Route::post('/submit', [SuggestionController::class, 'submit'])->name('submit');
 });
