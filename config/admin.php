@@ -85,7 +85,7 @@ return [
 
     'layout' => [
         // 浏览器标题, 功能名称使用 %title% 代替
-        'title' => env('ADMIN_SITE_TITLE', '%title% | OwlAdmin'),
+        'title' => env('ADMIN_SITE_TITLE', '%title% | '.env('VITE_APP_NAME') ?? '?'),
         'header' => [
             // 是否显示 [刷新] 按钮
             'refresh' => env('ADMIN_HEADER_REFRESH', true),
