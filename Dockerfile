@@ -1,7 +1,5 @@
 FROM ghcr.io/endless-spike-studio/endless-services-runtime:main
 
-ARG FRONTEND_ENV
-
 COPY --from=oven/bun:alpine /usr/local/bin/bun /usr/local/bin/bun
 
 WORKDIR /app
@@ -10,7 +8,7 @@ COPY . .
 
 RUN composer install --no-dev
 
-RUN echo "${FRONTEND_ENV}" > /app/.env
+COPY .env.frontend /app/.env
 
 RUN bun install
 RUN bun run build
