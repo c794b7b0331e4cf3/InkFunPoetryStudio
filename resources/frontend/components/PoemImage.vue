@@ -2,12 +2,16 @@
     import { isEmptyish, isNonNullish } from "remeda";
     import ImageAnimation from "@/components/ImageAnimation.vue";
     import Poem from "@/components/Poem.vue";
-    import type { PoemImageResource } from "@/types/backend";
-    import { HeartOutlined } from "@vicons/antd";
+    import type { PoemImageCommentResource, PoemImageResource } from "@/types/backend";
+    import { CommentOutlined, HeartOutlined } from "@vicons/antd";
     import { router, useHttp } from "@inertiajs/vue3";
-    import { like } from "@/_generated/routes/poem_images";
+    import { comments, like } from "@/_generated/routes/poem_images";
+    import poemImagesComments from "@/_generated/routes/poem_images/comments";
     import users from "@/_generated/routes/users";
     import poems from "@/_generated/routes/poems";
+    import { shallowRef } from "vue";
+    import { useMessage } from "naive-ui";
+    import Comment from "@/components/Comment.vue";
 
     const props = withDefaults(
         defineProps<{
@@ -69,10 +73,97 @@
             }),
         );
     };
+
+    const currentComments = shallowRef<PoemImageCommentResource[]>([]);
+
+    const commentLoader = useHttp<
+        {
+            id: number;
+        },
+        {
+            readonly data: PoemImageCommentResource[];
+        }
+    >({
+        id: -1,
+    });
+
+    const showComments = shallowRef(false);
+
+    const handleComment = (id: number) => {
+        commentLoader.id = id;
+
+        commentLoader.get(
+            comments.get({
+                id,
+            }).url,
+            {
+                onSuccess: (response) => {
+                    currentComments.value = response.data;
+                    showComments.value = true;
+                },
+            },
+        );
+    };
+
+    const commentSender = useHttp({
+        content: "",
+    });
+
+    const message = useMessage();
+
+    const handleSendComment = () => {
+        commentSender.post(
+            poemImagesComments.send({
+                id: commentLoader.id,
+            }).url,
+            {
+                onSuccess: (_response, request) => {
+                    if (request.status === 201) {
+                        message.success("发送成功");
+                    }
+
+                    props.item.comments_count ??= 0;
+                    props.item.comments_count++;
+
+                    handleComment(commentLoader.id);
+                },
+            },
+        );
+    };
+
+    const handleCommentDeleted = () => {
+        props.item.comments_count ??= 1;
+        props.item.comments_count--;
+
+        handleComment(commentLoader.id);
+    };
 </script>
 
 <template>
     <n-element class="size-full relative" v-bind="$attrs">
+        <n-modal
+            v-model:show="showComments"
+            class="p-2 md:w-1/2"
+            preset="card"
+            size="small"
+            title="评论"
+        >
+            <n-flex size="small" vertical>
+                <template v-if="!isEmptyish(currentComments)">
+                    <n-list bordered hoverable>
+                        <template v-for="comment in currentComments">
+                            <n-list-item>
+                                <Comment @delete="handleCommentDeleted" :comment="comment" />
+                            </n-list-item>
+                        </template>
+                    </n-list>
+                </template>
+
+                <n-input v-model:value="commentSender.content" autosize type="textarea" />
+                <n-button block secondary @click="handleSendComment">发送</n-button>
+            </n-flex>
+        </n-modal>
+
         <template v-if="isNonNullish(item.file)">
             <ImageAnimation
                 :img-props="{ class: 'size-full' }"
@@ -124,6 +215,22 @@
                                 </n-button>
                             </template>
 
+                            <template v-if="isNonNullish(item.comments_count)">
+                                <n-button
+                                    :disabled="commentLoader.processing"
+                                    :loading="commentLoader.processing"
+                                    secondary
+                                    size="small"
+                                    @click="handleComment(item.id)"
+                                >
+                                    <template #icon>
+                                        <n-icon :component="CommentOutlined" />
+                                    </template>
+
+                                    {{ item.comments_count }}
+                                </n-button>
+                            </template>
+
                             <template v-if="isNonNullish(item.likes_count)">
                                 <n-button
                                     :type="item.liked ? 'error' : 'default'"
@@ -163,7 +270,7 @@
                     class="w-fit opacity-80 transition-(opacity ease-in-out duration-500) hover:opacity-100"
                     size="small"
                 >
-                    <Poem :title-only="titleOnly" :poem="item.poem" vertical />
+                    <Poem :poem="item.poem" :title-only="titleOnly" vertical />
                 </n-card>
             </n-element>
         </template>

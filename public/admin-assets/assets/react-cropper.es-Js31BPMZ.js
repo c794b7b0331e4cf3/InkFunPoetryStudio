@@ -2338,14 +2338,11 @@ var c =
                 [E],
             ));
         var D = (function (e) {
-            return c.reduce(
-                function (e, t) {
-                    var n = e,
-                        r = t;
-                    return (n[r], s(n, [typeof r == `symbol` ? r : r + ``]));
-                },
-                e,
-            );
+            return c.reduce(function (e, t) {
+                var n = e,
+                    r = t;
+                return (n[r], s(n, [typeof r == `symbol` ? r : r + ``]));
+            }, e);
         })(o(o({}, w), { crossOrigin: m, src: d, alt: x }));
         return i.createElement(
             `div`,

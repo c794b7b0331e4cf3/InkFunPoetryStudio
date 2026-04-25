@@ -75,4 +75,12 @@ export interface PoemImageResource extends BaseModel {
 
     liked: boolean | null;
     likes_count: number | null;
+
+    comments_count: number | null;
+}
+
+export interface PoemImageCommentResource extends BaseModel {
+    readonly content: string;
+    readonly user: UserResource | null;
+    readonly children: PoemImageCommentResource[];
 }

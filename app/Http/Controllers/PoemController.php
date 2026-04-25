@@ -19,7 +19,7 @@ class PoemController
 
         $item->load([
             'images' => function (HasMany $query) {
-                $query->withCount(['likes']);
+                $query->withCount(['likes', 'comments']);
             },
             'images.poem.user',
             'images.poem',

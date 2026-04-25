@@ -111142,8 +111142,12 @@ var import_isPlainObject$23 = require_isPlainObject(),
                                             get: function (target, p$7, receiver) {
                                                 var _a$15, _b$7;
                                                 if (typeof p$7 == `string`)
-                                                    return (_a$15 = event$1.context.scoped)
-                                                        ?.getComponentByName?.call(_a$15, p$7);
+                                                    return (_a$15 =
+                                                        event$1.context
+                                                            .scoped)?.getComponentByName?.call(
+                                                        _a$15,
+                                                        p$7,
+                                                    );
                                             },
                                         },
                                     )),
@@ -138038,9 +138042,9 @@ var import_findIndex$3 = __toESM(require_findIndex()),
                                                                         },
                                                                     ),
                                                                 },
-                                                                itemTIB?.getChild(
-                                                                    option.value,
-                                                                )?.getTestId(),
+                                                                itemTIB
+                                                                    ?.getChild(option.value)
+                                                                    ?.getTestId(),
                                                                 {
                                                                     onClick: function () {
                                                                         (_this.setTime(
@@ -144927,22 +144931,18 @@ var CalendarMobile = (function (_super) {
                             dateTime: newTime,
                             startDate: endDate
                                 ? startDate
-                                : startDate
-                                      ?.clone()
-                                      .set({
-                                          hour: newTime[0],
-                                          minute: newTime[1],
-                                          second: newTime[2] || 0,
-                                      }),
+                                : startDate?.clone().set({
+                                      hour: newTime[0],
+                                      minute: newTime[1],
+                                      second: newTime[2] || 0,
+                                  }),
                             endDate:
                                 endDate &&
-                                endDate
-                                    ?.clone()
-                                    .set({
-                                        hour: newTime[0],
-                                        minute: newTime[1],
-                                        second: newTime[2] || 0,
-                                    }),
+                                endDate?.clone().set({
+                                    hour: newTime[0],
+                                    minute: newTime[1],
+                                    second: newTime[2] || 0,
+                                }),
                         };
                         this.setState(obj, function () {
                             onChange && onChange(_this.state);
@@ -180169,9 +180169,10 @@ var InputSwitch$1 = themeable(InputSwitch),
                             },
                             [values$4],
                         ));
-                    var result = confirmValues?.filter(function (item) {
-                        return item?.value;
-                    })
+                    var result = confirmValues
+                        ?.filter(function (item) {
+                            return item?.value;
+                        })
                         ?.map(function (item) {
                             return item.text;
                         })
@@ -209251,8 +209252,8 @@ var import_classnames$50 = __toESM(require_classnames()),
                     [`expand`, `collapse`].includes(action$1.actionType)
                 ) {
                     var targetState = action$1.actionType === `collapse`,
-                        collapseInstance = (_b$6 = this.basicCollapse?.current)
-                            ?.getWrappedInstance?.call(_b$6);
+                        collapseInstance = (_b$6 =
+                            this.basicCollapse?.current)?.getWrappedInstance?.call(_b$6);
                     (_d$3 = collapseInstance?.changeCollapsedState) == null ||
                         _d$3.call(collapseInstance, targetState);
                 }
@@ -233261,8 +233262,12 @@ function createProjectionNode(_a$14) {
                     this.sharedNodes.get(layoutId).add(node$1),
                     node$1.promote({
                         transition: node$1.options.initialPromotionConfig?.transition,
-                        preserveFollowOpacity: (_b$6 = node$1.options.initialPromotionConfig)
-                            ?.shouldPreserveFollowOpacity?.call(_b$6, node$1),
+                        preserveFollowOpacity: (_b$6 =
+                            node$1.options
+                                .initialPromotionConfig)?.shouldPreserveFollowOpacity?.call(
+                            _b$6,
+                            node$1,
+                        ),
                     }));
             }),
             (ProjectionNode.prototype.isLead = function () {
@@ -246977,15 +246982,12 @@ function pm(e$8, t$8) {
 function hm() {
     this.opts.autoProceed &&
         !this.scheduledAutoProceed &&
-        (this.scheduledAutoProceed = setTimeout(
-            () => {
-                ((this.scheduledAutoProceed = null),
-                    this.upload().catch((e$8) => {
-                        e$8.isRestriction || this.log(e$8.stack || e$8.message || e$8);
-                    }));
-            },
-            4,
-        ));
+        (this.scheduledAutoProceed = setTimeout(() => {
+            ((this.scheduledAutoProceed = null),
+                this.upload().catch((e$8) => {
+                    e$8.isRestriction || this.log(e$8.stack || e$8.message || e$8);
+                }));
+        }, 4));
 }
 function gm() {
     let e$8 = (e$9, t$8, n$8) => {
@@ -248551,30 +248553,27 @@ var Ub = {
                     var o$4 = [...arguments];
                     let a$3,
                         u$6 = new Promise((r$10, i$5) => {
-                            a$3 = n$8.run(
-                                () => {
-                                    let t$9, n$9;
-                                    try {
-                                        n$9 = Promise.resolve(e$8(...o$4));
-                                    } catch (e$9) {
-                                        n$9 = Promise.reject(e$9);
+                            a$3 = n$8.run(() => {
+                                let t$9, n$9;
+                                try {
+                                    n$9 = Promise.resolve(e$8(...o$4));
+                                } catch (e$9) {
+                                    n$9 = Promise.reject(e$9);
+                                }
+                                return (
+                                    n$9.then(
+                                        (e$9) => {
+                                            t$9 ? i$5(t$9) : (a$3.done(), r$10(e$9));
+                                        },
+                                        (e$9) => {
+                                            t$9 ? i$5(t$9) : (a$3.done(), i$5(e$9));
+                                        },
+                                    ),
+                                    () => {
+                                        t$9 = Tb();
                                     }
-                                    return (
-                                        n$9.then(
-                                            (e$9) => {
-                                                t$9 ? i$5(t$9) : (a$3.done(), r$10(e$9));
-                                            },
-                                            (e$9) => {
-                                                t$9 ? i$5(t$9) : (a$3.done(), i$5(e$9));
-                                            },
-                                        ),
-                                        () => {
-                                            t$9 = Tb();
-                                        }
-                                    );
-                                },
-                                t$8,
-                            );
+                                );
+                            }, t$8);
                         });
                     return (
                         (u$6.abort = () => {
@@ -252493,12 +252492,9 @@ if (
                             var s$1 = a$3++,
                                 l$7 = !1;
                             (u$6++,
-                                oE(n$9, t$8, e$9).then(
-                                    function (e$10) {
-                                        l$7 || ((l$7 = !0), (i$5[s$1] = e$10), --u$6 || r$9(i$5));
-                                    },
-                                    o$4,
-                                ));
+                                oE(n$9, t$8, e$9).then(function (e$10) {
+                                    l$7 || ((l$7 = !0), (i$5[s$1] = e$10), --u$6 || r$9(i$5));
+                                }, o$4));
                         }),
                             --u$6 || r$9(i$5));
                     });
@@ -254869,40 +254865,37 @@ var c_ = {
                 (this.showPlaceholder = !1),
                 (this.$placeholder = null),
                 (this.latestEditorSelection = null),
-                (this.onDOMSelectionChange = eg(
-                    function () {
-                        (function (e$10, t$9) {
-                            var n$9 = e$10.isComposing,
-                                r$10 = e$10.isUpdatingSelection,
-                                o$5 = e$10.isDraggingInternally;
-                            if (!(t$9.getConfig().readOnly || n$9 || r$10 || o$5)) {
-                                var i$4 = QO.findDocumentOrShadowRoot(t$9),
-                                    a$3 = i$4.activeElement,
-                                    u$6 = QO.toDOMNode(t$9, t$9),
-                                    s$1 = i$4.getSelection();
-                                if (
-                                    (a$3 === u$6
-                                        ? ((e$10.latestElement = a$3), AO.set(t$9, !0))
-                                        : AO.delete(t$9),
-                                    !s$1)
-                                )
-                                    return md.deselect(t$9);
-                                var l$7 = s$1.anchorNode,
-                                    c$6 = s$1.focusNode,
-                                    f$6 = JT(t$9, l$7) || QT(t$9, l$7),
-                                    d$4 = JT(t$9, c$6) || QT(t$9, c$6);
-                                if (f$6 && d$4) {
-                                    var p$7 = QO.toSlateRange(t$9, s$1, {
-                                        exactMatch: !1,
-                                        suppressThrow: !1,
-                                    });
-                                    md.select(t$9, p$7);
-                                } else md.deselect(t$9);
-                            }
-                        })(t$8, t$8.editorInstance);
-                    },
-                    100,
-                )));
+                (this.onDOMSelectionChange = eg(function () {
+                    (function (e$10, t$9) {
+                        var n$9 = e$10.isComposing,
+                            r$10 = e$10.isUpdatingSelection,
+                            o$5 = e$10.isDraggingInternally;
+                        if (!(t$9.getConfig().readOnly || n$9 || r$10 || o$5)) {
+                            var i$4 = QO.findDocumentOrShadowRoot(t$9),
+                                a$3 = i$4.activeElement,
+                                u$6 = QO.toDOMNode(t$9, t$9),
+                                s$1 = i$4.getSelection();
+                            if (
+                                (a$3 === u$6
+                                    ? ((e$10.latestElement = a$3), AO.set(t$9, !0))
+                                    : AO.delete(t$9),
+                                !s$1)
+                            )
+                                return md.deselect(t$9);
+                            var l$7 = s$1.anchorNode,
+                                c$6 = s$1.focusNode,
+                                f$6 = JT(t$9, l$7) || QT(t$9, l$7),
+                                d$4 = JT(t$9, c$6) || QT(t$9, c$6);
+                            if (f$6 && d$4) {
+                                var p$7 = QO.toSlateRange(t$9, s$1, {
+                                    exactMatch: !1,
+                                    suppressThrow: !1,
+                                });
+                                md.select(t$9, p$7);
+                            } else md.deselect(t$9);
+                        }
+                    })(t$8, t$8.editorInstance);
+                }, 100)));
             var n$8 = Mp(e$9);
             if (n$8.length === 0) throw Error(`Cannot find textarea DOM by selector '` + e$9 + `'`);
             this.$box = n$8;
@@ -254961,12 +254954,9 @@ var c_ = {
                         (n$8.css(`overflow-y`, `auto`),
                         n$8.on(
                             `scroll`,
-                            eg(
-                                function () {
-                                    r$9.emit(`scroll`);
-                                },
-                                100,
-                            ),
+                            eg(function () {
+                                r$9.emit(`scroll`);
+                            }, 100),
                         )));
             }),
             (e$8.prototype.onFocusAndOnBlur = function () {
@@ -255001,12 +254991,9 @@ var c_ = {
                 var t$8 = this.$progressBar;
                 (t$8.css(`width`, e$9 + `%`),
                     e$9 >= 100 &&
-                        setTimeout(
-                            function () {
-                                (t$8.hide(), t$8.css(`width`, `0`), t$8.show());
-                            },
-                            1e3,
-                        ));
+                        setTimeout(function () {
+                            (t$8.hide(), t$8.css(`width`, `0`), t$8.show());
+                        }, 1e3));
             }),
             (e$8.prototype.changeViewState = function () {
                 var e$9 = this,
@@ -255621,26 +255608,22 @@ var j_ = (function () {
             (this.hoverbarItems = []),
             (this.prevSelectedNode = null),
             (this.isShow = !1),
-            (this.changeHoverbarState = Zv(
-                function () {
-                    var t$8 = e$9.isShow,
-                        n$8 = e$9.getSelectedNodeAndMenuKeys() || {},
-                        r$9 = n$8.node,
-                        o$4 = r$9 === void 0 ? null : r$9,
-                        i$4 = n$8.menuKeys,
-                        a$3 = i$4 === void 0 ? [] : i$4;
-                    (o$4 != null && e$9.changeItemsState(),
-                        (o$4 &&
-                            Sf.isElement(o$4) &&
-                            t$8 &&
-                            e$9.isSamePath(o$4, e$9.prevSelectedNode)) ||
-                            (e$9.hideAndClean(),
-                            o$4 != null &&
-                                (e$9.registerItems(a$3), e$9.setPosition(o$4), e$9.show()),
-                            (e$9.prevSelectedNode = o$4)));
-                },
-                200,
-            )),
+            (this.changeHoverbarState = Zv(function () {
+                var t$8 = e$9.isShow,
+                    n$8 = e$9.getSelectedNodeAndMenuKeys() || {},
+                    r$9 = n$8.node,
+                    o$4 = r$9 === void 0 ? null : r$9,
+                    i$4 = n$8.menuKeys,
+                    a$3 = i$4 === void 0 ? [] : i$4;
+                (o$4 != null && e$9.changeItemsState(),
+                    (o$4 &&
+                        Sf.isElement(o$4) &&
+                        t$8 &&
+                        e$9.isSamePath(o$4, e$9.prevSelectedNode)) ||
+                        (e$9.hideAndClean(),
+                        o$4 != null && (e$9.registerItems(a$3), e$9.setPosition(o$4), e$9.show()),
+                        (e$9.prevSelectedNode = o$4)));
+            }, 200)),
             ZB(function () {
                 var t$8 = e$9.getEditorInstance(),
                     n$8 = e$9.$elem;
@@ -255934,22 +255917,22 @@ function I_(e$8) {
                                     var o$6 = document.createElement(`div`);
                                     ((o$6.innerHTML = e$10),
                                         r$11 <
-                                            Array.from(o$6.childNodes).reduce(
-                                                function (e$11, t$10) {
-                                                    var n$11 = t$10.nodeType,
-                                                        r$12 = t$10.nodeName;
-                                                    return t$10
-                                                        ? n$11 === PO.TEXT_NODE
-                                                            ? e$11 + (t$10.textContent || ``)
-                                                            : n$11 === PO.ELEMENT_NODE
-                                                              ? UF.has(r$12.toLowerCase())
-                                                                  ? e$11
-                                                                  : e$11 + (t$10.textContent || ``)
-                                                              : e$11
-                                                        : e$11;
-                                                },
-                                                ``,
-                                            ).length || i$5(e$10, n$10));
+                                            Array.from(o$6.childNodes).reduce(function (
+                                                e$11,
+                                                t$10,
+                                            ) {
+                                                var n$11 = t$10.nodeType,
+                                                    r$12 = t$10.nodeName;
+                                                return t$10
+                                                    ? n$11 === PO.TEXT_NODE
+                                                        ? e$11 + (t$10.textContent || ``)
+                                                        : n$11 === PO.ELEMENT_NODE
+                                                          ? UF.has(r$12.toLowerCase())
+                                                              ? e$11
+                                                              : e$11 + (t$10.textContent || ``)
+                                                          : e$11
+                                                    : e$11;
+                                            }, ``).length || i$5(e$10, n$10));
                                 }
                             } else i$5(e$10, n$10);
                     }),
@@ -256576,16 +256559,11 @@ You has disabled editor scroll, please do this yourself`),
                                         (t$9.unFullScreen = function () {
                                             if (t$9.isFullScreen) {
                                                 var e$10 = QO.getTextarea(t$9).$box.parent();
-                                                setTimeout(
-                                                    function () {
-                                                        (e$10.removeClass(
-                                                            `w-e-full-screen-container`,
-                                                        ),
-                                                            (t$9.isFullScreen = !1),
-                                                            t$9.emit(`unFullScreen`));
-                                                    },
-                                                    200,
-                                                );
+                                                setTimeout(function () {
+                                                    (e$10.removeClass(`w-e-full-screen-container`),
+                                                        (t$9.isFullScreen = !1),
+                                                        t$9.emit(`unFullScreen`));
+                                                }, 200);
                                             }
                                         }),
                                         (t$9.getEditableContainer = function () {
@@ -256749,14 +256727,11 @@ var $_ = (function () {
                 (this.menus = {}),
                 (this.toolbarItems = []),
                 (this.config = {}),
-                (this.changeToolbarState = Zv(
-                    function () {
-                        n$8.toolbarItems.forEach(function (e$10) {
-                            e$10.changeMenuState();
-                        });
-                    },
-                    200,
-                )),
+                (this.changeToolbarState = Zv(function () {
+                    n$8.toolbarItems.forEach(function (e$10) {
+                        e$10.changeMenuState();
+                    });
+                }, 200)),
                 (this.config = t$8));
             var r$9 = Mp(e$9);
             if (r$9.length === 0) throw Error(`Cannot find toolbar DOM by selector '` + e$9 + `'`);
@@ -258688,17 +258663,14 @@ var TP = (function () {
                                     ),
                                     ``)),
                                 l$7 &&
-                                    (r$9 = s$1.reduce(
-                                        function (e$10, t$9) {
-                                            return o$4.format(
-                                                e$10,
-                                                t$9,
-                                                i$4.lng,
-                                                Z_({}, i$4, { interpolationkey: n$8[1].trim() }),
-                                            );
-                                        },
-                                        r$9.trim(),
-                                    )),
+                                    (r$9 = s$1.reduce(function (e$10, t$9) {
+                                        return o$4.format(
+                                            e$10,
+                                            t$9,
+                                            i$4.lng,
+                                            Z_({}, i$4, { interpolationkey: n$8[1].trim() }),
+                                        );
+                                    }, r$9.trim())),
                                 (e$9 = e$9.replace(n$8[0], r$9)),
                                 (this.regexp.lastIndex = 0));
                         }
@@ -258829,20 +258801,17 @@ var TP = (function () {
                         return e$9.length
                             ? this.backend[n$8](e$9, t$9, function (u$6, s$1) {
                                   u$6 && s$1 && o$4 < 5
-                                      ? setTimeout(
-                                            function () {
-                                                r$9.read.call(
-                                                    r$9,
-                                                    e$9,
-                                                    t$9,
-                                                    n$8,
-                                                    o$4 + 1,
-                                                    2 * i$4,
-                                                    a$3,
-                                                );
-                                            },
-                                            i$4,
-                                        )
+                                      ? setTimeout(function () {
+                                            r$9.read.call(
+                                                r$9,
+                                                e$9,
+                                                t$9,
+                                                n$8,
+                                                o$4 + 1,
+                                                2 * i$4,
+                                                a$3,
+                                            );
+                                        }, i$4)
                                       : a$3(u$6, s$1);
                               })
                             : a$3(null, {});
@@ -259042,12 +259011,9 @@ var RP = new ((function (e$8) {
             r$9 && !e$9.isInitialized && !n$8.isClone)
         ) {
             if (!e$9.options.initImmediate) return (e$9.init(n$8, r$9), nP(e$9, tP(e$9)));
-            setTimeout(
-                function () {
-                    e$9.init(n$8, r$9);
-                },
-                0,
-            );
+            setTimeout(function () {
+                e$9.init(n$8, r$9);
+            }, 0);
         }
         return e$9;
     }
@@ -262981,20 +262947,16 @@ var N$ = {
                           var r$11 = QO.getHoverbar(e$9);
                           r$11 && r$11.hideAndClean();
                       }
-                      var h$7 = eg(
-                          function (e$10) {
-                              e$10.preventDefault();
-                              var t$10 = e$10.clientX,
-                                  n$10 = l$8 + (f$7 ? s$2 - t$10 : t$10 - s$2),
-                                  r$11 = (n$10 / l$8) * c$7;
-                              d$5 != null &&
-                                  (n$10 <= 15 ||
-                                      r$11 <= 15 ||
-                                      (d$5.css(`width`, n$10 + `px`),
-                                      d$5.css(`height`, r$11 + `px`)));
-                          },
-                          100,
-                      );
+                      var h$7 = eg(function (e$10) {
+                          e$10.preventDefault();
+                          var t$10 = e$10.clientX,
+                              n$10 = l$8 + (f$7 ? s$2 - t$10 : t$10 - s$2),
+                              r$11 = (n$10 / l$8) * c$7;
+                          d$5 != null &&
+                              (n$10 <= 15 ||
+                                  r$11 <= 15 ||
+                                  (d$5.css(`width`, n$10 + `px`), d$5.css(`height`, r$11 + `px`)));
+                      }, 100);
                       function g$7(n$10) {
                           if ((o$5.off(`mousemove`, h$7), d$5 != null)) {
                               var r$11 = d$5.width().toFixed(2),
@@ -271024,18 +270986,15 @@ s3.on(`mousedown`, function (e$8) {
         s3.on(`mousemove`, c3),
         s3.on(`mouseup`, l3));
 });
-var c3 = eg(
-        function (e$8) {
-            if (r3 && u3 != null && a3 != null) {
-                e$8.preventDefault();
-                var t$8 = e$8.clientX,
-                    n$8 = i3 + (t$8 - o3);
-                ((n$8 = Math.floor(100 * n$8) / 100) < 30 && (n$8 = 30),
-                    md.setNodes(u3, { width: n$8.toString() }, { at: a3 }));
-            }
-        },
-        100,
-    ),
+var c3 = eg(function (e$8) {
+        if (r3 && u3 != null && a3 != null) {
+            e$8.preventDefault();
+            var t$8 = e$8.clientX,
+                n$8 = i3 + (t$8 - o3);
+            ((n$8 = Math.floor(100 * n$8) / 100) < 30 && (n$8 = 30),
+                md.setNodes(u3, { width: n$8.toString() }, { at: a3 }));
+        }
+    }, 100),
     f3 = {
         type: `table`,
         renderElem: function (e$8, t$8, n$8) {
@@ -271123,33 +271082,30 @@ var c3 = eg(
                           rowSpan: s$1,
                           style: { borderRightWidth: `3px` },
                           on: {
-                              mousemove: eg(
-                                  function (t$9) {
-                                      var r$10 = this.elm;
-                                      if (r$10 != null) {
-                                          var o$5 = r$10.getBoundingClientRect(),
-                                              i$5 = o$5.left,
-                                              a$4 = o$5.width,
-                                              u$7 = o$5.top,
-                                              s$2 = o$5.height,
-                                              l$8 = t$9.clientX,
-                                              c$7 = t$9.clientY;
-                                          r3 ||
-                                              (l$8 > i$5 + a$4 - 5 &&
-                                              l$8 < i$5 + a$4 &&
-                                              c$7 > u$7 &&
-                                              c$7 < u$7 + s$2
-                                                  ? ((r$10.style.cursor = `col-resize`),
-                                                    (u3 = n$8),
-                                                    (a3 = QO.findPath(n$8, e$8)))
-                                                  : r3 ||
-                                                    ((r$10.style.cursor = `auto`),
-                                                    (u3 = null),
-                                                    (a3 = null)));
-                                      }
-                                  },
-                                  100,
-                              ),
+                              mousemove: eg(function (t$9) {
+                                  var r$10 = this.elm;
+                                  if (r$10 != null) {
+                                      var o$5 = r$10.getBoundingClientRect(),
+                                          i$5 = o$5.left,
+                                          a$4 = o$5.width,
+                                          u$7 = o$5.top,
+                                          s$2 = o$5.height,
+                                          l$8 = t$9.clientX,
+                                          c$7 = t$9.clientY;
+                                      r3 ||
+                                          (l$8 > i$5 + a$4 - 5 &&
+                                          l$8 < i$5 + a$4 &&
+                                          c$7 > u$7 &&
+                                          c$7 < u$7 + s$2
+                                              ? ((r$10.style.cursor = `col-resize`),
+                                                (u3 = n$8),
+                                                (a3 = QO.findPath(n$8, e$8)))
+                                              : r3 ||
+                                                ((r$10.style.cursor = `auto`),
+                                                (u3 = null),
+                                                (a3 = null)));
+                                  }
+                              }, 100),
                           },
                       },
                       t$8,
@@ -272270,12 +272226,9 @@ function r5(e$8) {
             function (t$9) {
                 return new Promise(function (r$10, o$4) {
                     (function (e$9, t$10, n$10, r$11) {
-                        Promise.resolve(r$11).then(
-                            function (t$11) {
-                                e$9({ value: t$11, done: n$10 });
-                            },
-                            t$10,
-                        );
+                        Promise.resolve(r$11).then(function (t$11) {
+                            e$9({ value: t$11, done: n$10 });
+                        }, t$10);
                     })(r$10, o$4, (t$9 = e$8[n$9](t$9)).done, t$9.value);
                 });
             };
@@ -274254,12 +274207,9 @@ function jne() {
                             var s$1 = a$3++,
                                 l$7 = !1;
                             (u$6++,
-                                p5(n$9, t$8, e$9).then(
-                                    function (e$10) {
-                                        l$7 || ((l$7 = !0), (i$5[s$1] = e$10), --u$6 || r$9(i$5));
-                                    },
-                                    o$4,
-                                ));
+                                p5(n$9, t$8, e$9).then(function (e$10) {
+                                    l$7 || ((l$7 = !0), (i$5[s$1] = e$10), --u$6 || r$9(i$5));
+                                }, o$4));
                         }),
                             --u$6 || r$9(i$5));
                     });
@@ -276696,12 +276646,9 @@ function Tse(e$8) {
             function (t$9) {
                 return new Promise(function (r$10, o$4) {
                     (function (e$9, t$10, n$10, r$11) {
-                        Promise.resolve(r$11).then(
-                            function (t$11) {
-                                e$9({ value: t$11, done: n$10 });
-                            },
-                            t$10,
-                        );
+                        Promise.resolve(r$11).then(function (t$11) {
+                            e$9({ value: t$11, done: n$10 });
+                        }, t$10);
                     })(r$10, o$4, (t$9 = e$8[n$9](t$9)).done, t$9.value);
                 });
             };
@@ -277985,12 +277932,9 @@ if (
                             var s$1 = a$3++,
                                 l$7 = !1;
                             (u$6++,
-                                _oe(n$9, t$8, e$9).then(
-                                    function (e$10) {
-                                        l$7 || ((l$7 = !0), (i$5[s$1] = e$10), --u$6 || r$9(i$5));
-                                    },
-                                    o$4,
-                                ));
+                                _oe(n$9, t$8, e$9).then(function (e$10) {
+                                    l$7 || ((l$7 = !0), (i$5[s$1] = e$10), --u$6 || r$9(i$5));
+                                }, o$4));
                         }),
                             --u$6 || r$9(i$5));
                     });
@@ -281722,12 +281666,9 @@ function Tge(e$8) {
         ? e$8.length
         : typeof e$8.content == `string`
           ? e$8.content.length
-          : e$8.content.reduce(
-                function (e$9, t$8) {
-                    return e$9 + Tge(t$8);
-                },
-                0,
-            );
+          : e$8.content.reduce(function (e$9, t$8) {
+                return e$9 + Tge(t$8);
+            }, 0);
 }
 var _ge,
     Pge = Ade.String,
@@ -317155,12 +317096,9 @@ function diff(e$8, t$8, a$3) {
 }
 function patchDiff(e$8, t$8) {
     return t$8
-        ? t$8.reduce(
-              function (t$9, a$3) {
-                  return applyChange(t$9, e$8, a$3);
-              },
-              e$8,
-          )
+        ? t$8.reduce(function (t$9, a$3) {
+              return applyChange(t$9, e$8, a$3);
+          }, e$8)
         : e$8;
 }
 function applyChange(e$8, t$8, a$3) {
@@ -317443,18 +317381,15 @@ function resolveVariablesFromScope(e$8, t$8) {
                             .filter(function (e$9) {
                                 return e$9.label === i18n(`813a5158d9f7171d20e7df340c5b48f9`);
                             })
-                            .reduce(
-                                function (e$9, t$9) {
-                                    return (
-                                        e$9.push.apply(
-                                            e$9,
-                                            __spreadArray([], __read(t$9.children || []), !1),
-                                        ),
-                                        e$9
-                                    );
-                                },
-                                [],
-                            )) != null &&
+                            .reduce(function (e$9, t$9) {
+                                return (
+                                    e$9.push.apply(
+                                        e$9,
+                                        __spreadArray([], __read(t$9.children || []), !1),
+                                    ),
+                                    e$9
+                                );
+                            }, [])) != null &&
                             h$6.length &&
                             ((g$6 = !1),
                             (u$6 = u$6.map(function (e$9) {
@@ -317781,14 +317716,10 @@ var updateComponentContext = function (e$8) {
             t$8
         );
     },
-    scrollToActive = (0, import_debounce$5.default)(
-        function (e$8) {
-            var t$8 = document.querySelector(e$8);
-            t$8 &&
-                (t$8.scrollIntoViewIfNeeded ? t$8.scrollIntoViewIfNeeded() : t$8.scrollIntoView());
-        },
-        200,
-    );
+    scrollToActive = (0, import_debounce$5.default)(function (e$8) {
+        var t$8 = document.querySelector(e$8);
+        t$8 && (t$8.scrollIntoViewIfNeeded ? t$8.scrollIntoViewIfNeeded() : t$8.scrollIntoView());
+    }, 200);
 function addModal(e$8, t$8, a$3, n$8) {
     ((e$8 = __assign(__assign({}, e$8), { definitions: __assign({}, e$8.definitions) })),
         a$3 && (0, import_isPlainObject$2.default)(a$3) && (e$8 = mergeDefinitions(e$8, a$3, t$8)));
@@ -317989,16 +317920,13 @@ function deepSplice$1(e$8, t$8, a$3) {
     if (!Array.isArray(d$4)) throw Error(`deepSplice: target is not an array`);
     return (
         (d$4 = d$4.concat()).splice.apply(d$4, [o$4, a$3].concat(n$8)),
-        s$1.reduce(
-            function (e$9, t$9) {
-                var a$4 = t$9.host,
-                    n$9 = t$9.key;
-                return (
-                    ((a$4 = Array.isArray(a$4) ? a$4.concat() : __assign({}, a$4))[n$9] = e$9), a$4
-                );
-            },
-            d$4,
-        )
+        s$1.reduce(function (e$9, t$9) {
+            var a$4 = t$9.host,
+                n$9 = t$9.key;
+            return (
+                ((a$4 = Array.isArray(a$4) ? a$4.concat() : __assign({}, a$4))[n$9] = e$9), a$4
+            );
+        }, d$4)
     );
 }
 var RAW_TYPE_MAP = {
@@ -318150,146 +318078,111 @@ var RAW_TYPE_MAP = {
         var d$4 = e$8.onSwitch,
             s$1 = e$8.manager,
             l$7 = e$8.readonly,
-            c$6 = import_react.useCallback(
-                function (e$9) {
-                    return p$7(e$9, `horizontal`);
-                },
-                [],
-            ),
-            u$6 = import_react.useCallback(
-                function (e$9) {
-                    return p$7(e$9, `vertical`);
-                },
-                [],
-            ),
-            f$6 = import_react.useCallback(
-                function (e$9) {
-                    return p$7(e$9, `both`);
-                },
-                [],
-            ),
-            p$7 = import_react.useCallback(
-                function (e$9, t$9) {
-                    var r$10, i$5, d$5;
-                    if (
-                        ((e$9.button === 1 && window.event !== null) || e$9.button === 0) &&
-                        !e$9.defaultPrevented &&
-                        (e$9.preventDefault(), o$4)
-                    ) {
-                        var l$8 = document.querySelector(`[data-editor-id="${n$8}"]`);
-                        if (l$8) {
-                            s$1.disableHover = !0;
-                            var c$7 = s$1[
+            c$6 = import_react.useCallback(function (e$9) {
+                return p$7(e$9, `horizontal`);
+            }, []),
+            u$6 = import_react.useCallback(function (e$9) {
+                return p$7(e$9, `vertical`);
+            }, []),
+            f$6 = import_react.useCallback(function (e$9) {
+                return p$7(e$9, `both`);
+            }, []),
+            p$7 = import_react.useCallback(function (e$9, t$9) {
+                var r$10, i$5, d$5;
+                if (
+                    ((e$9.button === 1 && window.event !== null) || e$9.button === 0) &&
+                    !e$9.defaultPrevented &&
+                    (e$9.preventDefault(), o$4)
+                ) {
+                    var l$8 = document.querySelector(`[data-editor-id="${n$8}"]`);
+                    if (l$8) {
+                        s$1.disableHover = !0;
+                        var c$7 = s$1[
+                                t$9 === `both`
+                                    ? `onSizeChangeStart`
+                                    : t$9 === `vertical`
+                                      ? `onHeightChangeStart`
+                                      : `onWidthChangeStart`
+                            ](e$9, {
+                                dom: l$8,
+                                node: o$4,
+                                store: a$3,
+                                resizer:
                                     t$9 === `both`
-                                        ? `onSizeChangeStart`
+                                        ? b$5.current
                                         : t$9 === `vertical`
-                                          ? `onHeightChangeStart`
-                                          : `onWidthChangeStart`
-                                ](e$9, {
-                                    dom: l$8,
-                                    node: o$4,
-                                    store: a$3,
-                                    resizer:
-                                        t$9 === `both`
-                                            ? b$5.current
-                                            : t$9 === `vertical`
-                                              ? m$6.current
-                                              : h$6.current,
-                                }),
-                                u$7 = c$7.data?.onMove,
-                                f$7 = c$7.data?.onEnd;
-                            if (u$7 || f$7) {
-                                (d$5 = S$4.current) == null ||
-                                    d$5.setAttribute(`data-resizing`, ``);
-                                var p$8 = function (e$10) {
-                                        (e$10.preventDefault(), u$7?.(e$10));
-                                    },
-                                    g$7 = function (e$10) {
-                                        var t$10;
-                                        (e$10.preventDefault(),
-                                            (s$1.disableHover = !1),
-                                            (t$10 = S$4.current) == null ||
-                                                t$10.removeAttribute(`data-resizing`),
-                                            window.removeEventListener(`mousemove`, p$8),
-                                            window.removeEventListener(`mouseup`, g$7),
-                                            (document.body.style.cursor = `default`));
-                                        var a$4 = function (e$11) {
-                                            (window.removeEventListener(`click`, a$4, !0),
-                                                e$11.preventDefault(),
-                                                e$11.stopPropagation());
-                                        };
-                                        (window.addEventListener(`click`, a$4, !0),
-                                            setTimeout(
-                                                function () {
-                                                    return window.removeEventListener(
-                                                        `click`,
-                                                        a$4,
-                                                        !0,
-                                                    );
-                                                },
-                                                350,
-                                            ),
-                                            f$7?.(e$10));
+                                          ? m$6.current
+                                          : h$6.current,
+                            }),
+                            u$7 = c$7.data?.onMove,
+                            f$7 = c$7.data?.onEnd;
+                        if (u$7 || f$7) {
+                            (d$5 = S$4.current) == null || d$5.setAttribute(`data-resizing`, ``);
+                            var p$8 = function (e$10) {
+                                    (e$10.preventDefault(), u$7?.(e$10));
+                                },
+                                g$7 = function (e$10) {
+                                    var t$10;
+                                    (e$10.preventDefault(),
+                                        (s$1.disableHover = !1),
+                                        (t$10 = S$4.current) == null ||
+                                            t$10.removeAttribute(`data-resizing`),
+                                        window.removeEventListener(`mousemove`, p$8),
+                                        window.removeEventListener(`mouseup`, g$7),
+                                        (document.body.style.cursor = `default`));
+                                    var a$4 = function (e$11) {
+                                        (window.removeEventListener(`click`, a$4, !0),
+                                            e$11.preventDefault(),
+                                            e$11.stopPropagation());
                                     };
-                                (window.addEventListener(`mousemove`, p$8),
-                                    window.addEventListener(`mouseup`, g$7),
-                                    (document.body.style.cursor =
-                                        t$9 === `both`
-                                            ? `nwse-resize`
-                                            : t$9 === `vertical`
-                                              ? `ns-resize`
-                                              : `ew-resize`));
-                            }
+                                    (window.addEventListener(`click`, a$4, !0),
+                                        setTimeout(function () {
+                                            return window.removeEventListener(`click`, a$4, !0);
+                                        }, 350),
+                                        f$7?.(e$10));
+                                };
+                            (window.addEventListener(`mousemove`, p$8),
+                                window.addEventListener(`mouseup`, g$7),
+                                (document.body.style.cursor =
+                                    t$9 === `both`
+                                        ? `nwse-resize`
+                                        : t$9 === `vertical`
+                                          ? `ns-resize`
+                                          : `ew-resize`));
                         }
                     }
-                },
-                [],
-            ),
+                }
+            }, []),
             h$6 = import_react.useRef(),
-            g$6 = import_react.useCallback(
-                function (e$9) {
-                    var t$9;
-                    (e$9
-                        ? e$9.addEventListener(`mousedown`, c$6)
-                        : (t$9 = h$6.current) == null || t$9.removeEventListener(`mousedown`, c$6),
-                        (h$6.current = e$9));
-                },
-                [],
-            ),
+            g$6 = import_react.useCallback(function (e$9) {
+                var t$9;
+                (e$9
+                    ? e$9.addEventListener(`mousedown`, c$6)
+                    : (t$9 = h$6.current) == null || t$9.removeEventListener(`mousedown`, c$6),
+                    (h$6.current = e$9));
+            }, []),
             m$6 = import_react.useRef(),
-            v$5 = import_react.useCallback(
-                function (e$9) {
-                    var t$9;
-                    (e$9
-                        ? e$9.addEventListener(`mousedown`, u$6)
-                        : (t$9 = m$6.current) == null || t$9.removeEventListener(`mousedown`, u$6),
-                        (m$6.current = e$9));
-                },
-                [],
-            ),
+            v$5 = import_react.useCallback(function (e$9) {
+                var t$9;
+                (e$9
+                    ? e$9.addEventListener(`mousedown`, u$6)
+                    : (t$9 = m$6.current) == null || t$9.removeEventListener(`mousedown`, u$6),
+                    (m$6.current = e$9));
+            }, []),
             b$5 = import_react.useRef(),
-            _$1 = import_react.useCallback(
-                function (e$9) {
-                    var t$9;
-                    (e$9
-                        ? e$9.addEventListener(`mousedown`, f$6)
-                        : (t$9 = b$5.current) == null || t$9.removeEventListener(`mousedown`, f$6),
-                        (b$5.current = e$9));
-                },
-                [],
-            ),
-            y$5 = import_react.useCallback(
-                function () {
-                    s$1.disableHover || a$3.setHoverId(n$8);
-                },
-                [],
-            ),
-            R$4 = import_react.useCallback(
-                function (e$9) {
-                    s$1.disableHover || s$1.startDrag(n$8, e$9);
-                },
-                [],
-            ),
+            _$1 = import_react.useCallback(function (e$9) {
+                var t$9;
+                (e$9
+                    ? e$9.addEventListener(`mousedown`, f$6)
+                    : (t$9 = b$5.current) == null || t$9.removeEventListener(`mousedown`, f$6),
+                    (b$5.current = e$9));
+            }, []),
+            y$5 = import_react.useCallback(function () {
+                s$1.disableHover || a$3.setHoverId(n$8);
+            }, []),
+            R$4 = import_react.useCallback(function (e$9) {
+                s$1.disableHover || s$1.startDrag(n$8, e$9);
+            }, []),
             S$4 = import_react.createRef(),
             E$4 = a$3.sortedToolbars,
             w$5 = a$3.sortedSecondaryToolbars,
@@ -318799,17 +318692,14 @@ var BackTop = (function (e$8) {
             (t$8.prototype.componentDidMount = function () {
                 if (this.props.autoFocus) {
                     var e$9 = this.props.manager.store;
-                    setTimeout(
-                        function () {
-                            if (isAlive(e$9)) {
-                                var t$9 = findTree(e$9.outline, function (e$10) {
-                                    return !e$10.isRegion && e$10.clickable;
-                                });
-                                t$9 && e$9.setActiveId(t$9.id);
-                            }
-                        },
-                        350,
-                    );
+                    setTimeout(function () {
+                        if (isAlive(e$9)) {
+                            var t$9 = findTree(e$9.outline, function (e$10) {
+                                return !e$10.isRegion && e$10.clickable;
+                            });
+                            t$9 && e$9.setActiveId(t$9.id);
+                        }
+                    }, 350);
                 } else this.props.manager.buildRenderersAndPanels();
             }),
             (t$8.prototype.iframeRefFunc = function (e$9) {
@@ -318951,99 +318841,64 @@ function InnerComponent(e$8) {
         i$4 = r$9.document,
         o$4 = r$9.window,
         d$4 = import_react.useRef(a$3),
-        s$1 = import_react.useCallback(
-            function () {
-                t$8.setHoverId(``);
-            },
-            [],
-        ),
-        l$7 = import_react.useCallback(
-            function (e$9) {
-                var a$4 = e$9.target.closest(`[data-editor-id]`);
-                a$4 && t$8.setHoverId(a$4.getAttribute(`data-editor-id`));
-            },
-            [],
-        ),
-        c$6 = import_react.useCallback(
-            function () {
-                closeContextMenus();
-            },
-            [],
-        ),
-        u$6 = import_react.useCallback(
-            function (e$9) {
-                var a$4 = e$9.target.closest(`[data-editor-id]`);
-                if ((closeContextMenus(), !e$9.defaultPrevented)) {
-                    if (t$8.activeElement) e$9.preventDefault();
-                    else if (
-                        (a$4 && t$8.setActiveId(a$4.getAttribute(`data-editor-id`)), d$4.current)
-                    ) {
-                        var r$10 = n$8.trigger(`prevent-click`, { data: e$9 });
-                        r$10.prevented ||
-                            r$10.stoped ||
-                            (e$9.preventDefault(), e$9.stopPropagation());
-                    }
+        s$1 = import_react.useCallback(function () {
+            t$8.setHoverId(``);
+        }, []),
+        l$7 = import_react.useCallback(function (e$9) {
+            var a$4 = e$9.target.closest(`[data-editor-id]`);
+            a$4 && t$8.setHoverId(a$4.getAttribute(`data-editor-id`));
+        }, []),
+        c$6 = import_react.useCallback(function () {
+            closeContextMenus();
+        }, []),
+        u$6 = import_react.useCallback(function (e$9) {
+            var a$4 = e$9.target.closest(`[data-editor-id]`);
+            if ((closeContextMenus(), !e$9.defaultPrevented)) {
+                if (t$8.activeElement) e$9.preventDefault();
+                else if (
+                    (a$4 && t$8.setActiveId(a$4.getAttribute(`data-editor-id`)), d$4.current)
+                ) {
+                    var r$10 = n$8.trigger(`prevent-click`, { data: e$9 });
+                    r$10.prevented || r$10.stoped || (e$9.preventDefault(), e$9.stopPropagation());
                 }
-            },
-            [],
-        ),
-        f$6 = import_react.useCallback(
-            function (e$9) {
-                var a$4 = e$9.target,
-                    r$10 = a$4.closest(`[data-editor-id]`);
-                if (r$10) {
-                    var i$5 = t$8.getNodeById(r$10.getAttribute(`data-editor-id`));
-                    if (!i$5) return;
-                    var o$5 = i$5.info,
-                        d$5 = null,
-                        s$2 = (o$5.inlineEditableElements || []).find(function (e$10) {
-                            return !!(d$5 = [].slice
-                                .call(r$10.querySelectorAll(e$10.match))
-                                .find(function (e$11) {
-                                    return e$11.contains(a$4);
-                                }));
-                        });
-                    d$5 && s$2 && n$8.startInlineEdit(i$5, d$5, s$2, e$9);
-                }
-            },
-            [],
-        ),
-        p$7 = import_react.useCallback(
-            function (e$9) {
-                d$4.current && (e$9.preventDefault(), e$9.stopPropagation());
-            },
-            [],
-        ),
-        h$6 = import_react.useCallback(
-            function (e$9) {
-                (e$9.preventDefault(), e$9.stopPropagation());
-            },
-            [],
-        ),
-        g$6 = import_react.useCallback(
-            function (e$9) {
-                a$3 && (e$9.stopPropagation(), n$8.dnd.dragEnter(e$9));
-            },
-            [],
-        ),
-        m$6 = import_react.useCallback(
-            function (e$9) {
-                a$3 && (e$9.stopPropagation(), n$8.dnd.dragLeave(e$9));
-            },
-            [],
-        ),
-        v$5 = import_react.useCallback(
-            function (e$9) {
-                a$3 && (e$9.stopPropagation(), n$8.dnd.dragOver(e$9));
-            },
-            [],
-        ),
-        b$5 = import_react.useCallback(
-            function (e$9) {
-                a$3 && (e$9.stopPropagation(), n$8.dnd.drop(e$9));
-            },
-            [],
-        );
+            }
+        }, []),
+        f$6 = import_react.useCallback(function (e$9) {
+            var a$4 = e$9.target,
+                r$10 = a$4.closest(`[data-editor-id]`);
+            if (r$10) {
+                var i$5 = t$8.getNodeById(r$10.getAttribute(`data-editor-id`));
+                if (!i$5) return;
+                var o$5 = i$5.info,
+                    d$5 = null,
+                    s$2 = (o$5.inlineEditableElements || []).find(function (e$10) {
+                        return !!(d$5 = [].slice
+                            .call(r$10.querySelectorAll(e$10.match))
+                            .find(function (e$11) {
+                                return e$11.contains(a$4);
+                            }));
+                    });
+                d$5 && s$2 && n$8.startInlineEdit(i$5, d$5, s$2, e$9);
+            }
+        }, []),
+        p$7 = import_react.useCallback(function (e$9) {
+            d$4.current && (e$9.preventDefault(), e$9.stopPropagation());
+        }, []),
+        h$6 = import_react.useCallback(function (e$9) {
+            (e$9.preventDefault(), e$9.stopPropagation());
+        }, []),
+        g$6 = import_react.useCallback(function (e$9) {
+            a$3 && (e$9.stopPropagation(), n$8.dnd.dragEnter(e$9));
+        }, []),
+        m$6 = import_react.useCallback(function (e$9) {
+            a$3 && (e$9.stopPropagation(), n$8.dnd.dragLeave(e$9));
+        }, []),
+        v$5 = import_react.useCallback(function (e$9) {
+            a$3 && (e$9.stopPropagation(), n$8.dnd.dragOver(e$9));
+        }, []),
+        b$5 = import_react.useCallback(function (e$9) {
+            a$3 && (e$9.stopPropagation(), n$8.dnd.drop(e$9));
+        }, []);
     return (
         import_react.useEffect(
             function () {
@@ -319190,12 +319045,9 @@ var InnerSvgSpirit = (0, import_react.memo)(function () {
                         this.props.manager.off(`after-update`, this.handlePreviewViewChange),
                         (e$9 = this.dialogReaction) == null || e$9.call(this));
                 }
-                setTimeout(
-                    function () {
-                        return clearStoresCache([t$9.env.session]);
-                    },
-                    500,
-                );
+                setTimeout(function () {
+                    return clearStoresCache([t$9.env.session]);
+                }, 500);
             }),
             (t$8.prototype.handleLayerScroll = function (e$9) {
                 var t$9, a$3, n$8;
@@ -319309,16 +319161,9 @@ var InnerSvgSpirit = (0, import_react.memo)(function () {
                                                 e$11.stopPropagation());
                                         };
                                         (window.addEventListener(`click`, d$5, !0),
-                                            setTimeout(
-                                                function () {
-                                                    return window.removeEventListener(
-                                                        `click`,
-                                                        d$5,
-                                                        !0,
-                                                    );
-                                                },
-                                                350,
-                                            ),
+                                            setTimeout(function () {
+                                                return window.removeEventListener(`click`, d$5, !0);
+                                            }, 350),
                                             a$3.doSelection(r$10));
                                     }
                                 };
@@ -319393,12 +319238,9 @@ var InnerSvgSpirit = (0, import_react.memo)(function () {
                                     });
                             if (l$7) {
                                 var c$6 = l$7.getAttribute(`data-editor-id`);
-                                setTimeout(
-                                    function () {
-                                        a$3.activeElement || a$3.setActiveId(c$6);
-                                    },
-                                    350,
-                                );
+                                setTimeout(function () {
+                                    a$3.activeElement || a$3.setActiveId(c$6);
+                                }, 350);
                             }
                         }
                         if (!this.layer?.contains(e$9.target) && this.props.editable) {
@@ -319913,26 +319755,23 @@ var InnerSvgSpirit = (0, import_react.memo)(function () {
             (t$8.prototype.componentDidMount = function () {
                 var e$9 = this.props.store;
                 this.props.autoFocus
-                    ? setTimeout(
-                          function () {
-                              var t$9, a$3;
-                              if (isAlive(e$9)) {
-                                  var n$8 = findTree(e$9.outline, function (e$10) {
-                                      return !e$10.isRegion && e$10.clickable;
-                                  });
-                                  if (n$8 && isAlive(e$9)) {
-                                      var r$9 = n$8.childRegions.find(function (e$10) {
-                                          return e$10.region === `body`;
-                                      })?.region;
-                                      ((r$9 ??= n$8.childRegions.find(function (e$10) {
-                                          return e$10.region;
-                                      })?.region),
-                                          e$9.setActiveId(n$8.id, r$9));
-                                  }
+                    ? setTimeout(function () {
+                          var t$9, a$3;
+                          if (isAlive(e$9)) {
+                              var n$8 = findTree(e$9.outline, function (e$10) {
+                                  return !e$10.isRegion && e$10.clickable;
+                              });
+                              if (n$8 && isAlive(e$9)) {
+                                  var r$9 = n$8.childRegions.find(function (e$10) {
+                                      return e$10.region === `body`;
+                                  })?.region;
+                                  ((r$9 ??= n$8.childRegions.find(function (e$10) {
+                                      return e$10.region;
+                                  })?.region),
+                                      e$9.setActiveId(n$8.id, r$9));
                               }
-                          },
-                          350,
-                      )
+                          }
+                      }, 350)
                     : this.props.manager.buildRenderersAndPanels();
             }),
             (t$8.prototype.componentDidUpdate = function (e$9) {
@@ -324037,16 +323876,11 @@ var SearchPanel = (function (e$8) {
                         )
                             position$3 = `bottom`;
                         else {
-                            var leftSize = rowNodes.reduce(
-                                function (e$8, t$8) {
-                                    var a$3,
-                                        n$8 = t$8.colSize?.split(`/`);
-                                    return (
-                                        e$8 - (n$8?.[0] && n$8?.[1] ? n$8[0] / n$8[1] : t$8.colSize)
-                                    );
-                                },
-                                1,
-                            );
+                            var leftSize = rowNodes.reduce(function (e$8, t$8) {
+                                var a$3,
+                                    n$8 = t$8.colSize?.split(`/`);
+                                return e$8 - (n$8?.[0] && n$8?.[1] ? n$8[0] / n$8[1] : t$8.colSize);
+                            }, 1);
                             position$3 =
                                 leftSize >= eval(context$1.data.$$defaultColSize || 1)
                                     ? `right`
@@ -325001,12 +324835,9 @@ var MainStore = types
                 setCtx: function (t$9) {
                     (t$9 != null &&
                         t$9.__super &&
-                        (t$9 = extractObjectChain(t$9).reduce(
-                            function (e$9, t$10) {
-                                return Object.assign(e$9, t$10);
-                            },
-                            {},
-                        )),
+                        (t$9 = extractObjectChain(t$9).reduce(function (e$9, t$10) {
+                            return Object.assign(e$9, t$10);
+                        }, {})),
                         (e$8.ctx = t$9));
                 },
                 setTheme: function (t$9) {
@@ -325033,12 +324864,9 @@ var MainStore = types
                         ) {
                             var o$5 = r$10[0].path,
                                 s$2 = o$5.pop(),
-                                l$7 = o$5.reduce(
-                                    function (e$9, t$10) {
-                                        return e$9[t$10];
-                                    },
-                                    i$5,
-                                );
+                                l$7 = o$5.reduce(function (e$9, t$10) {
+                                    return e$9[t$10];
+                                }, i$5);
                             l$7[s$2] = l$7[s$2].map(function (e$9) {
                                 return (0, import_isPlainObject$2.default)(l$7[s$2])
                                     ? __assign(__assign({}, e$9), { $$id: guid$1() })
@@ -325090,12 +324918,9 @@ var MainStore = types
                             ),
                             u$6 != null &&
                                 u$6.$$id &&
-                                setTimeout(
-                                    function () {
-                                        n$9.setActiveId(u$6.$$id);
-                                    },
-                                    0,
-                                ),
+                                setTimeout(function () {
+                                    n$9.setActiveId(u$6.$$id);
+                                }, 0),
                             u$6
                         );
                     }
@@ -325302,12 +325127,9 @@ var MainStore = types
                 },
                 batchChangeValue: function (t$9) {
                     this.traceableSetSchema(
-                        t$9.reduce(
-                            function (e$9, t$10) {
-                                return JSONUpdate(e$9, t$10.id, JSONPipeIn(t$10.value), !0);
-                            },
-                            e$8.schema,
-                        ),
+                        t$9.reduce(function (e$9, t$10) {
+                            return JSONUpdate(e$9, t$10.id, JSONPipeIn(t$10.value), !0);
+                        }, e$8.schema),
                         !0,
                     );
                 },
@@ -325416,22 +325238,16 @@ var MainStore = types
                                 a$4.setActiveId(i$5 ? i$5.id : ``));
                     }),
                         this.traceableSetSchema(
-                            t$9.reduce(
-                                function (e$9, t$10) {
-                                    return JSONDelete(e$9, t$10);
-                                },
-                                e$8.schema,
-                            ),
+                            t$9.reduce(function (e$9, t$10) {
+                                return JSONDelete(e$9, t$10);
+                            }, e$8.schema),
                         ));
                 },
                 duplicate: function (t$9) {
                     this.traceableSetSchema(
-                        (Array.isArray(t$9) ? t$9 : [t$9]).reduce(
-                            function (e$9, t$10) {
-                                return JSONDuplicate(e$9, t$10);
-                            },
-                            e$8.schema,
-                        ),
+                        (Array.isArray(t$9) ? t$9 : [t$9]).reduce(function (e$9, t$10) {
+                            return JSONDuplicate(e$9, t$10);
+                        }, e$8.schema),
                     );
                 },
                 emptyRegion: function (t$9, a$4) {
@@ -325752,12 +325568,9 @@ var MainStore = types
                                 return s$1.observe(e$9);
                             });
                     }),
-                        setTimeout(
-                            function () {
-                                isAlive(e$8) && a$4.calculateHighlightBox(t$9);
-                            },
-                            200,
-                        ));
+                        setTimeout(function () {
+                            isAlive(e$8) && a$4.calculateHighlightBox(t$9);
+                        }, 200));
                 },
                 deActiveHighlightNodes: function (t$9) {
                     t$9.forEach(function (t$10) {
@@ -326792,36 +326605,30 @@ var BasePlugin = (function () {
                 },
                 [n$8, i$4, u$6],
             ),
-            E$4 = import_react.useMemo(
-                function () {
-                    return getThemeConfig();
-                },
-                [],
-            ),
+            E$4 = import_react.useMemo(function () {
+                return getThemeConfig();
+            }, []),
             w$5 = import_react.useRef([]),
-            C$3 = import_react.useCallback(
-                function (e$9, t$9) {
-                    t$9 === void 0 && (t$9 = !1);
-                    var a$4 = e$9,
-                        n$9 = function () {
-                            w$5.current = w$5.current.filter(function (e$10) {
-                                var t$10;
-                                return (e$10.__raw ?? e$10) !== a$4;
-                            });
-                        };
-                    return (
-                        t$9 &&
-                            ((e$9 = function (e$10, t$10, r$10, i$5) {
-                                var o$5 = a$4(e$10, t$10, r$10, i$5);
-                                return (n$9(), o$5);
-                            }),
-                            (e$9.__raw = a$4)),
-                        w$5.current.push(e$9),
-                        n$9
-                    );
-                },
-                [],
-            ),
+            C$3 = import_react.useCallback(function (e$9, t$9) {
+                t$9 === void 0 && (t$9 = !1);
+                var a$4 = e$9,
+                    n$9 = function () {
+                        w$5.current = w$5.current.filter(function (e$10) {
+                            var t$10;
+                            return (e$10.__raw ?? e$10) !== a$4;
+                        });
+                    };
+                return (
+                    t$9 &&
+                        ((e$9 = function (e$10, t$10, r$10, i$5) {
+                            var o$5 = a$4(e$10, t$10, r$10, i$5);
+                            return (n$9(), o$5);
+                        }),
+                        (e$9.__raw = a$4)),
+                    w$5.current.push(e$9),
+                    n$9
+                );
+            }, []),
             x$4 = __read(import_react.useState(!0), 2),
             I$4 = x$4[0],
             N$4 = x$4[1],
@@ -326836,12 +326643,9 @@ var BasePlugin = (function () {
                 [d$4, E$4, g$6],
             ),
             O$4 = import_react.useRef(null),
-            P$4 = import_react.useCallback(
-                function (e$9) {
-                    O$4.current = e$9;
-                },
-                [],
-            );
+            P$4 = import_react.useCallback(function (e$9) {
+                O$4.current = e$9;
+            }, []);
         return (
             import_react.useImperativeHandle(t$8, function () {
                 return {
@@ -326882,12 +326686,12 @@ var BasePlugin = (function () {
                                                   [2])
                                                 : (N$4(!1),
                                                   o$4(e$9, n$9, function (e$10, t$11, a$5, n$10) {
-                                                      return w$5.current.reduce(
-                                                          function (e$11, r$11) {
-                                                              return r$11(e$11, t$11, a$5, n$10);
-                                                          },
-                                                          e$10,
-                                                      );
+                                                      return w$5.current.reduce(function (
+                                                          e$11,
+                                                          r$11,
+                                                      ) {
+                                                          return r$11(e$11, t$11, a$5, n$10);
+                                                      }, e$10);
                                                   }),
                                                   [2])
                                             : [2];
@@ -328097,12 +327901,9 @@ var DefaultDNDMode = (function () {
             e$8
         );
     })(),
-    toastWarning = (0, import_debounce$5.default)(
-        function (e$8) {
-            toast.warning(e$8);
-        },
-        500,
-    ),
+    toastWarning = (0, import_debounce$5.default)(function (e$8) {
+        toast.warning(e$8);
+    }, 500),
     EditorDNDManager = (function () {
         function e$8(e$9, t$8) {
             ((this.manager = e$9),
@@ -328115,18 +327916,12 @@ var DefaultDNDMode = (function () {
                 (this.startX = 0),
                 (this.startY = 0),
                 this.toDispose.push(
-                    reactionWithOldValue(
-                        function () {
-                            return t$8.dragType === `schema` ? t$8.dragId : ``;
-                        },
-                        this.updateDragElements,
-                    ),
-                    reactionWithOldValue(
-                        function () {
-                            return { id: t$8.dropId, region: t$8.dropRegion };
-                        },
-                        this.updateDropRegion,
-                    ),
+                    reactionWithOldValue(function () {
+                        return t$8.dragType === `schema` ? t$8.dragId : ``;
+                    }, this.updateDragElements),
+                    reactionWithOldValue(function () {
+                        return { id: t$8.dropId, region: t$8.dropRegion };
+                    }, this.updateDropRegion),
                 ),
                 (this.dragGhost = document.createElement(`div`)),
                 this.dragGhost.classList.add(`ae-DragGhost`),
@@ -328221,14 +328016,11 @@ var DefaultDNDMode = (function () {
                         (t$8.dataTransfer.effectAllowed = `move`),
                         t$8.dataTransfer.setDragImage(this.createDragImage(e$9, r$9), 0, 0),
                         t$8.dataTransfer.setData(`dnd/ae-node-${e$9}`.toLowerCase(), ``),
-                        setTimeout(
-                            function () {
-                                n$8.store.setDragId(e$9);
-                                var a$4 = r$9.parent;
-                                n$8.switchToRegion(t$8, a$4.id, a$4.region);
-                            },
-                            4,
-                        ));
+                        setTimeout(function () {
+                            n$8.store.setDragId(e$9);
+                            var a$4 = r$9.parent;
+                            n$8.switchToRegion(t$8, a$4.id, a$4.region);
+                        }, 4));
                 } else t$8.preventDefault();
             }),
             (e$8.prototype.dragEnter = function (e$9) {
@@ -328807,12 +328599,9 @@ function startPlainTextEdit(e$8) {
         t$8.setAttribute(`contenteditable`, `plaintext-only`),
         t$8.focus());
     var s$1 = r$9 ? getMouseEventCaretRange(r$9, t$8) : createRangeAtTheEnd(t$8);
-    setTimeout(
-        function () {
-            selectRange(s$1, t$8);
-        },
-        10,
-    );
+    setTimeout(function () {
+        selectRange(s$1, t$8);
+    }, 10);
 }
 function startRichTextEdit(e$8) {
     var t$8 = e$8.elem,
@@ -328887,12 +328676,9 @@ function startRichTextEdit(e$8) {
                                 var e$10 = a$3
                                     ? getMouseEventCaretRange(a$3, t$8)
                                     : createRangeAtTheEnd(t$8);
-                                setTimeout(
-                                    function () {
-                                        selectRange(e$10, t$8);
-                                    },
-                                    10,
-                                );
+                                setTimeout(function () {
+                                    selectRange(e$10, t$8);
+                                }, 10);
                             },
                         )),
                         [2]
@@ -329202,12 +328988,9 @@ var EditorManager = (function () {
                                       r$10.classList.remove(`is-region-active`));
                         },
                     ),
-                    reaction(
-                        function () {
-                            return o$4.globalVariables;
-                        },
-                        d$4,
-                    ),
+                    reaction(function () {
+                        return o$4.globalVariables;
+                    }, d$4),
                 ));
         }
         return (
@@ -329255,28 +329038,25 @@ var EditorManager = (function () {
             }),
             (e$8.prototype.buildRenderersAndPanels = function () {
                 var e$9 = this;
-                setTimeout(
-                    function () {
-                        return __awaiter(e$9, void 0, void 0, function () {
-                            var e$10, t$8;
-                            return __generator(this, function (a$3) {
-                                switch (a$3.label) {
-                                    case 0:
-                                        return (e$10 = this.store).activeId || !e$10?.schema?.$$id
-                                            ? [3, 2]
-                                            : [4, this.buildRenderers()];
-                                    case 1:
-                                        (a$3.sent(),
-                                            this.buildPanels(e$10.schema.$$id),
-                                            (a$3.label = 2));
-                                    case 2:
-                                        return [2];
-                                }
-                            });
+                setTimeout(function () {
+                    return __awaiter(e$9, void 0, void 0, function () {
+                        var e$10, t$8;
+                        return __generator(this, function (a$3) {
+                            switch (a$3.label) {
+                                case 0:
+                                    return (e$10 = this.store).activeId || !e$10?.schema?.$$id
+                                        ? [3, 2]
+                                        : [4, this.buildRenderers()];
+                                case 1:
+                                    (a$3.sent(),
+                                        this.buildPanels(e$10.schema.$$id),
+                                        (a$3.label = 2));
+                                case 2:
+                                    return [2];
+                            }
                         });
-                    },
-                    200,
-                );
+                    });
+                }, 200);
             }),
             (e$8.prototype.buildEventContext = function (e$9) {
                 var t$8 = typeof e$9 == `string` ? this.store.getNodeById(e$9) : e$9,
@@ -329766,12 +329546,9 @@ var EditorManager = (function () {
                                             t$8,
                                         )) &&
                                             a$3 &&
-                                            setTimeout(
-                                                function () {
-                                                    d$4.setActiveId(_$1.$$id);
-                                                },
-                                                100,
-                                            ),
+                                            setTimeout(function () {
+                                                d$4.setActiveId(_$1.$$id);
+                                            }, 100),
                                         [2]
                                     );
                             }
@@ -329834,12 +329611,9 @@ var EditorManager = (function () {
                                     n$8,
                                 )) &&
                                     !a$3 &&
-                                    setTimeout(
-                                        function () {
-                                            o$4.setActiveId(g$6.$$id);
-                                        },
-                                        100,
-                                    ));
+                                    setTimeout(function () {
+                                        o$4.setActiveId(g$6.$$id);
+                                    }, 100));
                         }
                         return [2];
                     });
@@ -329869,12 +329643,9 @@ var EditorManager = (function () {
                                 return (
                                     (o$4 = this.addChild(a$3, n$8, i$4, r$9, t$8)) &&
                                         (e$9.closeInsertPanel(),
-                                        setTimeout(
-                                            function () {
-                                                e$9.setActiveId(o$4.$$id);
-                                            },
-                                            100,
-                                        )),
+                                        setTimeout(function () {
+                                            e$9.setActiveId(o$4.$$id);
+                                        }, 100)),
                                     [2]
                                 );
                         }
@@ -329909,12 +329680,9 @@ var EditorManager = (function () {
                                 return (
                                     this.replaceChild(a$3, n$8, t$8, r$9) &&
                                         (e$9.closeInsertPanel(),
-                                        setTimeout(
-                                            function () {
-                                                i$4.rebuild();
-                                            },
-                                            4,
-                                        )),
+                                        setTimeout(function () {
+                                            i$4.rebuild();
+                                        }, 4)),
                                     [2]
                                 );
                         }
@@ -330176,13 +329944,10 @@ var EditorManager = (function () {
             (e$8.prototype.emptyRegion = function (e$9, t$8) {
                 var a$3 = this;
                 (this.store.emptyRegion(e$9, t$8),
-                    setTimeout(
-                        function () {
-                            (a$3.store.activeId && a$3.store.getNodeById(a$3.store.activeId)) ||
-                                a$3.store.setActiveId(e$9);
-                        },
-                        100,
-                    ));
+                    setTimeout(function () {
+                        (a$3.store.activeId && a$3.store.getNodeById(a$3.store.activeId)) ||
+                            a$3.store.setActiveId(e$9);
+                    }, 100));
             }),
             (e$8.prototype.addChild = function (e$9, t$8, a$3, n$8, r$9, i$4, o$4) {
                 var d$4 = this.store,
@@ -330591,8 +330356,8 @@ var EditorManager = (function () {
                                           R$4
                                               ? [
                                                     4,
-                                                    (i$4 = R$4?.info?.plugin)
-                                                        ?.buildDataSchemas?.call(
+                                                    (i$4 =
+                                                        R$4?.info?.plugin)?.buildDataSchemas?.call(
                                                         i$4,
                                                         R$4,
                                                         h$6,
@@ -330633,8 +330398,8 @@ var EditorManager = (function () {
                                           (N$4 = this.store.getNodeById(x$4, I$4))
                                               ? [
                                                     4,
-                                                    (l$7 = N$4?.info?.plugin)
-                                                        ?.buildDataSchemas?.call(
+                                                    (l$7 =
+                                                        N$4?.info?.plugin)?.buildDataSchemas?.call(
                                                         l$7,
                                                         N$4,
                                                         h$6,
@@ -331232,12 +330997,9 @@ var EditorManager = (function () {
             }),
             (t$8.prototype.refreshHandleScroll = function (e$9) {
                 var t$9 = this;
-                setTimeout(
-                    function () {
-                        t$9.HandleScroll(e$9);
-                    },
-                    0,
-                );
+                setTimeout(function () {
+                    t$9.HandleScroll(e$9);
+                }, 0);
             }),
             (t$8.prototype.getCurBreadcrumb = function () {
                 return this.bcnContentRef.current;
@@ -331879,13 +331641,10 @@ var EditorManager = (function () {
                     onFinished: function (a$3) {
                         var n$8;
                         ((n$8 = t$9.callback) == null || n$8.call(t$9, a$3, diff(t$9.value, a$3)),
-                            setTimeout(
-                                function () {
-                                    var t$10;
-                                    return e$9.overlay.current?.updatePosition();
-                                },
-                                200,
-                            ));
+                            setTimeout(function () {
+                                var t$10;
+                                return e$9.overlay.current?.updatePosition();
+                            }, 200));
                     },
                 };
             }),
@@ -332872,16 +332631,13 @@ var EditorManager = (function () {
             (t$8.prototype.componentDidMount = function () {
                 var e$9 = this.manager.store;
                 this.props.isSubEditor
-                    ? setTimeout(
-                          function () {
-                              e$9.calculateHighlightBox(
-                                  e$9.highlightNodes.map(function (e$10) {
-                                      return e$10.id;
-                                  }),
-                              );
-                          },
-                          500,
-                      )
+                    ? setTimeout(function () {
+                          e$9.calculateHighlightBox(
+                              e$9.highlightNodes.map(function (e$10) {
+                                  return e$10.id;
+                              }),
+                          );
+                      }, 500)
                     : this.manager.trigger(`init`, { data: this.manager });
             }),
             (t$8.prototype.componentDidUpdate = function (e$9) {
@@ -332924,12 +332680,9 @@ var EditorManager = (function () {
                     }),
                     (this.toDispose = []),
                     this.manager.dispose(),
-                    setTimeout(
-                        function () {
-                            return destroy(a$3.store);
-                        },
-                        4,
-                    ));
+                    setTimeout(function () {
+                        return destroy(a$3.store);
+                    }, 4));
             }),
             (t$8.prototype.handleKeyDown = function (e$9) {
                 var t$9,
@@ -334584,15 +334337,12 @@ var BasicToolbarPlugin = (function (e$8) {
             if (r$9.node && r$9.subRenderer?.plugin?.popOverBody) {
                 var i$4 = r$9.data.$$id;
                 i$4 &&
-                    setTimeout(
-                        function () {
-                            (n$8.manager.setActiveId(i$4),
-                                requestAnimationFrame(function () {
-                                    n$8.manager.openNodePopOverForm(i$4);
-                                }));
-                        },
-                        200,
-                    );
+                    setTimeout(function () {
+                        (n$8.manager.setActiveId(i$4),
+                            requestAnimationFrame(function () {
+                                n$8.manager.openNodePopOverForm(i$4);
+                            }));
+                    }, 200);
             }
         }),
         (t$8.scene = [`layout`]),
@@ -334655,16 +334405,13 @@ function buildSchema(e$8, t$8, a$3, n$8) {
         });
     });
 }
-var codeErrorWarning = (0, import_debounce$5.default)(
-        function (e$8) {
-            toast.warning(`代码有误，错误的地方是
+var codeErrorWarning = (0, import_debounce$5.default)(function (e$8) {
+        toast.warning(`代码有误，错误的地方是
  ${
      e$8.toString().split(`
 `)[1]
  }`);
-        },
-        3e3,
-    ),
+    }, 3e3),
     AMisCodeEditor = (function (e$8) {
         function t$8() {
             var t$9 = (e$8 !== null && e$8.apply(this, arguments)) || this;
@@ -334927,22 +334674,19 @@ var codeErrorWarning = (0, import_debounce$5.default)(
             __extends(t$8, e$8),
             (t$8.prototype.handleCodePaste = function (e$9) {
                 var t$9 = this;
-                setTimeout(
-                    function () {
-                        var a$3, n$8, r$9, i$4;
-                        (t$9.props.manager.patchSchema(!0),
-                            e$9?.languageId === `json` &&
-                                e$9.range?.startColumn === 1 &&
-                                e$9.range?.startLineNumber === 1 &&
-                                e$9.range?.endColumn === 2 &&
-                                e$9.range?.endLineNumber > 1 &&
-                                t$9.props.manager.reGenerateNodeDuplicateID([
-                                    i18n(`b1b98c19058af70d8bd499e1899e93bc`),
-                                    i18n(`027446c2f9070b0f5b16a18208bf5fc7`),
-                                ]));
-                    },
-                    500,
-                );
+                setTimeout(function () {
+                    var a$3, n$8, r$9, i$4;
+                    (t$9.props.manager.patchSchema(!0),
+                        e$9?.languageId === `json` &&
+                            e$9.range?.startColumn === 1 &&
+                            e$9.range?.startLineNumber === 1 &&
+                            e$9.range?.endColumn === 2 &&
+                            e$9.range?.endLineNumber > 1 &&
+                            t$9.props.manager.reGenerateNodeDuplicateID([
+                                i18n(`b1b98c19058af70d8bd499e1899e93bc`),
+                                i18n(`027446c2f9070b0f5b16a18208bf5fc7`),
+                            ]));
+                }, 500);
             }),
             (t$8.prototype.render = function () {
                 var e$9 = this.props,
@@ -335164,100 +334908,88 @@ var DialogList = observer(function (e$8) {
             i$4 = n$8.modals.filter(function (e$9) {
                 return !e$9.disabled;
             }),
-            o$4 = import_react.useCallback(
-                function () {
-                    var e$9 = {
-                        type: `dialog`,
-                        title: i18n(`bf86dc21effb6c836c6d2d64ee4d772f`),
-                        definitions: modalsToDefinitions(n$8.modals),
-                        body: [{ type: `tpl`, tpl: i18n(`0f136747da0492424ae0f3a5f8536cd7`) }],
-                    };
-                    r$9.openSubEditor({
-                        title: i18n(`391a66bca64718f749d70ce9ecf0b6ec`),
-                        value: e$9,
-                        onDefinitionsChange: function (e$10, t$9, a$4) {
-                            return (n$8.addModal(a$4, e$10), !1);
-                        },
+            o$4 = import_react.useCallback(function () {
+                var e$9 = {
+                    type: `dialog`,
+                    title: i18n(`bf86dc21effb6c836c6d2d64ee4d772f`),
+                    definitions: modalsToDefinitions(n$8.modals),
+                    body: [{ type: `tpl`, tpl: i18n(`0f136747da0492424ae0f3a5f8536cd7`) }],
+                };
+                r$9.openSubEditor({
+                    title: i18n(`391a66bca64718f749d70ce9ecf0b6ec`),
+                    value: e$9,
+                    onDefinitionsChange: function (e$10, t$9, a$4) {
+                        return (n$8.addModal(a$4, e$10), !1);
+                    },
+                });
+            }, []),
+            d$4 = import_react.useCallback(function (e$9) {
+                var t$9 = parseInt(e$9.currentTarget.getAttribute(`data-index`), 10),
+                    a$4 = n$8.modals[t$9],
+                    i$5 = a$4.$$id;
+                r$9.openSubEditor({
+                    title: i18n(`391a66bca64718f749d70ce9ecf0b6ec`),
+                    value: __assign(__assign({ type: `dialog` }, a$4), {
+                        definitions: modalsToDefinitions(n$8.modals, {}, a$4),
+                    }),
+                    onDefinitionsChange: function (e$10, t$10, a$5) {
+                        return (n$8.updateModal(i$5, a$5, e$10), !1);
+                    },
+                });
+            }, []),
+            s$1 = import_react.useCallback(function (e$9) {
+                return __awaiter(t$8, void 0, void 0, function () {
+                    var t$9, a$4, r$10, i$5;
+                    return __generator(this, function (o$5) {
+                        switch (o$5.label) {
+                            case 0:
+                                return (
+                                    e$9.stopPropagation(),
+                                    e$9.preventDefault(),
+                                    (t$9 = parseInt(
+                                        e$9.currentTarget
+                                            .closest(`[data-index]`)
+                                            .getAttribute(`data-index`),
+                                        10,
+                                    )),
+                                    (a$4 = n$8.modals[t$9]),
+                                    (r$10 = n$8.countModalActionRefs(a$4.$$id)),
+                                    [
+                                        4,
+                                        confirm(
+                                            r$10
+                                                ? `当前弹窗已关联 ${r$10} 个事件，删除后，所配置的事件动作将一起被删除。`
+                                                : ``,
+                                            `确认删除弹窗「${a$4.editorSetting?.displayName || a$4.title}」？`,
+                                        ),
+                                    ]
+                                );
+                            case 1:
+                                return (o$5.sent() && n$8.removeModal(a$4.$$id), [2]);
+                        }
                     });
-                },
-                [],
-            ),
-            d$4 = import_react.useCallback(
-                function (e$9) {
-                    var t$9 = parseInt(e$9.currentTarget.getAttribute(`data-index`), 10),
-                        a$4 = n$8.modals[t$9],
-                        i$5 = a$4.$$id;
-                    r$9.openSubEditor({
-                        title: i18n(`391a66bca64718f749d70ce9ecf0b6ec`),
-                        value: __assign(__assign({ type: `dialog` }, a$4), {
-                            definitions: modalsToDefinitions(n$8.modals, {}, a$4),
-                        }),
-                        onDefinitionsChange: function (e$10, t$10, a$5) {
-                            return (n$8.updateModal(i$5, a$5, e$10), !1);
-                        },
-                    });
-                },
-                [],
-            ),
-            s$1 = import_react.useCallback(
-                function (e$9) {
-                    return __awaiter(t$8, void 0, void 0, function () {
-                        var t$9, a$4, r$10, i$5;
-                        return __generator(this, function (o$5) {
-                            switch (o$5.label) {
-                                case 0:
-                                    return (
-                                        e$9.stopPropagation(),
-                                        e$9.preventDefault(),
-                                        (t$9 = parseInt(
-                                            e$9.currentTarget
-                                                .closest(`[data-index]`)
-                                                .getAttribute(`data-index`),
-                                            10,
-                                        )),
-                                        (a$4 = n$8.modals[t$9]),
-                                        (r$10 = n$8.countModalActionRefs(a$4.$$id)),
-                                        [
-                                            4,
-                                            confirm(
-                                                r$10
-                                                    ? `当前弹窗已关联 ${r$10} 个事件，删除后，所配置的事件动作将一起被删除。`
-                                                    : ``,
-                                                `确认删除弹窗「${a$4.editorSetting?.displayName || a$4.title}」？`,
-                                            ),
-                                        ]
-                                    );
-                                case 1:
-                                    return (o$5.sent() && n$8.removeModal(a$4.$$id), [2]);
-                            }
-                        });
-                    });
-                },
-                [],
-            ),
-            l$7 = import_react.useCallback(
-                function (e$9) {
-                    var t$9, a$4;
-                    (e$9.stopPropagation(), e$9.preventDefault());
-                    var r$10 = parseInt(
-                            e$9.currentTarget.closest(`[data-index]`).getAttribute(`data-index`),
-                            10,
-                        ),
-                        i$5 = (0, import_cloneDeep$17.default)(n$8.modals[r$10]);
-                    ((i$5 = reGenerateID(i$5)),
-                        n$8.addModal(
-                            __assign(__assign({}, i$5), {
-                                title: `${i$5.title} - 复制`,
-                                editorSetting: __assign(__assign({}, i$5.editorSetting), {
-                                    displayName: i$5.editorSetting?.displayName
-                                        ? `${i$5.editorSetting?.displayName} - 复制`
-                                        : ``,
-                                }),
+                });
+            }, []),
+            l$7 = import_react.useCallback(function (e$9) {
+                var t$9, a$4;
+                (e$9.stopPropagation(), e$9.preventDefault());
+                var r$10 = parseInt(
+                        e$9.currentTarget.closest(`[data-index]`).getAttribute(`data-index`),
+                        10,
+                    ),
+                    i$5 = (0, import_cloneDeep$17.default)(n$8.modals[r$10]);
+                ((i$5 = reGenerateID(i$5)),
+                    n$8.addModal(
+                        __assign(__assign({}, i$5), {
+                            title: `${i$5.title} - 复制`,
+                            editorSetting: __assign(__assign({}, i$5.editorSetting), {
+                                displayName: i$5.editorSetting?.displayName
+                                    ? `${i$5.editorSetting?.displayName} - 复制`
+                                    : ``,
                             }),
-                        ));
-                },
-                [],
-            );
+                        }),
+                    ));
+            }, []);
         return import_react.createElement(
             `div`,
             { className: a$3(`ae-DialogList-wrap`, `hoverShowScrollBar`) },
@@ -335351,15 +335083,12 @@ var DialogList = observer(function (e$8) {
                 a$3 &&
                     (e$9.preventDefault(),
                     clearTimeout(this.timer),
-                    (this.timer = setTimeout(
-                        function () {
-                            var n$8 = t$9.props.manager,
-                                r$9 = a$3.getAttribute(`data-node-id`),
-                                i$4 = a$3.getAttribute(`data-node-region`);
-                            r$9 && i$4 && n$8.dnd.switchToRegion(e$9.nativeEvent, r$9, i$4, !0);
-                        },
-                        100,
-                    )));
+                    (this.timer = setTimeout(function () {
+                        var n$8 = t$9.props.manager,
+                            r$9 = a$3.getAttribute(`data-node-id`),
+                            i$4 = a$3.getAttribute(`data-node-region`);
+                        r$9 && i$4 && n$8.dnd.switchToRegion(e$9.nativeEvent, r$9, i$4, !0);
+                    }, 100)));
             }),
             (t$8.prototype.handleDragOver = function (e$9) {
                 e$9.preventDefault();
@@ -336300,16 +336029,13 @@ function deepSplice(e$8, t$8, a$3, n$8) {
         n$8 && typeof n$8 == `function`
             ? s$1.splice.apply(s$1, [d$4, a$3].concat(n$8(s$1[d$4])))
             : s$1.splice.apply(s$1, [d$4, a$3, n$8].concat(r$9)),
-        l$7.reduce(
-            function (e$9, t$9) {
-                var a$4 = t$9.host,
-                    n$9 = t$9.key;
-                return (
-                    ((a$4 = Array.isArray(a$4) ? a$4.concat() : __assign({}, a$4))[n$9] = e$9), a$4
-                );
-            },
-            s$1,
-        )
+        l$7.reduce(function (e$9, t$9) {
+            var a$4 = t$9.host,
+                n$9 = t$9.key;
+            return (
+                ((a$4 = Array.isArray(a$4) ? a$4.concat() : __assign({}, a$4))[n$9] = e$9), a$4
+            );
+        }, s$1)
     );
 }
 function getPathByFunction(e$8, t$8) {
@@ -359666,10 +359392,10 @@ var import_cloneDeep$14 = __toESM(require_cloneDeep()),
                                             _c$3,
                                             _d$3,
                                             _e$3,
-                                            headerHasColumnsToggle = form?.data
-                                                ?.headerToolbar?.some(function (item) {
-                                                return item.type === `columns-toggler`;
-                                            }),
+                                            headerHasColumnsToggle =
+                                                form?.data?.headerToolbar?.some(function (item) {
+                                                    return item.type === `columns-toggler`;
+                                                }),
                                             headerToolbar = (0, import_cloneDeep$14.default)(
                                                 form?.data?.headerToolbar,
                                             ),
@@ -360647,9 +360373,11 @@ var import_cloneDeep$14 = __toESM(require_cloneDeep()),
                                         : [])
                                   : Array.isArray(value.columns) &&
                                     (actions =
-                                        value.columns.find(function (value$1) {
-                                            return value$1?.type === `operation`;
-                                        })?.buttons?.concat() || []);
+                                        value.columns
+                                            .find(function (value$1) {
+                                                return value$1?.type === `operation`;
+                                            })
+                                            ?.buttons?.concat() || []);
                             var operBtns = [`update`, `view`, `delete`];
                             return (
                                 actions.forEach(function (btn) {
@@ -363504,12 +363232,12 @@ var require_flattenDeep = __commonJSMin((exports, module) => {
                                                         (Object.keys(data).forEach(
                                                             function (key$1) {
                                                                 var _a$14, _b$6;
-                                                                (key$1?.toLowerCase()?.endsWith(
-                                                                    `fields`,
-                                                                ) ||
-                                                                    key$1?.toLowerCase()?.endsWith(
-                                                                        `api`,
-                                                                    )) &&
+                                                                (key$1
+                                                                    ?.toLowerCase()
+                                                                    ?.endsWith(`fields`) ||
+                                                                    key$1
+                                                                        ?.toLowerCase()
+                                                                        ?.endsWith(`api`)) &&
                                                                     form.deleteValueByName(key$1);
                                                             },
                                                         ),
@@ -363900,12 +363628,12 @@ var require_flattenDeep = __commonJSMin((exports, module) => {
                                                         (Object.keys(data).forEach(
                                                             function (key$1) {
                                                                 var _a$15, _b$6;
-                                                                (key$1?.toLowerCase()?.endsWith(
-                                                                    `fields`,
-                                                                ) ||
-                                                                    key$1?.toLowerCase()?.endsWith(
-                                                                        `api`,
-                                                                    )) &&
+                                                                (key$1
+                                                                    ?.toLowerCase()
+                                                                    ?.endsWith(`fields`) ||
+                                                                    key$1
+                                                                        ?.toLowerCase()
+                                                                        ?.endsWith(`api`)) &&
                                                                     form.deleteValueByName(key$1);
                                                             },
                                                         ),
@@ -367293,9 +367021,11 @@ var import_deep_diff$1 = __toESM(require_deep_diff()),
                                                                             ).forEach(
                                                                                 function (key$1) {
                                                                                     var _a$14;
-                                                                                    (key$1?.toLowerCase()?.endsWith(
-                                                                                        `fields`,
-                                                                                    ) ||
+                                                                                    (key$1
+                                                                                        ?.toLowerCase()
+                                                                                        ?.endsWith(
+                                                                                            `fields`,
+                                                                                        ) ||
                                                                                         key$1
                                                                                             ?.toLowerCase()
                                                                                             .endsWith(
@@ -434416,8 +434146,8 @@ var import_omit = __toESM(require_omit()),
                             switch (_d$3.label) {
                                 case 0:
                                     if (
-                                        ((form = (_a$15 = formRef?.current)
-                                            ?.getWrappedInstance?.call(_a$15)),
+                                        ((form = (_a$15 =
+                                            formRef?.current)?.getWrappedInstance?.call(_a$15)),
                                         setLoading(!0),
                                         !form)
                                     )

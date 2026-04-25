@@ -106,7 +106,7 @@ class AiController
                 ]);
 
             $image->load(['poem', 'poem.tags', 'poem.user', 'file']);
-            $image->loadCount('likes');
+            $image->loadCount(['likes', 'comments']);
 
             return $this->renderImageGenerate([
                 'generated' => new PoemImageResource($image),
@@ -251,7 +251,7 @@ class AiController
             ]);
 
         $image->load(['poem', 'poem.tags', 'poem.user', 'file']);
-        $image->loadCount('likes');
+        $image->loadCount(['likes', 'comments']);
 
         return $this->renderImageToPoem([
             'generated' => new PoemImageResource($image),

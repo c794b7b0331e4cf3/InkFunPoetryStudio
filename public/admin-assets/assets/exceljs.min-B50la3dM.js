@@ -15518,16 +15518,13 @@ var n = t((t, n) => {
                         function s(e, t) {
                             if (Array.isArray(e))
                                 ((this.length = 0),
-                                    (this.value = e.map(
-                                        function (e) {
-                                            return (
-                                                s.isEncoderBuffer(e) || (e = new s(e, t)),
-                                                (this.length += e.length),
-                                                e
-                                            );
-                                        },
-                                        this,
-                                    )));
+                                    (this.value = e.map(function (e) {
+                                        return (
+                                            s.isEncoderBuffer(e) || (e = new s(e, t)),
+                                            (this.length += e.length),
+                                            e
+                                        );
+                                    }, this)));
                             else if (typeof e == `number`) {
                                 if (!(0 <= e && e <= 255))
                                     return t.error(`non-byte EncoderBuffer value`);
@@ -15712,26 +15709,20 @@ var n = t((t, n) => {
                         }),
                             (l.prototype._wrap = function () {
                                 let e = this._baseState;
-                                c.forEach(
-                                    function (t) {
-                                        this[t] = function () {
-                                            let n = new this.constructor(this);
-                                            return (e.children.push(n), n[t].apply(n, arguments));
-                                        };
-                                    },
-                                    this,
-                                );
+                                c.forEach(function (t) {
+                                    this[t] = function () {
+                                        let n = new this.constructor(this);
+                                        return (e.children.push(n), n[t].apply(n, arguments));
+                                    };
+                                }, this);
                             }),
                             (l.prototype._init = function (e) {
                                 let t = this._baseState;
                                 (o(t.parent === null),
                                     e.call(this),
-                                    (t.children = t.children.filter(
-                                        function (e) {
-                                            return e._baseState.parent === this;
-                                        },
-                                        this,
-                                    )),
+                                    (t.children = t.children.filter(function (e) {
+                                        return e._baseState.parent === this;
+                                    }, this)),
                                     o.equal(
                                         t.children.length,
                                         1,
@@ -15740,27 +15731,18 @@ var n = t((t, n) => {
                             }),
                             (l.prototype._useArgs = function (e) {
                                 let t = this._baseState,
-                                    n = e.filter(
-                                        function (e) {
-                                            return e instanceof this.constructor;
-                                        },
-                                        this,
-                                    );
-                                ((e = e.filter(
-                                    function (e) {
-                                        return !(e instanceof this.constructor);
-                                    },
-                                    this,
-                                )),
+                                    n = e.filter(function (e) {
+                                        return e instanceof this.constructor;
+                                    }, this);
+                                ((e = e.filter(function (e) {
+                                    return !(e instanceof this.constructor);
+                                }, this)),
                                     n.length !== 0 &&
                                         (o(t.children === null),
                                         (t.children = n),
-                                        n.forEach(
-                                            function (e) {
-                                                e._baseState.parent = this;
-                                            },
-                                            this,
-                                        )),
+                                        n.forEach(function (e) {
+                                            e._baseState.parent = this;
+                                        }, this)),
                                     e.length !== 0 &&
                                         (o(t.args === null),
                                         (t.args = e),
@@ -16006,21 +15988,18 @@ var n = t((t, n) => {
                                     r = null,
                                     i = !1;
                                 return (
-                                    Object.keys(n.choice).some(
-                                        function (a) {
-                                            let o = e.save(),
-                                                s = n.choice[a];
-                                            try {
-                                                let n = s._decode(e, t);
-                                                if (e.isError(n)) return !1;
-                                                ((r = { type: a, value: n }), (i = !0));
-                                            } catch {
-                                                return (e.restore(o), !1);
-                                            }
-                                            return !0;
-                                        },
-                                        this,
-                                    ),
+                                    Object.keys(n.choice).some(function (a) {
+                                        let o = e.save(),
+                                            s = n.choice[a];
+                                        try {
+                                            let n = s._decode(e, t);
+                                            if (e.isError(n)) return !1;
+                                            ((r = { type: a, value: n }), (i = !0));
+                                        } catch {
+                                            return (e.restore(o), !1);
+                                        }
+                                        return !0;
+                                    }, this),
                                     i ? r : e.error(`Choice not matched`)
                                 );
                             }),
@@ -16050,22 +16029,19 @@ var n = t((t, n) => {
                                     ((o = this._getUse(i.contains, n)._encode(e, t)), (s = !0));
                                 else if (i.children)
                                     ((o = i.children
-                                        .map(
-                                            function (n) {
-                                                if (n._baseState.tag === `null_`)
-                                                    return n._encode(null, t, e);
-                                                if (n._baseState.key === null)
-                                                    return t.error(`Child should have a key`);
-                                                let r = t.enterKey(n._baseState.key);
-                                                if (typeof e != `object`)
-                                                    return t.error(
-                                                        `Child expected, but input is not object`,
-                                                    );
-                                                let i = n._encode(e[n._baseState.key], t, e);
-                                                return (t.leaveKey(r), i);
-                                            },
-                                            this,
-                                        )
+                                        .map(function (n) {
+                                            if (n._baseState.tag === `null_`)
+                                                return n._encode(null, t, e);
+                                            if (n._baseState.key === null)
+                                                return t.error(`Child should have a key`);
+                                            let r = t.enterKey(n._baseState.key);
+                                            if (typeof e != `object`)
+                                                return t.error(
+                                                    `Child expected, but input is not object`,
+                                                );
+                                            let i = n._encode(e[n._baseState.key], t, e);
+                                            return (t.leaveKey(r), i);
+                                        }, this)
                                         .filter(function (e) {
                                             return e;
                                         })),
@@ -16078,13 +16054,10 @@ var n = t((t, n) => {
                                     let n = this.clone();
                                     ((n._baseState.implicit = null),
                                         (o = this._createEncoderBuffer(
-                                            e.map(
-                                                function (n) {
-                                                    let r = this._baseState;
-                                                    return this._getUse(r.args[0], e)._encode(n, t);
-                                                },
-                                                n,
-                                            ),
+                                            e.map(function (n) {
+                                                let r = this._baseState;
+                                                return this._getUse(r.args[0], e)._encode(n, t);
+                                            }, n),
                                         )));
                                 } else
                                     i.use === null
@@ -26576,12 +26549,9 @@ var n = t((t, n) => {
                                     e
                                 );
                             });
-                        Function.prototype.toString = b(
-                            function () {
-                                return (a(this) && f(this).source) || l(this);
-                            },
-                            `toString`,
-                        );
+                        Function.prototype.toString = b(function () {
+                            return (a(this) && f(this).source) || l(this);
+                        }, `toString`);
                     },
                     {
                         "../internals/descriptors": 247,
@@ -28248,13 +28218,9 @@ var n = t((t, n) => {
                                                 var a = s++,
                                                     c = !1;
                                                 (u++,
-                                                    i(n, t, e).then(
-                                                        function (e) {
-                                                            c ||
-                                                                ((c = !0), (o[a] = e), --u || r(o));
-                                                        },
-                                                        l,
-                                                    ));
+                                                    i(n, t, e).then(function (e) {
+                                                        c || ((c = !0), (o[a] = e), --u || r(o));
+                                                    }, l));
                                             }),
                                                 --u || r(o));
                                         });
@@ -49912,14 +49878,11 @@ use chrome, FireFox or Internet Explorer 11`);
                                                         r = new Promise(
                                                             (function (e, t) {
                                                                 return function (n, r) {
-                                                                    e.then(
-                                                                        function () {
-                                                                            t[l]
-                                                                                ? n(p(void 0, !0))
-                                                                                : t[d](n, r);
-                                                                        },
-                                                                        r,
-                                                                    );
+                                                                    e.then(function () {
+                                                                        t[l]
+                                                                            ? n(p(void 0, !0))
+                                                                            : t[d](n, r);
+                                                                    }, r);
                                                                 };
                                                             })(i, this),
                                                         );
@@ -54983,12 +54946,9 @@ use chrome, FireFox or Internet Explorer 11`);
                                             clearTimeout(e._idleTimeoutId);
                                             var t = e._idleTimeout;
                                             t >= 0 &&
-                                                (e._idleTimeoutId = setTimeout(
-                                                    function () {
-                                                        e._onTimeout && e._onTimeout();
-                                                    },
-                                                    t,
-                                                ));
+                                                (e._idleTimeoutId = setTimeout(function () {
+                                                    e._onTimeout && e._onTimeout();
+                                                }, t));
                                         }),
                                     (n.setImmediate =
                                         typeof t == `function`
@@ -55303,21 +55263,16 @@ use chrome, FireFox or Internet Explorer 11`);
                                                         })),
                                                   e.seen.pop(),
                                                   (function (e, t, n) {
-                                                      return e.reduce(
-                                                          function (e, t) {
-                                                              return (
-                                                                  t.indexOf(`
+                                                      return e.reduce(function (e, t) {
+                                                          return (
+                                                              t.indexOf(`
 `),
-                                                                  e +
-                                                                      t.replace(
-                                                                          /\u001b\[\d\d?m/g,
-                                                                          ``,
-                                                                      ).length +
-                                                                      1
-                                                              );
-                                                          },
-                                                          0,
-                                                      ) > 60
+                                                              e +
+                                                                  t.replace(/\u001b\[\d\d?m/g, ``)
+                                                                      .length +
+                                                                  1
+                                                          );
+                                                      }, 0) > 60
                                                           ? n[0] +
                                                                 (t === ``
                                                                     ? ``

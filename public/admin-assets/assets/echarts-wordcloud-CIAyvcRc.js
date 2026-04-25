@@ -52739,16 +52739,14 @@ echarts.use([` +
                           ? `lineY`
                           : `rect`;
                 });
-                n._brushController
-                    .setPanels(o)
-                    .enableBrush(
-                        a && o.length
-                            ? {
-                                  brushType: `auto`,
-                                  brushStyle: e.getModel(`brushStyle`).getItemStyle(),
-                              }
-                            : !1,
-                    );
+                n._brushController.setPanels(o).enableBrush(
+                    a && o.length
+                        ? {
+                              brushType: `auto`,
+                              brushStyle: e.getModel(`brushStyle`).getItemStyle(),
+                          }
+                        : !1,
+                );
             }
             Lh(`dataZoom`, function (e) {
                 var t = e.getComponent(`toolbox`, 0),

@@ -22,7 +22,7 @@ class ExploreController
                         ->latest()
                         ->with([
                             'images' => function (HasMany $query) {
-                                $query->withCount(['likes']);
+                                $query->withCount(['likes', 'comments']);
                             },
                             'images.poem.user',
                             'images.poem',
@@ -37,7 +37,7 @@ class ExploreController
                     PoemImage::query()
                         ->latest()
                         ->with(['poem', 'poem.user', 'poem.tags', 'file'])
-                        ->withCount(['likes'])
+                        ->withCount(['likes', 'comments'])
                         ->paginate(3, pageName: 'poem_images_page')
                 );
             }),

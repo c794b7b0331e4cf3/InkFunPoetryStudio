@@ -19579,14 +19579,12 @@ var gv = function (e, t, n, r) {
                                         !(e.completion.insertTextRules & 4) &&
                                         o - a === e.completion.insertText.length &&
                                         (s =
-                                            this.editor
-                                                .getModel()
-                                                .getValueInRange({
-                                                    startLineNumber: t.lineNumber,
-                                                    startColumn: a,
-                                                    endLineNumber: t.lineNumber,
-                                                    endColumn: o,
-                                                }) !== e.completion.insertText),
+                                            this.editor.getModel().getValueInRange({
+                                                startLineNumber: t.lineNumber,
+                                                startColumn: a,
+                                                endLineNumber: t.lineNumber,
+                                                endColumn: o,
+                                            }) !== e.completion.insertText),
                                         n.set(s),
                                         r.set(!P.equals(e.editInsertEnd, e.editReplaceEnd)),
                                         i.set(
@@ -19846,14 +19844,12 @@ var gv = function (e, t, n, r) {
                         n = e.editStart.column,
                         r = t.column;
                     return r - n === e.completion.insertText.length
-                        ? this.editor
-                              .getModel()
-                              .getValueInRange({
-                                  startLineNumber: t.lineNumber,
-                                  startColumn: n,
-                                  endLineNumber: t.lineNumber,
-                                  endColumn: r,
-                              }) !== e.completion.insertText
+                        ? this.editor.getModel().getValueInRange({
+                              startLineNumber: t.lineNumber,
+                              startColumn: n,
+                              endLineNumber: t.lineNumber,
+                              endColumn: r,
+                          }) !== e.completion.insertText
                         : !0;
                 };
             (ui.once(this.model.onDidTrigger)((e) => {
@@ -31989,18 +31985,16 @@ var Nw = {
         }
         getLinkOccurrence(e) {
             if (!this.editor.hasModel() || !e) return null;
-            let t = this.editor
-                .getModel()
-                .getDecorationsInRange(
-                    {
-                        startLineNumber: e.lineNumber,
-                        startColumn: e.column,
-                        endLineNumber: e.lineNumber,
-                        endColumn: e.column,
-                    },
-                    0,
-                    !0,
-                );
+            let t = this.editor.getModel().getDecorationsInRange(
+                {
+                    startLineNumber: e.lineNumber,
+                    startColumn: e.column,
+                    endLineNumber: e.lineNumber,
+                    endColumn: e.column,
+                },
+                0,
+                !0,
+            );
             for (let e of t) {
                 let t = this.currentOccurrences[e.id];
                 if (t) return t;
@@ -34022,22 +34016,20 @@ var PT = ft.bindToContribution(MT.get);
             return n;
         });
     }),
-    ra
-        .as(qa.Configuration)
-        .registerConfiguration({
-            id: `editor`,
-            properties: {
-                "editor.rename.enablePreview": {
-                    scope: 5,
-                    description: z(
-                        `enablePreview`,
-                        `Enable/disable the ability to preview changes before renaming`,
-                    ),
-                    default: !0,
-                    type: `boolean`,
-                },
+    ra.as(qa.Configuration).registerConfiguration({
+        id: `editor`,
+        properties: {
+            "editor.rename.enablePreview": {
+                scope: 5,
+                description: z(
+                    `enablePreview`,
+                    `Enable/disable the ability to preview changes before renaming`,
+                ),
+                default: !0,
+                type: `boolean`,
             },
-        }));
+        },
+    }));
 var FT = class {
         provideSelectionRanges(e, t) {
             let n = [];
@@ -36254,13 +36246,11 @@ var yD = function (e, t, n, r) {
     };
 ((xD.PREFIX = `?`),
     (xD = yD([bD(0, ci)], xD)),
-    ra
-        .as(As.Quickaccess)
-        .registerQuickAccessProvider({
-            ctor: xD,
-            prefix: ``,
-            helpEntries: [{ description: $t.helpQuickAccessActionLabel, needsEditor: !0 }],
-        }));
+    ra.as(As.Quickaccess).registerQuickAccessProvider({
+        ctor: xD,
+        prefix: ``,
+        helpEntries: [{ description: $t.helpQuickAccessActionLabel, needsEditor: !0 }],
+    }));
 var SD = class {
         constructor(e) {
             ((this.options = e), (this.rangeHighlightDecorationId = void 0));
@@ -36478,13 +36468,11 @@ var wD = function (e, t, n, r) {
         }
     };
 ((ED = wD([TD(0, po)], ED)),
-    ra
-        .as(As.Quickaccess)
-        .registerQuickAccessProvider({
-            ctor: ED,
-            prefix: ED.PREFIX,
-            helpEntries: [{ description: Wn.gotoLineActionLabel, needsEditor: !0 }],
-        }),
+    ra.as(As.Quickaccess).registerQuickAccessProvider({
+        ctor: ED,
+        prefix: ED.PREFIX,
+        helpEntries: [{ description: Wn.gotoLineActionLabel, needsEditor: !0 }],
+    }),
     o(
         class extends V {
             constructor() {
@@ -37467,13 +37455,11 @@ var aO = class extends rO {
         }
     };
 ((lO = oO([sO(0, H), sO(1, po), sO(2, Oo), sO(3, Hs), sO(4, mo), sO(5, st)], lO)),
-    ra
-        .as(As.Quickaccess)
-        .registerQuickAccessProvider({
-            ctor: lO,
-            prefix: lO.PREFIX,
-            helpEntries: [{ description: ye.quickCommandHelp, needsEditor: !0 }],
-        }),
+    ra.as(As.Quickaccess).registerQuickAccessProvider({
+        ctor: lO,
+        prefix: lO.PREFIX,
+        helpEntries: [{ description: ye.quickCommandHelp, needsEditor: !0 }],
+    }),
     o(
         class extends V {
             constructor() {

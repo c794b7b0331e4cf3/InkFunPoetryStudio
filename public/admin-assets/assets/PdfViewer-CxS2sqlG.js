@@ -9468,14 +9468,12 @@ var _r = class e {
             let e = `GetMetadata`,
                 t = this.#e.get(e);
             if (t) return t;
-            let n = this.messageHandler
-                .sendWithPromise(e, null)
-                .then((e) => ({
-                    info: e[0],
-                    metadata: e[1] ? new fn(e[1]) : null,
-                    contentDispositionFilename: this._fullReader?.filename ?? null,
-                    contentLength: this._fullReader?.contentLength ?? null,
-                }));
+            let n = this.messageHandler.sendWithPromise(e, null).then((e) => ({
+                info: e[0],
+                metadata: e[1] ? new fn(e[1]) : null,
+                contentDispositionFilename: this._fullReader?.filename ?? null,
+                contentLength: this._fullReader?.contentLength ?? null,
+            }));
             return (this.#e.set(e, n), n);
         }
         getMarkInfo() {

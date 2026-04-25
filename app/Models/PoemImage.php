@@ -29,4 +29,9 @@ class PoemImage extends Model
     {
         return $this->hasMany(UserPoemImageLikeRecord::class);
     }
+
+    public function comments(): HasMany
+    {
+        return $this->hasMany(PoemImageComment::class);
+    }
 }

@@ -14,7 +14,7 @@ class HomeController
             'poem_images' => PoemImageResource::collection(
                 PoemImage::query()
                     ->with(['poem', 'poem.tags', 'poem.user', 'file'])
-                    ->withCount(['likes'])
+                    ->withCount(['likes', 'comments'])
                     ->inRandomOrder()
                     ->limit(10)
                     ->get()

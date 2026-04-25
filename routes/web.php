@@ -99,6 +99,10 @@ Route::group([
     ], function () {
         Route::post('/{item}/like', [PoemImageController::class, 'like'])->name('like');
         Route::post('/{item}/delete', [PoemImageController::class, 'delete'])->name('delete');
+
+        Route::get('/{item}/comments', [PoemImageController::class, 'comments'])->name('comments');
+        Route::post('/{item}/comments', [PoemImageController::class, 'sendComment'])->name('comments.send');
+        Route::post('/comments/{item}/delete', [PoemImageController::class, 'deleteComment'])->name('comments.delete');
     });
 });
 

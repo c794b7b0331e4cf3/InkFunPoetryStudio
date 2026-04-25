@@ -11945,12 +11945,9 @@ originalDts: ${O} ms, curRefDts: ${M} ms, dtsCorrection: ${Math.round(s)} ms, ge
                     return a;
                 }
                 function o(e) {
-                    return Object.keys(e).reduce(
-                        function (t, n) {
-                            return t || e[n].length > 0;
-                        },
-                        !1,
-                    );
+                    return Object.keys(e).reduce(function (t, n) {
+                        return t || e[n].length > 0;
+                    }, !1);
                 }
                 e.exports = function (e, t) {
                     t ||= {};
@@ -12289,32 +12286,29 @@ originalDts: ${O} ms, curRefDts: ${M} ms, dtsCorrection: ${Math.round(s)} ms, ge
                                   ? O(t, n)
                                   : e(r)
                                     ? (function (e, t, n) {
-                                          s(
-                                              function (e) {
-                                                  var r = !1,
-                                                      i = (function (e, t, n, r) {
-                                                          try {
-                                                              e.call(t, n, r);
-                                                          } catch (e) {
-                                                              return e;
-                                                          }
-                                                      })(
-                                                          n,
-                                                          t,
-                                                          function (n) {
-                                                              r ||
-                                                                  ((r = !0),
-                                                                  t === n ? O(e, n) : E(e, n));
-                                                          },
-                                                          function (t) {
-                                                              r || ((r = !0), k(e, t));
-                                                          },
-                                                          e._label,
-                                                      );
-                                                  !r && i && ((r = !0), k(e, i));
-                                              },
-                                              e,
-                                          );
+                                          s(function (e) {
+                                              var r = !1,
+                                                  i = (function (e, t, n, r) {
+                                                      try {
+                                                          e.call(t, n, r);
+                                                      } catch (e) {
+                                                          return e;
+                                                      }
+                                                  })(
+                                                      n,
+                                                      t,
+                                                      function (n) {
+                                                          r ||
+                                                              ((r = !0),
+                                                              t === n ? O(e, n) : E(e, n));
+                                                      },
+                                                      function (t) {
+                                                          r || ((r = !0), k(e, t));
+                                                      },
+                                                      e._label,
+                                                  );
+                                              !r && i && ((r = !0), k(e, i));
+                                          }, e);
                                       })(t, n, r)
                                     : O(t, n);
                         }

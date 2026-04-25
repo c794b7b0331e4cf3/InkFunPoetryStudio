@@ -105,9 +105,9 @@ var q = e(R()),
                                                   {
                                                       type: n.type || `text`,
                                                       name: n.name || i,
-                                                      testid: s?.getChild(
-                                                          n.name || i,
-                                                      )?.getTestIdValue(),
+                                                      testid: s
+                                                          ?.getChild(n.name || i)
+                                                          ?.getTestIdValue(),
                                                       placeholder: a,
                                                   },
                                                   n,

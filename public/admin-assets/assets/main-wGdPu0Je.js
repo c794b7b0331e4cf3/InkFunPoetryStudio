@@ -656,79 +656,76 @@ var n = t((t, n) => {
                     v = function (e, t) {
                         var n = (0, o.default)(t);
                         for (var a in e) n.indexOf(a) === -1 && n.push(a);
-                        return n.reduce(
-                            function (n, a) {
-                                return (
-                                    (n[a] = (function (e, t) {
-                                        if (e === void 0) return t;
-                                        if (t === void 0) return e;
-                                        var n = e === void 0 ? `undefined` : (0, r.default)(e),
-                                            a = t === void 0 ? `undefined` : (0, r.default)(t);
-                                        switch (n) {
-                                            case `string`:
-                                                switch (a) {
-                                                    case `string`:
-                                                        return [t, e].filter(Boolean).join(` `);
-                                                    case `object`:
-                                                        return _({ className: e, style: t });
-                                                    case `function`:
-                                                        return function (n) {
-                                                            var r = [...arguments].slice(1);
-                                                            return _({ className: e })(
-                                                                t.apply(void 0, [n].concat(r)),
-                                                            );
-                                                        };
-                                                }
-                                            case `object`:
-                                                switch (a) {
-                                                    case `string`:
-                                                        return _({ className: t, style: e });
-                                                    case `object`:
-                                                        return (0, i.default)({}, t, e);
-                                                    case `function`:
-                                                        return function (n) {
-                                                            var r = [...arguments].slice(1);
-                                                            return _({ style: e })(
-                                                                t.apply(void 0, [n].concat(r)),
-                                                            );
-                                                        };
-                                                }
-                                            case `function`:
-                                                switch (a) {
-                                                    case `string`:
-                                                        return function (n) {
-                                                            var r = [...arguments].slice(1);
-                                                            return e.apply(
-                                                                void 0,
-                                                                [_(n)({ className: t })].concat(r),
-                                                            );
-                                                        };
-                                                    case `object`:
-                                                        return function (n) {
-                                                            var r = [...arguments].slice(1);
-                                                            return e.apply(
-                                                                void 0,
-                                                                [_(n)({ style: t })].concat(r),
-                                                            );
-                                                        };
-                                                    case `function`:
-                                                        return function (n) {
-                                                            var r = [...arguments].slice(1);
-                                                            return e.apply(
-                                                                void 0,
-                                                                [
-                                                                    t.apply(void 0, [n].concat(r)),
-                                                                ].concat(r),
-                                                            );
-                                                        };
-                                                }
-                                        }
-                                    })(e[a], t[a])),
-                                    n
-                                );
-                            },
-                            {},
-                        );
+                        return n.reduce(function (n, a) {
+                            return (
+                                (n[a] = (function (e, t) {
+                                    if (e === void 0) return t;
+                                    if (t === void 0) return e;
+                                    var n = e === void 0 ? `undefined` : (0, r.default)(e),
+                                        a = t === void 0 ? `undefined` : (0, r.default)(t);
+                                    switch (n) {
+                                        case `string`:
+                                            switch (a) {
+                                                case `string`:
+                                                    return [t, e].filter(Boolean).join(` `);
+                                                case `object`:
+                                                    return _({ className: e, style: t });
+                                                case `function`:
+                                                    return function (n) {
+                                                        var r = [...arguments].slice(1);
+                                                        return _({ className: e })(
+                                                            t.apply(void 0, [n].concat(r)),
+                                                        );
+                                                    };
+                                            }
+                                        case `object`:
+                                            switch (a) {
+                                                case `string`:
+                                                    return _({ className: t, style: e });
+                                                case `object`:
+                                                    return (0, i.default)({}, t, e);
+                                                case `function`:
+                                                    return function (n) {
+                                                        var r = [...arguments].slice(1);
+                                                        return _({ style: e })(
+                                                            t.apply(void 0, [n].concat(r)),
+                                                        );
+                                                    };
+                                            }
+                                        case `function`:
+                                            switch (a) {
+                                                case `string`:
+                                                    return function (n) {
+                                                        var r = [...arguments].slice(1);
+                                                        return e.apply(
+                                                            void 0,
+                                                            [_(n)({ className: t })].concat(r),
+                                                        );
+                                                    };
+                                                case `object`:
+                                                    return function (n) {
+                                                        var r = [...arguments].slice(1);
+                                                        return e.apply(
+                                                            void 0,
+                                                            [_(n)({ style: t })].concat(r),
+                                                        );
+                                                    };
+                                                case `function`:
+                                                    return function (n) {
+                                                        var r = [...arguments].slice(1);
+                                                        return e.apply(
+                                                            void 0,
+                                                            [t.apply(void 0, [n].concat(r))].concat(
+                                                                r,
+                                                            ),
+                                                        );
+                                                    };
+                                            }
+                                    }
+                                })(e[a], t[a])),
+                                n
+                            );
+                        }, {});
                     },
                     y = function (e, t) {
                         var n = [...arguments].slice(2);
@@ -767,56 +764,44 @@ var n = t((t, n) => {
                         );
                     },
                     b = (t.invertTheme = function (e) {
-                        return (0, o.default)(e).reduce(
-                            function (t, n) {
-                                return (
-                                    (t[n] = /^base/.test(n)
-                                        ? g(e[n])
-                                        : n === `scheme`
-                                          ? e[n] + `:inverted`
-                                          : e[n]),
-                                    t
-                                );
-                            },
-                            {},
-                        );
+                        return (0, o.default)(e).reduce(function (t, n) {
+                            return (
+                                (t[n] = /^base/.test(n)
+                                    ? g(e[n])
+                                    : n === `scheme`
+                                      ? e[n] + `:inverted`
+                                      : e[n]),
+                                t
+                            );
+                        }, {});
                     }),
                     x =
-                        ((t.createStyling = (0, s.default)(
-                            function (e) {
-                                var t = [...arguments].slice(3),
-                                    n =
-                                        arguments.length > 1 && arguments[1] !== void 0
-                                            ? arguments[1]
-                                            : {},
-                                    r =
-                                        arguments.length > 2 && arguments[2] !== void 0
-                                            ? arguments[2]
-                                            : {},
-                                    a = n.defaultBase16,
-                                    c = a === void 0 ? m : a,
-                                    l = n.base16Themes,
-                                    u = x(r, l === void 0 ? null : l);
-                                u && (r = (0, i.default)({}, u, r));
-                                var d = h.reduce(
-                                        function (e, t) {
-                                            return ((e[t] = r[t] || c[t]), e);
-                                        },
-                                        {},
-                                    ),
-                                    f = v(
-                                        (0, o.default)(r).reduce(
-                                            function (e, t) {
-                                                return (h.indexOf(t) === -1 && (e[t] = r[t]), e);
-                                            },
-                                            {},
-                                        ),
-                                        e(d),
-                                    );
-                                return (0, s.default)(y, 2).apply(void 0, [f].concat(t));
-                            },
-                            3,
-                        )),
+                        ((t.createStyling = (0, s.default)(function (e) {
+                            var t = [...arguments].slice(3),
+                                n =
+                                    arguments.length > 1 && arguments[1] !== void 0
+                                        ? arguments[1]
+                                        : {},
+                                r =
+                                    arguments.length > 2 && arguments[2] !== void 0
+                                        ? arguments[2]
+                                        : {},
+                                a = n.defaultBase16,
+                                c = a === void 0 ? m : a,
+                                l = n.base16Themes,
+                                u = x(r, l === void 0 ? null : l);
+                            u && (r = (0, i.default)({}, u, r));
+                            var d = h.reduce(function (e, t) {
+                                    return ((e[t] = r[t] || c[t]), e);
+                                }, {}),
+                                f = v(
+                                    (0, o.default)(r).reduce(function (e, t) {
+                                        return (h.indexOf(t) === -1 && (e[t] = r[t]), e);
+                                    }, {}),
+                                    e(d),
+                                );
+                            return (0, s.default)(y, 2).apply(void 0, [f].concat(t));
+                        }, 3)),
                         (t.getBase16Theme = function (e, t) {
                             if ((e && e.extend && (e = e.extend), typeof e == `string`)) {
                                 var n = e.split(`:`),
@@ -5110,12 +5095,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                                                   var n,
                                                       r =
                                                           ((n = t),
-                                                          oe.reduce(
-                                                              function (e, t) {
-                                                                  return ((e[t] = n[t]), e);
-                                                              },
-                                                              {},
-                                                          )),
+                                                          oe.reduce(function (e, t) {
+                                                              return ((e[t] = n[t]), e);
+                                                          }, {})),
                                                       i = r.boxSizing;
                                                   return i === ``
                                                       ? null
@@ -5190,20 +5172,17 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                         return (
                             (0, g.useLayoutEffect)(_),
                             (u = re(_)),
-                            (0, g.useLayoutEffect)(
-                                function () {
-                                    var e = function (e) {
-                                        u.current(e);
-                                    };
-                                    return (
-                                        window.addEventListener(`resize`, e),
-                                        function () {
-                                            window.removeEventListener(`resize`, e);
-                                        }
-                                    );
-                                },
-                                [],
-                            ),
+                            (0, g.useLayoutEffect)(function () {
+                                var e = function (e) {
+                                    u.current(e);
+                                };
+                                return (
+                                    window.addEventListener(`resize`, e),
+                                    function () {
+                                        window.removeEventListener(`resize`, e);
+                                    }
+                                );
+                            }, []),
                             (0, g.createElement)(
                                 `textarea`,
                                 K({}, l, {
@@ -5748,12 +5727,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                                         e.select(),
                                         document.execCommand(`copy`),
                                         document.body.removeChild(e),
-                                        (r.copiedTimer = setTimeout(
-                                            function () {
-                                                r.setState({ copied: !1 });
-                                            },
-                                            5500,
-                                        )),
+                                        (r.copiedTimer = setTimeout(function () {
+                                            r.setState({ copied: !1 });
+                                        }, 5500)),
                                         r.setState({ copied: !0 }, function () {
                                             typeof n == `function` &&
                                                 n({ src: i, namespace: a, name: a[a.length - 1] });

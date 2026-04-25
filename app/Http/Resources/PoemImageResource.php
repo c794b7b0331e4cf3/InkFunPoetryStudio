@@ -40,6 +40,7 @@ class PoemImageResource extends JsonResource
                     ->exists();
             }),
             'likes_count' => $this->whenCounted('likes'),
+            'comments_count' => $this->whenCounted('comments'),
         ];
     }
 }

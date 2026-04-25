@@ -50153,15 +50153,13 @@ var Qj = class {
                 c,
                 l;
             if (a) {
-                let u = e
-                        .getLineTokens(t)
-                        .withInserted(
-                            a.map((e, t) => ({
-                                offset: e,
-                                text: o[t].content,
-                                tokenMetadata: _m.defaultTokenMetadata,
-                            })),
-                        ),
+                let u = e.getLineTokens(t).withInserted(
+                        a.map((e, t) => ({
+                            offset: e,
+                            text: o[t].content,
+                            tokenMetadata: _m.defaultTokenMetadata,
+                        })),
+                    ),
                     d = n > 0 ? r.breakOffsets[n - 1] : 0,
                     f = r.breakOffsets[n];
                 ((s = u.getLineContent().substring(d, f)),

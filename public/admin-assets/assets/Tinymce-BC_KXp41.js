@@ -17261,15 +17261,13 @@ Themes:
                     if (o.length === 0) return I.none();
                     let s = Promise.all(
                         me(o, (e) =>
-                            e
-                                .fetch(n.text, e.maxResults, r)
-                                .then((t) => ({
-                                    matchText: n.text,
-                                    items: t,
-                                    columns: e.columns,
-                                    onAction: e.onAction,
-                                    highlightOn: e.highlightOn,
-                                })),
+                            e.fetch(n.text, e.maxResults, r).then((t) => ({
+                                matchText: n.text,
+                                items: t,
+                                columns: e.columns,
+                                onAction: e.onAction,
+                                highlightOn: e.highlightOn,
+                            })),
                         ),
                     );
                     return I.some({ lookupData: s, context: n });
@@ -17320,14 +17318,12 @@ Themes:
                 Kz = (e) =>
                     me(
                         e.length > 10
-                            ? e
-                                  .slice(0, 10)
-                                  .concat([
-                                      {
-                                          path: [],
-                                          getErrorInfo: j(`... (only showing first ten failures)`),
-                                      },
-                                  ])
+                            ? e.slice(0, 10).concat([
+                                  {
+                                      path: [],
+                                      getErrorInfo: j(`... (only showing first ten failures)`),
+                                  },
+                              ])
                             : e,
                         (e) =>
                             `Failed path: (` +
@@ -25310,14 +25306,12 @@ Input object: ` +
                 Li = (e) =>
                     F(
                         e.length > 10
-                            ? e
-                                  .slice(0, 10)
-                                  .concat([
-                                      {
-                                          path: [],
-                                          getErrorInfo: C(`... (only showing first ten failures)`),
-                                      },
-                                  ])
+                            ? e.slice(0, 10).concat([
+                                  {
+                                      path: [],
+                                      getErrorInfo: C(`... (only showing first ten failures)`),
+                                  },
+                              ])
                             : e,
                         (e) =>
                             `Failed path: (` +
@@ -35497,14 +35491,12 @@ The conflicting element is` +
                         );
                     return cA.sketch({
                         dom: { tag: `div`, classes: [`tox-form__group`] },
-                        components: a
-                            .toArray()
-                            .concat([
-                                {
-                                    dom: { tag: `div`, classes: [`tox-color-input`] },
-                                    components: [i, c.asSpec()],
-                                },
-                            ]),
+                        components: a.toArray().concat([
+                            {
+                                dom: { tag: `div`, classes: [`tox-color-input`] },
+                                components: [i, c.asSpec()],
+                            },
+                        ]),
                         fieldBehaviours: Z([
                             Wy(`form-field-events`, [
                                 J(zA, (t, n) => {
@@ -39450,17 +39442,12 @@ The conflicting element is` +
                         );
                     return cA.sketch({
                         dom: hA(),
-                        components: c
-                            .toArray()
-                            .concat([
-                                (() => ({
-                                    dom: { tag: `div`, classes: [`tox-form__controls-h-stack`] },
-                                    components: L([
-                                        [p.asSpec()],
-                                        d.map(() => m.asSpec()).toArray(),
-                                    ]),
-                                }))(),
-                            ]),
+                        components: c.toArray().concat([
+                            (() => ({
+                                dom: { tag: `div`, classes: [`tox-form__controls-h-stack`] },
+                                components: L([[p.asSpec()], d.map(() => m.asSpec()).toArray()]),
+                            }))(),
+                        ]),
                         fieldBehaviours: Z([
                             Kg.config({
                                 disabled: () => !e.enabled || i.isDisabled(),
@@ -45838,24 +45825,22 @@ The conflicting element is` +
                     (PK(e), e.getSystem().removeFromGui(e));
                 },
                 RK = (e, t, n) =>
-                    e
-                        .getSystem()
-                        .build(
-                            rA.sketch({
-                                dom: {
-                                    styles: {
-                                        left: `0px`,
-                                        top: `0px`,
-                                        width: `100%`,
-                                        height: `100%`,
-                                        position: `fixed`,
-                                        "z-index": `1000000000000000`,
-                                    },
-                                    classes: [t],
+                    e.getSystem().build(
+                        rA.sketch({
+                            dom: {
+                                styles: {
+                                    left: `0px`,
+                                    top: `0px`,
+                                    width: `100%`,
+                                    height: `100%`,
+                                    position: `fixed`,
+                                    "z-index": `1000000000000000`,
                                 },
-                                events: n,
-                            }),
-                        );
+                                classes: [t],
+                            },
+                            events: n,
+                        }),
+                    );
             var zK = Ga(`snaps`, [
                 K(`getSnapPoints`),
                 Tu(`onSensor`),
@@ -48205,12 +48190,10 @@ The conflicting element is` +
                                     (r.getSystem().broadcastOn([`${XN}-${o}`], s),
                                         r.getSystem().broadcastOn([`${ZN}-${o}`], s.internalDialog),
                                         r.getSystem().broadcastOn([`${QN}-${o}`], s.internalDialog),
-                                        r
-                                            .getSystem()
-                                            .broadcastOn([`${$N}-${o}`], {
-                                                ...s.internalDialog,
-                                                buttons: c,
-                                            }),
+                                        r.getSystem().broadcastOn([`${$N}-${o}`], {
+                                            ...s.internalDialog,
+                                            buttons: c,
+                                        }),
                                         i.setData(s.initialData));
                                 });
                             },

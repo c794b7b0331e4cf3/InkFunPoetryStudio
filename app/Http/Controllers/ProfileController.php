@@ -95,7 +95,7 @@ class ProfileController
                     PoemImage::query()
                         ->latest()
                         ->with(['poem', 'file'])
-                        ->withCount(['likes'])
+                        ->withCount(['likes', 'comments'])
                         ->where('user_id', $user->id)
                         ->paginate(pageName: 'generated_page')
                 );
