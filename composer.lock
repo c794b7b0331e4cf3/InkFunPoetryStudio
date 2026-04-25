@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8a1c56058a06eae1137130093225e379",
+    "content-hash": "2a71b4f171cd4e73d4f9d405bf5d639c",
     "packages": [
         {
             "name": "archtechx/enums",
@@ -3590,6 +3590,69 @@
             "time": "2026-04-20T16:07:33+00:00"
         },
         {
+            "name": "laravel/sanctum",
+            "version": "v4.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/sanctum.git",
+                "reference": "e3b85d6e36ad00e5db2d1dcc27c81ffdf15cbf76"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/sanctum/zipball/e3b85d6e36ad00e5db2d1dcc27c81ffdf15cbf76",
+                "reference": "e3b85d6e36ad00e5db2d1dcc27c81ffdf15cbf76",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "illuminate/console": "^11.0|^12.0|^13.0",
+                "illuminate/contracts": "^11.0|^12.0|^13.0",
+                "illuminate/database": "^11.0|^12.0|^13.0",
+                "illuminate/support": "^11.0|^12.0|^13.0",
+                "php": "^8.2",
+                "symfony/console": "^7.0|^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.6",
+                "orchestra/testbench": "^9.15|^10.8|^11.0",
+                "phpstan/phpstan": "^1.10"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Sanctum\\SanctumServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Sanctum\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Laravel Sanctum provides a featherweight authentication system for SPAs and simple APIs.",
+            "keywords": [
+                "auth",
+                "laravel",
+                "sanctum"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel/sanctum/issues",
+                "source": "https://github.com/laravel/sanctum"
+            },
+            "time": "2026-02-07T17:19:31+00:00"
+        },
+        {
             "name": "laravel/serializable-closure",
             "version": "v2.0.12",
             "source": {
@@ -5662,6 +5725,127 @@
                 "source": "https://github.com/ramsey/uuid/tree/4.9.2"
             },
             "time": "2025-12-14T04:43:48+00:00"
+        },
+        {
+            "name": "slowlyo/laravel-support",
+            "version": "v0.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/slowlyo/laravel-support.git",
+                "reference": "e55a18f62b5b9ca6153ec761e6955c88eaf15330"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/slowlyo/laravel-support/zipball/e55a18f62b5b9ca6153ec761e6955c88eaf15330",
+                "reference": "e55a18f62b5b9ca6153ec761e6955c88eaf15330",
+                "shasum": ""
+            },
+            "require": {
+                "ext-bcmath": "*",
+                "ext-json": "*",
+                "laravel/framework": ">=8",
+                "php": ">=7.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Slowlyo\\Support\\SupportServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "./src/functions.php"
+                ],
+                "psr-4": {
+                    "Slowlyo\\Support\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Slowlyo",
+                    "email": "slowlyo_email@qq.com"
+                }
+            ],
+            "description": "php/laravel部分代码封装",
+            "support": {
+                "issues": "https://github.com/slowlyo/laravel-support/issues",
+                "source": "https://github.com/slowlyo/laravel-support/tree/v0.0.7"
+            },
+            "time": "2025-05-06T13:29:47+00:00"
+        },
+        {
+            "name": "slowlyo/owl-admin",
+            "version": "v4.5.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/slowlyo/owl-admin.git",
+                "reference": "670eb9bcc9fbcfc2c60ece79dc39fe5e356313b8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/slowlyo/owl-admin/zipball/670eb9bcc9fbcfc2c60ece79dc39fe5e356313b8",
+                "reference": "670eb9bcc9fbcfc2c60ece79dc39fe5e356313b8",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gd": "*",
+                "ext-zip": "*",
+                "illuminate/support": "^11.0|^12.0|^13.0",
+                "php": ">=8.2",
+                "slowlyo/laravel-support": "*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "OwlAdmin": "Slowlyo\\OwlAdmin\\Facades\\OwlAdmin"
+                    },
+                    "providers": [
+                        "Slowlyo\\OwlAdmin\\AdminServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/Support/helpers.php"
+                ],
+                "psr-4": {
+                    "Slowlyo\\OwlAdmin\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "slowlyo",
+                    "email": "slowlyo_email@qq.com",
+                    "homepage": "https://github.com/slowlyo"
+                }
+            ],
+            "description": "基于 laravel、amis 开发的后台框架~",
+            "homepage": "https://github.com/slowlyo/owl-admin",
+            "keywords": [
+                "admin",
+                "amis",
+                "laravel",
+                "owl-admin"
+            ],
+            "support": {
+                "email": "slowlyo_email@qq.com",
+                "forum": "https://github.com/orgs/owl-admin/discussions",
+                "issues": "https://github.com/Slowlyo/owl-admin/issues",
+                "source": "https://github.com/slowlyo/owl-admin/tree/v4.5.2",
+                "wiki": "https://doc.owladmin.com/"
+            },
+            "time": "2026-03-31T08:08:36+00:00"
         },
         {
             "name": "symfony/clock",

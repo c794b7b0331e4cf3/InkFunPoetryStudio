@@ -9,7 +9,7 @@ class PoemTagAssign extends Model
 {
     public function tag(): BelongsTo
     {
-        return $this->belongsTo(PoemTag::class);
+        return $this->belongsTo(PoemTag::class, 'poem_tag_id');
     }
 
     public function poem(): BelongsTo
