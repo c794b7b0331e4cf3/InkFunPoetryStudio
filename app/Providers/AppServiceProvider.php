@@ -3,12 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Auth\Middleware\Authenticate;
-use Illuminate\Foundation\Vite;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Str;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -33,10 +30,6 @@ class AppServiceProvider extends ServiceProvider
             URL::useAssetOrigin(
                 config('app.url')
             );
-        }
-
-        if (Str::contains(Request::header('Host'), '10.115.153.251')) {
-            app(Vite::class)->useHotFile(public_path('hot_demo'));
         }
     }
 

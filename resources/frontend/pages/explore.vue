@@ -1,7 +1,7 @@
 <script lang="ts" setup>
     import { Head, router, useHttp, usePage } from "@inertiajs/vue3";
     import type { Paginated, PoemImageResource, PoemResource, UserResource } from "@/types/backend";
-    import { isNonNullish } from "remeda";
+    import { isNonNullish, isNullish } from "remeda";
     import { h, onMounted, shallowRef, watch } from "vue";
     import {
         type DataTableColumn,
@@ -61,7 +61,15 @@
             title: "排名",
             key: "top",
             render: (_data, i) => {
-                return i + 1;
+                if (isNullish(page.props.leaderboard)) {
+                    return -1;
+                }
+
+                return (
+                    (page.props.leaderboard.meta.current_page - 1) *
+                        page.props.leaderboard.meta.per_page +
+                    (i + 1)
+                );
             },
         },
         {
@@ -199,7 +207,7 @@
                 </n-grid-item>
 
                 <n-grid-item :span="2">
-                    <n-flex vertical size="small">
+                    <n-flex size="small" vertical>
                         <template v-if="isNonNullish(page.props.leaderboard)">
                             <n-flex class="mt-4" size="small" vertical>
                                 <n-text class="text-(10 !black) mb-4 fw-bold">排行榜</n-text>
@@ -221,10 +229,10 @@
                         </template>
 
                         <n-card size="small" title="建议我们">
-                            <n-flex vertical size="small">
+                            <n-flex size="small" vertical>
                                 <n-input v-model:value="suggest.content" type="textarea" />
 
-                                <n-button @click="submitSuggest" secondary block>提交</n-button>
+                                <n-button block secondary @click="submitSuggest">提交</n-button>
                             </n-flex>
                         </n-card>
                     </n-flex>
