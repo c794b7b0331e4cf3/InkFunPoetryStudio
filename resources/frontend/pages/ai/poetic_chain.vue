@@ -65,21 +65,7 @@
                     </template>
                 </template>
 
-                <template v-if="isEmptyish(page.props.keywords)">
-                    <n-input v-model:value="keywords" placeholder="关键词 (用空格分割)" />
-
-                    <n-button
-                        :disabled="isEmptyish(keywords) || generator.processing"
-                        :loading="generator.processing"
-                        block
-                        secondary
-                        @click="handleKeywordSave"
-                    >
-                        提交
-                    </n-button>
-                </template>
-
-                <template v-else>
+                <template v-if="!isEmptyish(page.props.keywords)">
                     <n-input v-model:value="generator.input" autosize type="textarea" />
 
                     <n-button
@@ -90,6 +76,20 @@
                         @click="handleGenerate"
                     >
                         接
+                    </n-button>
+                </template>
+
+                <template v-else>
+                    <n-input v-model:value="keywords" placeholder="关键词 (用空格分割)" />
+
+                    <n-button
+                        :disabled="isEmptyish(keywords) || generator.processing"
+                        :loading="generator.processing"
+                        block
+                        secondary
+                        @click="handleKeywordSave"
+                    >
+                        提交
                     </n-button>
                 </template>
             </n-flex>

@@ -11,6 +11,7 @@ import Inertia from "@inertiajs/vite";
 export default defineConfig({
     build: {
         assetsInlineLimit: 0,
+        sourcemap: true,
     },
     resolve: {
         alias: {
