@@ -2,7 +2,7 @@
     import { Head, useForm, usePage } from "@inertiajs/vue3";
     import type { UserModel } from "@/types/backend";
     import { isNonNullish, isNullish } from "remeda";
-    import { submit } from "@/_generated/routes/suggestion";
+    import { suggest } from "@/_generated/routes/ai";
     import markdownit from "markdown-it";
     import { computed } from "vue";
 
@@ -28,7 +28,7 @@
         return md.render(page.props.generated.suggest);
     });
 
-    const generator = useForm(submit(), {
+    const generator = useForm(suggest(), {
         input: "",
     });
 
