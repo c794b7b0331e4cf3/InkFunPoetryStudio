@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Arr;
+
 return [
     'siliconflow' => [
         'base_url' => env('SILICONFLOW_BASE_URL'),
@@ -31,7 +33,7 @@ return [
 
         'character_soulmate_minimum_talk_count' => 10,
 
-        'characters' => \Illuminate\Support\Arr::map([
+        'characters' => Arr::map([
             [
                 'name' => '李白',
                 'badges' => [
