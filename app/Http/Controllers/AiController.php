@@ -34,15 +34,6 @@ class AiController
         protected BaiLianService $baiLianService
     ) {}
 
-    public function renderImageGenerate(array $extra = [])
-    {
-        return Inertia::render('ai/image-generate', [
-            'greeting' => GreetingService::generate(),
-
-            ...$extra,
-        ]);
-    }
-
     public function imageGenerate(AiImageGenerateRequest $request)
     {
         $data = $request->validated();
@@ -122,10 +113,9 @@ class AiController
         return back();
     }
 
-    public function renderCouplet(array $extra = [])
+    public function renderImageGenerate(array $extra = [])
     {
-        return Inertia::render('ai/couplet', [
-            'history' => $extra['history'] ?? [],
+        return Inertia::render('ai/image-generate', [
             'greeting' => GreetingService::generate(),
 
             ...$extra,
@@ -136,27 +126,30 @@ class AiController
     {
         $data = $request->validated();
 
+        $history = $data['history'];
+
         $response = $this->baiLianService->poemCouplet($data['input'], $data['history']);
 
-        if ($response === null) {
+        if ($response !== null) {
+            $history[] = $data['input'];
+            $history[] = $response['poem'];
+        } else {
             InertiaMessageService::error('生成出错');
 
-            return back();
+            goto render;
         }
 
-        return $this->renderCouplet([
-            'history' => [
-                ...$data['history'],
+        render:
 
-                $data['input'],
-                $response['poem'],
-            ],
+        return $this->renderCouplet([
+            'history' => $history,
         ]);
     }
 
-    public function renderSuggest(array $extra = [])
+    public function renderCouplet(array $extra = [])
     {
-        return Inertia::render('ai/suggest', [
+        return Inertia::render('ai/couplet', [
+            'history' => $extra['history'] ?? [],
             'greeting' => GreetingService::generate(),
 
             ...$extra,
@@ -180,9 +173,9 @@ class AiController
         ]);
     }
 
-    public function renderImageToPoem(array $extra = [])
+    public function renderSuggest(array $extra = [])
     {
-        return Inertia::render('ai/image-to-poem', [
+        return Inertia::render('ai/suggest', [
             'greeting' => GreetingService::generate(),
 
             ...$extra,
@@ -258,6 +251,40 @@ class AiController
         ]);
     }
 
+    public function renderImageToPoem(array $extra = [])
+    {
+        return Inertia::render('ai/image-to-poem', [
+            'greeting' => GreetingService::generate(),
+
+            ...$extra,
+        ]);
+    }
+
+    public function characterTalk(AiCharacterTalkRequest $request)
+    {
+        $data = $request->validated();
+
+        $history = $data['history'];
+
+        $response = $this->baiLianService->characterTalk($data['character'], $data['input'], $data['history']);
+
+        if ($response !== null) {
+            $history[] = $data['input'];
+            $history[] = $response['text'];
+        } else {
+            InertiaMessageService::error('生成出错');
+
+            goto render;
+        }
+
+        render:
+
+        return $this->renderCharacterTalk([
+            'character' => $data['character'],
+            'history' => $history,
+        ]);
+    }
+
     public function renderCharacterTalk(array $extra = [])
     {
         $badges = [];
@@ -317,26 +344,41 @@ class AiController
         ]);
     }
 
-    public function characterTalk(AiCharacterTalkRequest $request)
+    public function poeticChain(AiPoeticChainRequest $request)
     {
         $data = $request->validated();
 
-        $response = $this->baiLianService->characterTalk($data['character'], $data['input'], $data['history']);
+        $history = $data['history'];
 
-        if ($response === null) {
-            InertiaMessageService::error('生成出错');
+        if (! empty($history) && empty($data['input'])) {
+            InertiaMessageService::error('请输入内容');
 
-            return back();
+            goto render;
         }
 
-        return $this->renderCharacterTalk([
-            'character' => $data['character'],
-            'history' => [
-                ...$data['history'],
+        if (isset($data['input']) && in_array($data['input'], $data['history'])) {
+            InertiaMessageService::error('诗句重复');
 
-                $data['input'],
-                $response['text'],
-            ],
+            goto render;
+        }
+
+        $response = $this->baiLianService->poeticChain($data['keywords'], $data['input'] ?? '', $data['history']);
+
+        if ($response !== null) {
+            $history[] = $data['input'];
+            $history[] = $response['poem'];
+        } else {
+            InertiaMessageService::error('生成出错');
+
+            goto render;
+        }
+
+        render:
+
+        return $this->renderPoeticChain([
+            'keywords' => $data['keywords'],
+
+            'history' => $history,
         ]);
     }
 
@@ -348,36 +390,6 @@ class AiController
             'greeting' => GreetingService::generate(),
 
             ...$extra,
-        ]);
-    }
-
-    public function poeticChain(AiPoeticChainRequest $request)
-    {
-        $data = $request->validated();
-
-        if (! empty($data['history']) && empty($data['input'])) {
-            InertiaMessageService::error('请输入内容');
-
-            return back();
-        }
-
-        $response = $this->baiLianService->poeticChain($data['keywords'], $data['input'] ?? '', $data['history']);
-
-        if ($response === null) {
-            InertiaMessageService::error('生成出错');
-
-            return back();
-        }
-
-        return $this->renderPoeticChain([
-            'keywords' => $data['keywords'],
-
-            'history' => [
-                ...$data['history'],
-
-                $data['input'],
-                $response['poem'],
-            ],
         ]);
     }
 }
