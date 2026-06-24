@@ -19,7 +19,7 @@ return [
         'image_model' => [
             'name' => 'z-image-turbo',
             'parameters' => [
-                'negative_prompt' => '文字, 水印, 签名, 人物, 人类, 现代建筑, 汽车, 电线, 现代设施, 3D渲染, 卡通, 低质量, 模糊',
+                'negative_prompt' => '文字, 水印, 签名, 标志, 用户名, 多余肢体, 畸形手部, 手指融合, 解剖结构错误, 毁容, 面部崩坏, 模糊, 低画质, 最差画质, 压缩伪影, 3D渲染, 电脑CG, 动漫风格, 油画厚涂, 赛博朋克, 现代建筑, 西方建筑, 日式风格, 韩式服饰, 樱花, 鸟居, 现代服饰, 现代眼镜, 玻璃材质, 电子屏幕, 霓虹灯, 电线杆, 汽车, 飞机, 曝光过度, 杂乱背景, 繁复纹理, 塑料质感, 虚假反光, 画面拥挤, 破坏留白',
                 'prompt_extend' => true,
                 'size' => '2048*1152',
             ],
@@ -31,161 +31,148 @@ return [
 
         'character_soulmate_minimum_talk_count' => 10,
 
-        'characters' => [
+        'characters' => \Illuminate\Support\Arr::map([
             [
                 'name' => '李白',
-                'prompt' => '扮演李白, 模拟真实对话, 以李白的口吻和风格进行交流, 不要直接说你是李白, 也不要说你是一个AI模型, 你需要根据李白的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
-
                 'badges' => [
                     'soulmate' => '/characters/badges/soulmate/dc8c1209ae4131ad249f020b538f4b182fee808c6ea3e1078f9376638548d69c.webp',
                 ],
             ],
             [
                 'name' => '杜甫',
-                'prompt' => '扮演杜甫, 模拟真实对话, 以杜甫的口吻和风格进行交流, 不要直接说你是杜甫, 也不要说你是一个AI模型, 你需要根据杜甫的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
-
                 'badges' => [
                     'soulmate' => '/characters/badges/soulmate/d986e9c0ef1917520da97f7383a1a78f3c1b863e9dfdc92b5b7cec987ba10a1e.webp',
                 ],
             ],
             [
                 'name' => '苏轼',
-                'prompt' => '扮演苏轼, 模拟真实对话, 以苏轼的口吻和风格进行交流, 不要直接说你是苏轼, 也不要说你是一个AI模型, 你需要根据苏轼的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
-
                 'badges' => [
                     'soulmate' => '/characters/badges/soulmate/a3cd6faee4e1b819bd023b1421c8b7ca8495544648c5ed126ce558f4b8a9c147.webp',
                 ],
             ],
             [
                 'name' => '辛弃疾',
-                'prompt' => '扮演辛弃疾, 模拟真实对话, 以辛弃疾的口吻和风格进行交流, 不要直接说你是辛弃疾, 也不要说你是一个AI模型, 你需要根据辛弃疾的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
-
                 'badges' => [
                     'soulmate' => '/characters/badges/soulmate/ce94f3676ea22c4c2357c89c9c81623c35c15ed0e7b47dfee01d440783c583ef.webp',
                 ],
             ],
             [
                 'name' => '李清照',
-                'prompt' => '扮演李清照, 模拟真实对话, 以李清照的口吻和风格进行交流, 不要直接说你是李清照, 也不要说你是一个AI模型, 你需要根据李清照的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
-
                 'badges' => [
                     'soulmate' => '/characters/badges/soulmate/9702b086171ba607690decfcc3e1cfe87ea866150e6bf389196b9981b42c6026.webp',
                 ],
             ],
             [
                 'name' => '王维',
-                'prompt' => '扮演王维, 模拟真实对话, 以王维的口吻和风格进行交流, 不要直接说你是王维, 也不要说你是一个AI模型, 你需要根据王维的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
-
                 'badges' => [
                     'soulmate' => '/characters/badges/soulmate/bf8a7426edb3badb4fbcb04bebfc3ca71cc0ad3ad622dd05cc554b31f9a7ddaa.webp',
                 ],
             ],
             [
                 'name' => '白居易',
-                'prompt' => '扮演白居易, 模拟真实对话, 以白居易的口吻和风格进行交流, 不要直接说你是白居易, 也不要说你是一个AI模型, 你需要根据白居易的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
-
                 'badges' => [
                     'soulmate' => '/characters/badges/soulmate/77b699c4bf977b2ed30c499822a6f350b3db470a103fe96b2b0c7ce513479fe3.webp',
                 ],
             ],
             [
                 'name' => '杜牧',
-                'prompt' => '扮演杜牧, 模拟真实对话, 以杜牧的口吻和风格进行交流, 不要直接说你是杜牧, 也不要说你是一个AI模型, 你需要根据杜牧的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
-
                 'badges' => [
                     'soulmate' => '/characters/badges/soulmate/2a1ba4a3258992ac5d0dfa47234caae8d723517f276cfb3b2774d0790f79f793.webp',
                 ],
             ],
             [
                 'name' => '李商隐',
-                'prompt' => '扮演李商隐, 模拟真实对话, 以李商隐的口吻和风格进行交流, 不要直接说你是李商隐, 也不要说你是一个AI模型, 你需要根据李商隐的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
-
                 'badges' => [
                     'soulmate' => '/characters/badges/soulmate/2ba8e748761e7e329423014de7dbbe02c5195695d56313986610973fba3e61a4.webp',
                 ],
             ],
             [
                 'name' => '王昌龄',
-                'prompt' => '扮演王昌龄, 模拟真实对话, 以王昌龄的口吻和风格进行交流, 不要直接说你是王昌龄, 也不要说你是一个AI模型, 你需要根据王昌龄的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
-
                 'badges' => [
                     'soulmate' => '/characters/badges/soulmate/a93c7c9c7ed45e6c644067956fbadf6179fc672db0f1e6165ab6d7007793e821.webp',
                 ],
             ],
             [
                 'name' => '孟浩然',
-                'prompt' => '扮演孟浩然, 模拟真实对话, 以孟浩然的口吻和风格进行交流, 不要直接说你是孟浩然, 也不要说你是一个AI模型, 你需要根据孟浩然的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
-
                 'badges' => [
                     'soulmate' => '/characters/badges/soulmate/32d444f120993752cb9a106b182c91c8cb18e91262813d0b40f6ededed387747.webp',
                 ],
             ],
             [
                 'name' => '贾岛',
-                'prompt' => '扮演贾岛, 模拟真实对话, 以贾岛的口吻和风格进行交流, 不要直接说你是贾岛, 也不要说你是一个AI模型, 你需要根据贾岛的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
-
                 'badges' => [
                     'soulmate' => '/characters/badges/soulmate/0c9dce89da496fb7c1b4eb38a083ad39c56548d63a9e817bae7a89429e0ad035.webp',
                 ],
             ],
             [
                 'name' => '刘禹锡',
-                'prompt' => '扮演刘禹锡, 模拟真实对话, 以刘禹锡的口吻和风格进行交流, 不要直接说你是刘禹锡, 也不要说你是一个AI模型, 你需要根据刘禹锡的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
-
                 'badges' => [
                     'soulmate' => '/characters/badges/soulmate/8c82c2019965e9fdb3fec7495864436990f219fea9549a183f595a163c5da593.webp',
                 ],
             ],
             [
                 'name' => '韩愈',
-                'prompt' => '扮演韩愈, 模拟真实对话, 以韩愈的口吻和风格进行交流, 不要直接说你是韩愈, 也不要说你是一个AI模型, 你需要根据韩愈的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
-
                 'badges' => [
                     'soulmate' => '/characters/badges/soulmate/7dc7f5e44d3daff73a8ff0fb640f6a19bbff5bf64400611f0b4956096fd998ee.webp',
                 ],
             ],
             [
                 'name' => '柳宗元',
-                'prompt' => '扮演柳宗元, 模拟真实对话, 以柳宗元的口吻和风格进行交流, 不要直接说你是柳宗元, 也不要说你是一个AI模型, 你需要根据柳宗元的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
-
                 'badges' => [
                     'soulmate' => '/characters/badges/soulmate/a62a32fc046954b2f784f63546c65781122b01d62d8d0fcf220641ad6e428b10.webp',
                 ],
             ],
             [
                 'name' => '王之涣',
-                'prompt' => '扮演王之涣, 模拟真实对话, 以王之涣的口吻和风格进行交流, 不要直接说你是王之涣, 也不要说你是一个AI模型, 你需要根据王之涣的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
-
                 'badges' => [
                     'soulmate' => '/characters/badges/soulmate/d988549eb40da089da17ac159fbec6161c4fb58452f6de23cec061e185e3ef57.webp',
                 ],
             ],
             [
                 'name' => '岑参',
-                'prompt' => '扮演岑参, 模拟真实对话, 以岑参的口吻和风格进行交流, 不要直接说你是岑参, 也不要说你是一个AI模型, 你需要根据岑参的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
-
                 'badges' => [
                     'soulmate' => '/characters/badges/soulmate/a2cbcab25d0bc460f55cc16d8752156aab45bcc94b1b975eab6440abc7fb3c5f.webp',
                 ],
             ],
             [
                 'name' => '高适',
-                'prompt' => '扮演高适, 模拟真实对话, 以高适的口吻和风格进行交流, 不要直接说你是高适, 也不要说你是一个AI模型, 你需要根据高适的生平经历和诗歌风格来回答问题, 你可以使用古代汉语的表达方式, 但要确保现代人能够理解你的意思, 你可以谈论诗歌创作, 人生感悟, 自然景色等话题, 但要避免涉及现代科技和现代社会的话题',
-
                 'badges' => [
                     'soulmate' => '/characters/badges/soulmate/9c4969aa92fa8d2c08bfd8031627474d0994fca329ecc201d32468b1b285e13a.webp',
                 ],
             ],
-        ],
+        ], function (array $item) {
+            $item['prompt'] = 'prompts/character.md'
+                    |> resource_path(...)
+                    |> file_get_contents(...)
+                    |> (function (string $prompt) use ($item) {
+                        return str_replace('{name}', $item['name'], $prompt);
+                    });
+
+            return $item;
+        }),
 
         'prompts' => [
-            'poetic_chain' => '你是飞花令的资深玩家, 能够围绕关键词与用户进行多轮诗词接龙, 必须包含所有的关键词在诗句中, 不允许输出与用户输入完全一致的诗句, 如果用户输入的诗句不合法, 则输出错误信息, 以此类推进行多轮接龙',
-            'poem_from_image' => '你是一名诗人, 根据输入的图片内容创作一首诗, 题材不限',
-            'poem_validate' => '你是一名诗句鉴赏家, 请判断输入的文本是否为诗句, 如果不是则输出错误信息',
-            'poem_suggest' => '你是一个对诗的专家, 根据用户输入给出诗词创作建议, 包括但不限于题材, 用词, 以及相关的诗词推荐等方面, 输出使用 markdown, 允许换行',
-            'poem_couplet' => '你是一个对诗的专家, 根据用户输入给出 上/下联, 必须包含用户输入, 不允许输出与用户输入完全一致',
-            'poem_to_image' => '中国古典水墨画风格, 极具诗意和意境 根据诗词内容描绘的景色, 山水, 自然风光, 古风建筑, 留白, 雅致, 高细节, 8k分辨率',
-            'summarize' => '你是一个诗词和诗词图片的专家, 根据用户喜欢的诗词类型和生成的内容给出一个总结, 包括但不限于喜欢的诗词类型, 画面类型, 以及相关的诗词推荐等方面, 输出使用 markdown, 允许换行',
+            'poetic_chain' => file_get_contents(
+                resource_path('prompts/poetic_chain.md')
+            ),
+            'poem_from_image' => file_get_contents(
+                resource_path('prompts/poem_from_image.md')
+            ),
+            'poem_validate' => file_get_contents(
+                resource_path('prompts/poem_validate.md')
+            ),
+            'poem_suggest' => file_get_contents(
+                resource_path('prompts/poem_suggest.md')
+            ),
+            'poem_couplet' => file_get_contents(
+                resource_path('prompts/poem_couplet.md')
+            ),
+            'poem_to_image' => file_get_contents(
+                resource_path('prompts/poem_to_image.md')
+            ),
+            'summarize' => file_get_contents(
+                resource_path('prompts/summarize.md')
+            ),
         ],
     ],
 ];
