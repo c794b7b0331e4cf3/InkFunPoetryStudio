@@ -59,9 +59,11 @@
 
                 <template v-if="!isEmptyish(page.props.history)">
                     <template v-for="(history, index) in page.props.history">
-                        <n-text :type="index % 2 === 0 ? 'info' : 'warning'" class="text-6">
-                            {{ history }}
-                        </n-text>
+                        <n-element class="text-center">
+                            <n-text :type="index % 2 === 0 ? 'info' : 'warning'" class="text-6 whitespace-pre">
+                                {{ history }}
+                            </n-text>
+                        </n-element>
                     </template>
                 </template>
 

@@ -1,82 +1,82 @@
 <script lang="ts" setup>
-    import { Head, useForm, usePage } from "@inertiajs/vue3";
-    import type { UserModel } from "@/types/backend";
-    import { characterTalk } from "@/_generated/routes/ai";
-    import { isEmptyish } from "remeda";
-    import Animate3D from "@/components/Animate3D.vue";
-    import { computed, shallowRef, watch } from "vue";
+import {Head, useForm, usePage} from "@inertiajs/vue3";
+import type {UserModel} from "@/types/backend";
+import {characterTalk} from "@/_generated/routes/ai";
+import {isEmptyish} from "remeda";
+import Animate3D from "@/components/Animate3D.vue";
+import {computed, shallowRef, watch} from "vue";
 
-    defineOptions({
-        name: "AI 古人对话",
-    });
+defineOptions({
+    name: "AI 古人对话",
+});
 
-    const page = usePage<{
-        readonly badges: Record<
-            string,
-            {
-                readonly image: string;
-                readonly archived: boolean;
-                readonly is_new: boolean;
-            }
-        >;
-
-        readonly user: UserModel;
-        readonly greeting: string;
-
-        readonly characters: string[];
-        readonly character: string;
-        readonly history: string[];
-    }>();
-
-    const generator = useForm<{
-        character: string;
-        history: string[];
-        input: string;
-    }>(characterTalk(), {
-        character: "",
-        history: [],
-        input: "",
-    });
-
-    const showNewBadgesArchivedModal = shallowRef(false);
-
-    const newBadges = computed(() => {
-        return Object.fromEntries(
-            Object.entries(page.props.badges).filter((data) => {
-                return data[1].is_new;
-            }),
-        );
-    });
-
-    watch(
-        newBadges,
-        (newBadgesData) => {
-            if (!isEmptyish(newBadgesData)) {
-                showNewBadgesArchivedModal.value = true;
-            }
-        },
+const page = usePage<{
+    readonly badges: Record<
+        string,
         {
-            immediate: true,
-            deep: true,
-        },
-    );
-
-    const handleCharacterClick = (character: string) => {
-        generator.character = character;
-    };
-
-    const handleGenerate = () => {
-        if (!isEmptyish(page.props.character)) {
-            generator.character = page.props.character;
+            readonly image: string;
+            readonly archived: boolean;
+            readonly is_new: boolean;
         }
+    >;
 
-        generator.history = page.props.history;
-        generator.submit();
-    };
+    readonly user: UserModel;
+    readonly greeting: string;
+
+    readonly characters: string[];
+    readonly character: string;
+    readonly history: string[];
+}>();
+
+const generator = useForm<{
+    character: string;
+    history: string[];
+    input: string;
+}>(characterTalk(), {
+    character: "",
+    history: [],
+    input: "",
+});
+
+const showNewBadgesArchivedModal = shallowRef(false);
+
+const newBadges = computed(() => {
+    return Object.fromEntries(
+        Object.entries(page.props.badges).filter((data) => {
+            return data[1].is_new;
+        }),
+    );
+});
+
+watch(
+    newBadges,
+    (newBadgesData) => {
+        if (!isEmptyish(newBadgesData)) {
+            showNewBadgesArchivedModal.value = true;
+        }
+    },
+    {
+        immediate: true,
+        deep: true,
+    },
+);
+
+const handleCharacterClick = (character: string) => {
+    generator.character = character;
+};
+
+const handleGenerate = () => {
+    if (!isEmptyish(page.props.character)) {
+        generator.character = page.props.character;
+    }
+
+    generator.history = page.props.history;
+    generator.submit();
+};
 </script>
 
 <template>
-    <Head :title="$options.name" />
+    <Head :title="$options.name"/>
 
     <n-modal
         v-model:show="showNewBadgesArchivedModal"
@@ -88,7 +88,7 @@
             <template v-for="(badge, name) in newBadges">
                 <Animate3D>
                     <n-flex align="center" justify="space-between" size="small" vertical>
-                        <n-image :src="badge.image" class="max-w-60" preview-disabled />
+                        <n-image :src="badge.image" class="max-w-60" preview-disabled/>
                         <n-text class="text-6 fw-bold">{{ name }}</n-text>
                     </n-flex>
                 </Animate3D>
@@ -128,14 +128,16 @@
 
                     <template v-if="!isEmptyish(page.props.history)">
                         <template v-for="(history, index) in page.props.history">
-                            <n-text :type="index % 2 === 0 ? 'info' : 'warning'" class="text-6">
-                                {{ history }}
-                            </n-text>
+                            <n-element class="text-center">
+                                <n-text :type="index % 2 === 0 ? 'info' : 'warning'" class="text-6 whitespace-pre">
+                                    {{ history }}
+                                </n-text>
+                            </n-element>
                         </template>
                     </template>
                 </template>
 
-                <n-input v-model:value="generator.input" autosize type="textarea" />
+                <n-input v-model:value="generator.input" autosize type="textarea"/>
 
                 <n-button
                     :disabled="generator.processing"
