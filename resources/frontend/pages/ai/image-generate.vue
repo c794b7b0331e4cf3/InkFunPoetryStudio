@@ -46,7 +46,9 @@
         </template>
     </FadeTransition>
 
-    <n-element class="absolute top-1/2 left-1/2 -translate-1/2 min-w-1/5 max-h-1/2 overflow-y-auto">
+    <n-element
+        class="absolute top-1/2 left-1/2 -translate-1/2 min-w-1/5 max-w-1/2 max-h-1/2 overflow-y-auto"
+    >
         <n-card
             :class="{ 'opacity-50': isNonNullish(page.props.generated) }"
             class="transition-(opacity duration-500 ease-in-out) hover:opacity-100"

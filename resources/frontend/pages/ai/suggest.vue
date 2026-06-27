@@ -40,7 +40,9 @@
 <template>
     <Head :title="$options.name" />
 
-    <n-element class="absolute top-1/2 left-1/2 -translate-1/2 min-w-1/5 max-h-1/2 overflow-y-auto">
+    <n-element
+        class="absolute top-1/2 left-1/2 -translate-1/2 min-w-1/5 max-w-1/2 max-h-1/2 overflow-y-auto"
+    >
         <n-card size="small">
             <n-flex align="center" size="small" vertical>
                 <n-element class="text-center">
@@ -52,7 +54,7 @@
                 <n-input v-model:value="generator.input" autosize type="textarea" />
 
                 <template v-if="isNonNullish(result)">
-                    <n-text class="text-6 whitespace-pre" type="info" v-html="result" />
+                    <n-text class="text-(6 wrap) whitespace-pre" type="info" v-html="result" />
                 </template>
 
                 <n-button
