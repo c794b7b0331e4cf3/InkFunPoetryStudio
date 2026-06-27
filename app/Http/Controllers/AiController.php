@@ -56,9 +56,8 @@ class AiController
             return back();
         }
 
-        $poem = Poem::firstOrCreate([
+        $poem = Poem::create([
             'content' => $data['input'],
-        ], [
             'user_id' => Auth::id(),
             'title' => null,
             'author' => null,
@@ -205,10 +204,9 @@ class AiController
             return back();
         }
 
-        $poem = Poem::firstOrCreate([
+        $poem = Poem::create([
             'title' => $response['title'],
             'content' => $response['poem'],
-        ], [
             'user_id' => Auth::id(),
             'author' => null,
             'dynasty' => null,
