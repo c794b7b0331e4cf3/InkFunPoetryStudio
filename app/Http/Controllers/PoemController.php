@@ -6,8 +6,9 @@ use App\Http\Requests\PoemEditRequest;
 use App\Http\Resources\PoemResource;
 use App\Http\Services\InertiaMessageService;
 use App\Models\Poem;
+use App\Models\PoemImage;
 use App\Models\UserPoemHistoryRecord;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Contracts\Database\Query\Builder;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
@@ -17,14 +18,22 @@ class PoemController
     {
         $userId = Auth::id();
 
-        $item->load([
-            'images' => function (HasMany $query) {
-                $query->withCount(['likes', 'comments']);
-            },
-            'images.poem.user',
-            'images.poem',
-            'images.poem.tags',
-            'images.file',
+        $item->setRelations([
+            'images' => PoemImage::query()
+                ->with([
+                    'poem.user',
+                    'poem',
+                    'poem.tags',
+                    'file',
+                ])
+                ->withCount([
+                    'likes',
+                    'comments',
+                ])
+                ->whereHas('poem', function (Builder $query) use ($item) {
+                    $query->where('content', $item->content);
+                })
+                ->get(),
         ]);
 
         if ($userId !== null) {
