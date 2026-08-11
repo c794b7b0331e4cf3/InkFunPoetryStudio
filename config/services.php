@@ -12,14 +12,14 @@ return [
         'api_key' => env('BAILIAN_API_KEY'),
 
         'text_model' => [
-            'name' => 'qwen3.8-max',
+            'name' => env('BAILIAN_TEXT_MODEL_NAME', 'deepseek-v4-pro'),
             'extra' => [
                 'enable_thinking' => false,
             ],
         ],
 
         'image_model' => [
-            'name' => 'wan2.7-image-pro',
+            'name' => env('BAILIAN_IMAGE_MODEL_NAME', 'qwen-image-3.0-pro'),
             'parameters' => [
                 'negative_prompt' => '文字, 水印, 签名, 标志, 用户名, 多余肢体, 畸形手部, 手指融合, 解剖结构错误, 毁容, 面部崩坏, 模糊, 低画质, 最差画质, 压缩伪影, 3D渲染, 电脑CG, 动漫风格, 油画厚涂, 赛博朋克, 现代建筑, 西方建筑, 日式风格, 韩式服饰, 樱花, 鸟居, 现代服饰, 现代眼镜, 玻璃材质, 电子屏幕, 霓虹灯, 电线杆, 汽车, 飞机, 曝光过度, 杂乱背景, 繁复纹理, 塑料质感, 虚假反光, 画面拥挤, 破坏留白',
                 'prompt_extend' => true,
@@ -28,7 +28,7 @@ return [
         ],
 
         'visual_model' => [
-            'name' => 'qwen3-vl-plus',
+            'name' => env('BAILIAN_VISUAL_MODEL_NAME', 'qwen3.8-max'),
         ],
 
         'character_soulmate_minimum_talk_count' => 10,
