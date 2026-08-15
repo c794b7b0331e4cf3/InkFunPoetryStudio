@@ -111,17 +111,21 @@
                     <n-flex :wrap="false" align="center" size="small">
                         <n-text class="text-nowrap">和谁对话:</n-text>
 
-                        <template v-for="character in page.props.characters">
-                            <n-button
-                                :disabled="generator.processing"
-                                :type="generator.character === character ? 'success' : 'default'"
-                                secondary
-                                size="small"
-                                @click="handleCharacterClick(character)"
-                            >
-                                {{ character }}
-                            </n-button>
-                        </template>
+                        <n-flex align="center" size="small">
+                            <template v-for="character in page.props.characters">
+                                <n-button
+                                    :disabled="generator.processing"
+                                    :type="
+                                        generator.character === character ? 'success' : 'default'
+                                    "
+                                    secondary
+                                    size="small"
+                                    @click="handleCharacterClick(character)"
+                                >
+                                    {{ character }}
+                                </n-button>
+                            </template>
+                        </n-flex>
                     </n-flex>
                 </template>
 
