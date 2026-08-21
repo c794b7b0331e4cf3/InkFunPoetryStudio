@@ -36,9 +36,9 @@ class PoemImageController extends AdminController
                     ->href('#/poems/${poem.id}')
                     ->body('[${poem.id}] ${poem.title}'),
                 amis()->TableColumn('file', '文件')
-                    ->type('link')
-                    ->href('#/files/${file.id}')
-                    ->body('[${file.id}] ${file.disk} -> ${file.path}'),
+                    ->type('image')
+                    ->src('${file.download_url}')
+                    ->href('#/files/${file.id}'),
                 amis()->TableColumn('prompt', '提示词'),
                 amis()->TableColumn('created_at', admin_trans('admin.created_at'))->type('datetime')->sortable(),
                 amis()->TableColumn('updated_at', admin_trans('admin.updated_at'))->type('datetime')->sortable(),
